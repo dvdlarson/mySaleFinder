@@ -25,6 +25,7 @@
     "express-handlebars": "^3.0.0",
     "mocha": "^5.1.1",
     "mysql2": "^1.5.3",
+    "password-hash-and-salt": "^0.1.4",
     "sequelize": "^4.37.7"
   }
 }
