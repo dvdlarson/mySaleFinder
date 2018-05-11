@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(38, 50, 56);
+}
+
+#left-panel {
+    width: 50%;
+    height: calc(100vh - 71px);
+    float: left;
+    background-image: url("../img/left_panel.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#right-panel {
+    background-color: pink;
+    width: 50%;
+    height: calc(100vh - 71px);
+    float: right;
+    background-image: url("../img/right_panel.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#divider {
+    font-size: 70px; 
+    color: white;
+    z-index: 1001;
+    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+}
+
+.ui.vertical.divider:before, .ui.vertical.divider:after {
+    border-left: 1px solid rgba(255, 255, 255, 1);
+    border-right: 1px solid rgba(255, 255, 255, 1)
+}
+
+.ui.vertical.divider:after {
+    bottom: 71px;
+}
+
+
+.ui.dimmer {
+    background-color: rgba(0, 0, 0, 0.55);
+}
