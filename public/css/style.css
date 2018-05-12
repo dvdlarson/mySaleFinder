@@ -20,6 +20,10 @@ body {
     background-repeat: no-repeat;
 }
 
+#right-panel h2, #left-panel h2 {
+    pointer-events: none;
+}
+
 #divider {
     font-size: 70px; 
     color: white;
