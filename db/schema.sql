@@ -1,13 +1,13 @@
 
+DROP DATABASE salefinder;
+CREATE DATABASE salefinder;
+USE salefinder;
 
-CREATE DATABASE saleFinder;
-USE saleFinder;
+-- idk why but I have to do the grant statement here in order for 'root' to be able to use the
+-- db and I always have to use a password, not sure why
+-- the create user statement here can be uncommented, user only has to be created once
 
-#idk why but I have to do the grant statement here in order for 'root' to be able to use the
-#db and I always have to use a password, not sure why
-#the create user statement here can be uncommented, user only has to be created once
-
-#CREATE USER 'root'@'localhost' IDENTIFIED BY 'password';
+--CREATE USER 'root'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON saleFinder.* TO 'root'@'localhost';
 
 CREATE TABLE `users` (
@@ -24,7 +24,8 @@ CREATE TABLE `users` (
     ,zip_cd varchar(5) 
     ,full_address varchar(255) 
     ,latitude varchar(50) 
-    ,longitude varchar(50) 
+    ,longitude varchar(50)
+    ,buddy_contact boolean 
     ,hash varchar(300) 
 	,PRIMARY KEY (id, user_id)
 
@@ -56,6 +57,7 @@ CREATE TABLE `sales`(
     ,photo_url varchar(500)
     ,going_count int
     ,interested_count int
+    ,active boolean
     ,PRIMARY KEY (sale_id)
 );
 
