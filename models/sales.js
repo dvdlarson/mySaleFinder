@@ -114,7 +114,7 @@ module.exports = function (sequelize, DataTypes) {
 
 
     })
-
+return Sale;
 
     //return an object that defines data relationships
 };

@@ -2,7 +2,7 @@ var express = require("express");
 
 var router = express.Router();
 // require sale.js
-var sale = require("../models/models.js");
+var sale = require("../models");
 
 
 //home page route
