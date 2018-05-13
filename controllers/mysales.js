@@ -2,10 +2,10 @@ var express = require("express");
 
 var router = express.Router();
 // require sale.js
-var sale = require("../models");
+var sale = require("../models/");
 
-
-//home page route
+module.exports = function(app) 
+{//home page route
 router.get("/", function(req, res) {
     res.render("index.handlebars");
 });
@@ -18,16 +18,16 @@ router.get("/page/:page", function(req, res) {
 
 		// creates a route for the base 
 			// route for the sale display all 
-router.get("/all", function(req, res){
+router.get("/api/all", function(req, res){
 	// gets the data from the userinput and creates a handlebar object will that data
-	sale.selectAll(function(data){
-		var handbObject ={
-			sales: data
-		};
+	sale.Sale.findAll({})
+	.then(function(dbSale) {
 		// send to the home file to display the sales
-		res.render("home", handbObject);
+		res.render("home",dbSale);
 	});
-});
+		
+	});
+
 
 //create  sale
 router.post("/api/sales", function(req, res) {
@@ -55,8 +55,9 @@ router.put("/api/sales/:id", function(req, res){
 	});
 });
 
+};
 
 
 
 
-module.exports = router;
+//module.exports = router;
