@@ -75,7 +75,13 @@ if (password === verifyPassword) {
         alert("Password does not meet requirements.\nPassword can only contain letters and numbers and must contain at least one of each of the following:\nnumer 1-0\nlower case letter a-z\ncapital letter A-Z");
     }
 } else {
-    alert("The passwords did not match")
+    alert("The passwords did not match");
 };
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //verify unique user_name/////////////////////////////////////////////////////////////////////////////
+for (var i = 0; i < dbUser.length; i++) {
+    if (user_id === dbUser[i].user_id) {
+        alert("That name is already taken");
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////
