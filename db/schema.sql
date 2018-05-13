@@ -1,5 +1,5 @@
 -- DROP DATABASE saleFinder;
-DROP DATABASE salefinder;
+DROP DATABASE IF EXISTS salefinder;
 CREATE DATABASE salefinder;
 USE salefinder;
 
@@ -57,7 +57,6 @@ CREATE TABLE `sales`(
     ,items_desc varchar(1000)
     ,photo_url varchar(500)
     ,going_count int
-    ,interested_count int
     ,active boolean
     ,PRIMARY KEY (sale_id)
 );

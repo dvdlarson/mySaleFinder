@@ -10,6 +10,11 @@ module.exports = function (sequelize, DataTypes) {
             primaryKey: true,
             
         },
+        user_id: {
+            type: DataTypes.STRING,
+            allowNull: false,
+           
+        },
         title: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -109,8 +114,6 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             defaultValue: 1,
         }
-
-
 
 
     })
