@@ -1,14 +1,14 @@
+-- DROP DATABASE saleFinder;
 
-
-CREATE DATABASE saleFinder;
-USE saleFinder;
+CREATE DATABASE salefinder;
+USE salefinder;
 
 #idk why but I have to do the grant statement here in order for 'root' to be able to use the
 #db and I always have to use a password, not sure why
 #the create user statement here can be uncommented, user only has to be created once
 
 #CREATE USER 'root'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON saleFinder.* TO 'root'@'localhost';
+GRANT ALL PRIVILEGES ON salefinder.* TO 'root'@'localhost';
 
 CREATE TABLE `users` (
 
