@@ -1,4 +1,4 @@
-
+-- DROP DATABASE saleFinder;
 DROP DATABASE salefinder;
 CREATE DATABASE salefinder;
 USE salefinder;
@@ -9,6 +9,7 @@ USE salefinder;
 
 --CREATE USER 'root'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON saleFinder.* TO 'root'@'localhost';
+
 
 CREATE TABLE `users` (
 
