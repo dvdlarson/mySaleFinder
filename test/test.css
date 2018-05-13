@@ -1,6 +1,6 @@
 @font-face {
     font-family: logo;
-    src: url("../font/Blenda\ Script.otf");
+    src: url("../public/font/Blenda\ Script.otf");
 }
 
 #logo {
@@ -19,25 +19,33 @@ body {
 }
 
 #card1 {
-    margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 20px!important;
+    margin-top: 5px!important;
+    margin-left: 7px!important;
+}
+
+#card2 {
+    width: 100%;
+    margin-bottom: 20px!important;
+    margin-top: 0px!important;
+    margin-left: 7px!important;
 }
 
 #left-panel {
-    width: 50%;
-    height: calc(100vh - 71px);
-    float: left;
-    background-image: url("../img/left_panel.jpg");
+    height: 100vh;
+    /* background-color: pink */
+}
+#right-panel {
+    background-color: blue;
+    height: 100vh;
+    background-image: url("http://meteorcapture.com/content/images/2015/03/Screen-Shot-2015-03-26-at-6-06-45-pm-1.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
-#right-panel {
-    background-color: pink;
-    width: 50%;
-    height: calc(100vh - 71px);
-    float: right;
-    background-image: url("../img/right_panel.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+
+.card {
+    margin: 0!important;
 }
 
 #right-panel h2, #left-panel h2 {
@@ -63,14 +71,4 @@ body {
 
 .ui.dimmer {
     background-color: rgba(0, 0, 0, 0.55);
-}
-
-@media screen and (max-width: 1024px) {
-    #left-panel, #right-panel {
-        width: 100%;
-        height: calc(50vh - 36px);
-    } 
-    #divider, #logo {
-        display: none;
-    }
 }
