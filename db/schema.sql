@@ -71,3 +71,12 @@ CREATE TABLE `reviews`(
     ,rating int
     ,PRIMARY KEY (id)
 );
+
+CREATE TABLE `mylist`(
+	
+	id int NOT NULL AUTO_INCREMENT
+    ,user_id varchar(25)
+    ,sale_id int
+    ,notes varchar(250)
+    ,PRIMARY KEY (id)
+);
