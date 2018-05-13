@@ -8,7 +8,7 @@ USE salefinder;
 -- the create user statement here can be uncommented, user only has to be created once
 
 --CREATE USER 'root'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON saleFinder.* TO 'root'@'localhost';
+-- GRANT ALL PRIVILEGES ON saleFinder.* TO 'root'@'localhost';
 
 
 CREATE TABLE `users` (
