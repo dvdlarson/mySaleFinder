@@ -1,3 +1,17 @@
+
+#USER STORIES
+https://docs.google.com/spreadsheets/d/1JWYGGHxaBHlxJotVOB_giLk3RSWzH2TrQ26j4zs28B8/edit#gid=0
+
+#APP DOC
+
+https://docs.google.com/document/d/107XfEDuPK0Qf6JWOhjHMRKC_T-qnrSsVsCi-Xv4yzgg/edit?ts=5af5137c
+
+
+
+
+
+
+
 ### 'Garage Sale Finder' App Proposal ###
 
 

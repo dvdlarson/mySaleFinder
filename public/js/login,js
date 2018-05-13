@@ -1,0 +1,16 @@
+window.isLoggedIn = false;
+ 
+ 
+ 
+ $('.follow.button')
+  .api({
+    action: 'follow user',
+    beforeSend: function(settings) {
+      // cancel request
+      if(!isLoggedIn) {
+        $(this).state('flash text', 'Requires Login!');
+        return false;
+      }
+    }
+  })
+;
