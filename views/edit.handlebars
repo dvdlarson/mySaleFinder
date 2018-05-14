@@ -1,0 +1,123 @@
+
+{{#each sale}}
+<div class="ui form">
+  
+    <div class="field">
+      <label>Title</label>
+      <input placeholder={{title}} type="text">
+    </div>
+    <br/>
+    <h3>Start & End Dates</h3>
+    <div class="two fields">
+      <div class="field">
+        <label>Start date</label>
+        <div class="ui calendar" id="rangestart">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            <input type="text" placeholder={{start_date}}>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>End date</label>
+        <div class="ui calendar" id="rangeend">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            <input type="text" placeholder={{end_date}}>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h3>Start & End Times</h3>
+    <div class="two fields">
+      <div class="field">
+        <label>Start Time</label>
+        <div class="ui calendar" id="startTime">
+          <div class="ui input left icon">
+            <i class="time icon"></i>
+            <input type="text" placeholder={{start_time}}>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>End date</label>
+        <div class="ui calendar" id="endTime">
+          <div class="ui input left icon">
+            <i class="time icon"></i>
+            <input type="text" placeholder={{end_time}}>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+    <label>Description - Items for sale, special notes, etc</label>
+    <textarea>{{items_desc}}</textarea>
+    </div>
+    <div class="field">
+    <label>Address</label>
+    <textarea>{{address}}</textarea>
+    </div>
+    <div class="field">
+    <label>City</label>
+    <textarea>{{city}}</textarea>
+    </div>
+    <div class="field">
+    <label>State</label>
+    <textarea>{{state}}</textarea>
+    </div>
+    <div class="field">
+    <label>Zip Code</label>
+    <textarea>{{zip_cd}}</textarea>
+    </div>
+   <h3>Additonal Details</h3>
+    <div class="three fields">
+        <div class="field">
+            <label>Is there parking on the street or nearby?</label>
+            <div class="ui selection dropdown">
+            <input name="parking" type="hidden">
+            <i class="dropdown icon"></i>
+            <div class="default text">{{zip_cd}}</div>
+            <div class="menu">
+                <div class="item" data-value="1">Yes</div>
+                <div class="item" data-value="0">No</div>
+            </div>
+            </div>
+        </div>
+        <div class="field">
+            <label>Is it inside, outside, or both?</label>
+            <div class="ui selection dropdown">
+            <input name="insideOutside" type="hidden">
+            <i class="dropdown icon"></i>
+            <div class="default text">{{inside_outside}}</div>
+            <div class="menu">
+                <div class="item" data-value="Inside">Inside</div>
+                <div class="item" data-value="Outside">Outside</div>
+                <div class="item" data-value="Both">Both</div>
+            </div>
+            </div>
+        </div>
+        <div class="field">
+            <label>Will you cancel for rain?</label>
+            <div class="ui selection dropdown">
+            <input name="parking" type="hidden">
+            <i class="dropdown icon"></i>
+            <div class="default text">{{weather_cancel}}</div>
+            <div class="menu">
+                <div class="item" data-value="1">Yes</div>
+                <div class="item" data-value="0">No</div>
+            </div>
+            </div>
+        </div>    
+    </div>
+      
+ <div class="ui submit button">Submit</div>
+
+
+
+
+</div>  
+{{/each}}
+  
+  
+  
+  
