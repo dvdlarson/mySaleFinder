@@ -11,7 +11,7 @@ app.get("/", function(req, res) {
     res.render("index");
 });
 
-generic page routing with /page/pagename
+//generic page routing  
 router.get("/:page", function(req, res) {
     res.render(req.params.page);
 });
@@ -37,6 +37,7 @@ res.render("home",hbsObject);
 
 	app.get("/api/:id", function(req, res){
 		// gets the data from the userinput and creates a handlebar object will that data
+		var page=req.params.page;
 		sale.sales.findOne({
 			where: {
         sale_id: req.params.id
@@ -53,6 +54,8 @@ res.render("home",hbsObject);
 		});
 			
 		});
+
+
 //create  sale
 // router.post("/api/sales", function(req, res) {
   // sale.insertSale("sales",req.body.valueList, function() {

@@ -1,0 +1,27 @@
+<table class="ui sortable striped celled table">
+  <thead>
+      <tr class="center aligned"><th class="sixteen wide">My Sales</th></tr>
+    <tr>
+      <th class="">Sale ID</th>
+      <th class="">Title</th>
+      <th class="sorted descending">Start Date</th>
+      <th class="">End Date</th>
+      <th class=""># Going</th>
+      <th class=""></th>
+      <th class=""></th>
+    </tr>
+  </thead>
+  <tbody>
+{{#each sale}}
+      
+  <tr>
+      <td class="id">{{sale_id}}</td>
+      <td>{{title}}</td>
+      <td>{{start_date}}</td>
+      <td>{{end_date}}</td>
+      <td>{{going_count}}</td>
+      <td><button class="edit">Edit</button></td>
+      <td><button class="delete">Delete</button</td>
+    </tr>
+ {{/each}}
+</table>
