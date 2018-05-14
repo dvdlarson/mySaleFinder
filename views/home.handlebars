@@ -1,5 +1,13 @@
  {{!-- i have the app rendering to this page for the /all route --}}
-
+<h1 style="color:white">Title Goes here</h1>
  <div>
+     <ul style="color:white">
+     {{#each sale}}
+        <li>{{title}}</li>
+        <li>{{start_date}}</li>
+        <li>{{user_id}}</li>
+        <li>{{city}}</li>
+     {{/each}}
      
+    </ul>     
  </div>
