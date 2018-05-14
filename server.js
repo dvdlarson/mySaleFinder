@@ -26,15 +26,14 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // Import routes and give the server access to them.
-var routes = require("./controllers/mysales.js");
-app.use(routes);
+require("./controllers/mysales.js")(app);
+//app.use(routes);
 
 // Start our server so that it can begin listening to client requests.
 // app.listen(app.get("port"), function() {
 //     console.log("Server started on port " + app.get("port"));
-// });
+// }); 
 db.sequelize.sync({
-    force: true
 }).then(function () {
     app.listen(app.get("port"), function () {
         console.log("App listening on PORT " + app.get("port"));

@@ -1,59 +1,83 @@
-var express = require("express");
+// var express = require("express");
 
-var router = express.Router();
+// var router = express.Router();
 // require sale.js
 var sale = require("../models/");
 
 module.exports = function(app) 
 {//home page route
-router.get("/", function(req, res) {
-    res.render("index.handlebars");
+app.get("/", function(req, res) {
+	console.log("router.get");
+    res.render("index");
 });
 
-//generic page routing with /page/pagename
-router.get("/page/:page", function(req, res) {
-    res.render(req.params.page+".handlebars");
+generic page routing with /page/pagename
+router.get("/:page", function(req, res) {
+    res.render(req.params.page);
 });
 
 
 		// creates a route for the base 
 			// route for the sale display all 
-router.get("/api/all", function(req, res){
+app.get("/api/all", function(req, res){
 	// gets the data from the userinput and creates a handlebar object will that data
-	sale.Sale.findAll({})
+	sale.sales.findAll({})
 	.then(function(dbSale) {
+
+		var hbsObject = {
+			sale: dbSale
+		};
 		// send to the home file to display the sales
-		res.render("home",dbSale);
+		console.log(dbSale);
+ // res.json(dbSale);
+res.render("home",hbsObject);
 	});
 		
 	});
 
-
+	app.get("/api/:id", function(req, res){
+		// gets the data from the userinput and creates a handlebar object will that data
+		sale.sales.findOne({
+			where: {
+        sale_id: req.params.id
+      }
+		})
+		.then(function(dbSale) {
+			var hbsObject = {
+				sale: dbSale
+			};
+			// send to the home file to display the sales
+			console.log(dbSale);
+	 // res.json(dbSale);
+	res.render("home",hbsObject);
+		});
+			
+		});
 //create  sale
-router.post("/api/sales", function(req, res) {
-  sale.insertSale("sales",req.body.valueList, function() {
-    res.redirect('/');
-  });
-});
+// router.post("/api/sales", function(req, res) {
+  // sale.insertSale("sales",req.body.valueList, function() {
+  //   res.redirect('/');
+  // });
+// });
 
 //create  user
-router.post("/api/users", function(req, res) {
-    sale.insertUser("user",req.body.valueList, function() {
-      res.redirect('/');
-    });
-  });
+// router.post("/api/users", function(req, res) {
+  //   sale.insertUser("user",req.body.valueList, function() {
+  //     res.redirect('/');
+  //   });
+  // });
 
 //  update 
 //requires posting function to supply two arrays populated from form data - one with column values, another with matching data values, the orm update function will iterate through the pairs and submit the update statements
-router.put("/api/sales/:id", function(req, res){
-	sale.updateOne(req.body.updateColArray,req.body.updateValArray,req.params.id, function(results){
-		if (results.changedRows == 0) {
-      return res.status(404).end();
-  } else {
-      res.status(200).end();
-}
-	});
-});
+// router.put("/api/sales/:id", function(req, res){
+	// sale.updateOne(req.body.updateColArray,req.body.updateValArray,req.params.id, function(results){
+	// 	if (results.changedRows == 0) {
+  //     return res.status(404).end();
+  // } else {
+  //     res.status(200).end();
+// }
+// 	});
+// });
 
 };
 
