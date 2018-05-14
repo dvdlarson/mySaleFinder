@@ -68,6 +68,15 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false, 
         }
     });
+
+    User.associate = function(models) {
+        // Associating User with Sales
+        // When a User is deleted, also delete any associated Sales
+        User.hasMany(models.Sale, {
+          onDelete: "cascade"
+        });
+      };
+
     return User;
     
         //return an object that defines data relationships

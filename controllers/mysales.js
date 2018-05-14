@@ -35,6 +35,48 @@ res.render("home",hbsObject);
 		
 	});
 
+			// routes to the manage page, selects all sales where the user_ID matches param ID, supplied from the 'manage my posts' link or however users get routed but picks up user ID from some session variable
+
+	app.get("/api/manage/:id", function(req, res){
+
+		sale.sales.findAll({
+			where: {
+        user_id: req.params.id
+      }
+		})
+		.then(function(dbSale) {
+	
+			var hbsObject = {
+				sale: dbSale
+			};
+			console.log(dbSale);
+	 // res.json(dbSale);
+	res.render("manage",hbsObject);
+		});
+			
+		});
+			// routes to the EDIT page, selects one sale where the user_ID matches param ID, supplied in the calling button click function
+
+		app.get("/api/edit/:id", function(req, res){
+
+			sale.sales.findOne({
+				where: {
+					sale_id: req.params.id
+				}
+			})
+			.then(function(dbSale) {
+		
+				var hbsObject = {
+					sale: dbSale
+				};
+				// send to the home file to display the sales
+				console.log(dbSale);
+		 // res.json(dbSale);
+		res.render("edit",hbsObject);
+			});
+				
+			});
+
 	app.get("/api/:id", function(req, res){
 		// gets the data from the userinput and creates a handlebar object will that data
 		var page=req.params.page;
