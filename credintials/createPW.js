@@ -11,37 +11,40 @@
 //if so, create and push password
 //else prompt for a different password
 
-var express = require("express");
-var bodyParser = require("body-parser");
-var app = express();
-///////////////////////////////////////////////////////////////////////////////////////////
-//Part of post.js models /////////////////////////////////////////////////////////////////
-var User = sequelize.define("users", {
-    user_id: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: false
-    }
-});
+
+// ///////////////////////////////////////////////////////////////////////////////////////////
+// //Part of post.js models /////////////////////////////////////////////////////////////////
+// var User = sequelize.define("users", {
+//     user_id: {
+//         type: DataTypes.STRING,
+//         allowNull: false
+//     },
+//     password: {
+//         type: DataTypes.STRING,
+//         allowNull: false
+//     }
+// });
 ///////////////////////////////////////////////////////////////////////////////////////////
 //Part of api-routes.js //////////////////////////////////////////////////////////////////
-function routes(app) {
-    app.get("/api/users", function (req, res) {
-        User.findall().then(function (dbUser) {
-            res.json(dbUser);
-        });
-    });
+// var pw = require("../credintials");
+// app.get("/api/users", function (req, res) {
+//     User.findOne({
+//         where: {
+//             user_id: req.body.id
+//         }
+//     }).then(function (users) {
 
-    app.post("/api/users/:id", function (req, res) {
-        User.create({
-            user_id: req.body.user_id,
-            password: req.body.password //need to replace with hash password from createPW function
-        });
-    });
-};
+//     });
+// });
+
+
+// app.post("/api/users/:id", function (req, res) {
+//     User.create({
+//         user_id: req.body.user_id,
+//         password: req.body.password //need to replace with hash password from createPW function
+//     });
+// });
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
 //create password //////////////////////////////////////////////////////////////////////////////
 function createPW(password) {
@@ -50,38 +53,33 @@ function createPW(password) {
             console.error("Error in bcrypt.genSalt: " + err);
         }
         bcrypt.hash(createPW, salt, function (err, hash) {
-            app.post("/api/users/:id", function (req, res) {
-                User.create({
-                    hash: hash
-                });
-            });
-            //let person continue with creating account
-            if (err) {
-                console.error("Error in bcrypt.hash: " + err);
-            }
-            console.log("the hashed password is: " + hash);
+            return hash;
+
         });
+        //let person continue with creating account
+        if (err) {
+            console.error("Error in bcrypt.hash: " + err);
+        }
+        console.log("the hashed password is: " + hash);
     });
 };
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 //verify password is good//////////////////////////////////////////////////////////////////////////////
 //Need to change password and verifypassword to call in user input
-var space = /\s/
-var required = /(?=.*\/d)(?=.*\/[a-z])(?=.*\/[A-Z]).*/
-if (password === verifyPassword) {
-    if (required.search(password) !== -1 && space.search(password) == -1) {
-        createPW(password);
+function verifyNCreatePW() {
+    var space = /\s/
+    var required = /(?=.*\/d)(?=.*\/[a-z])(?=.*\/[A-Z]).*/
+    if (password === verifyPassword) {
+        if (required.search(password) !== -1 && space.search(password) == -1) {
+            createPW(password);
+        } else {
+            return alert("Password does not meet requirements.\nPassword can only contain letters and numbers and must contain at least one of each of the following:\nnumer 1-0\nlower case letter a-z\ncapital letter A-Z");
+        }
     } else {
-        alert("Password does not meet requirements.\nPassword can only contain letters and numbers and must contain at least one of each of the following:\nnumer 1-0\nlower case letter a-z\ncapital letter A-Z");
-    }
-} else {
-    alert("The passwords did not match");
-};
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-//verify unique user_name/////////////////////////////////////////////////////////////////////////////
-for (var i = 0; i < dbUser.length; i++) {
-    if (user_id === dbUser[i].user_id) {
-        alert("That name is already taken");
-    }
+        return alert("The passwords did not match");
+    };
 }
-////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+module.exports = verifyNCreatePW;
+//////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -12,9 +12,9 @@ app.get("/", function(req, res) {
 });
 
 //generic page routing  
-router.get("/:page", function(req, res) {
-    res.render(req.params.page);
-});
+// router.get("/:page", function(req, res) {
+//     res.render(req.params.page);
+// });
 
 
 		// creates a route for the base 
