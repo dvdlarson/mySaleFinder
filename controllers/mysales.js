@@ -8,13 +8,13 @@ module.exports = function(app)
 {//home page route
 app.get("/", function(req, res) {
 	console.log("router.get");
-    res.render("index");
+    res.render("index", {style: "index"});
 });
 
 //generic page routing  
-router.get("/:page", function(req, res) {
-    res.render(req.params.page);
-});
+// router.get("/:page", function(req, res) {
+//     res.render(req.params.page);
+// });
 
 
 		// creates a route for the base 
@@ -29,11 +29,10 @@ app.get("/api/all", function(req, res){
 		};
 		// send to the home file to display the sales
 		console.log(dbSale);
- // res.json(dbSale);
-res.render("home",hbsObject);
-	});
-		
-	});
+        // res.json(dbSale);
+		res.render("home",hbsObject);
+	});	
+});
 
 			// routes to the manage page, selects all sales where the user_ID matches param ID, supplied from the 'manage my posts' link or however users get routed but picks up user ID from some session variable
 
@@ -95,7 +94,11 @@ res.render("home",hbsObject);
 	res.render("home",hbsObject);
 		});
 			
-		});
+	});
+
+	app.get("/signup", function(req, res) {
+		res.render("signup", {style: "signup"});
+	})
 
 
 //create  sale

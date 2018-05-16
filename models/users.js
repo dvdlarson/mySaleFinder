@@ -69,13 +69,13 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    User.associate = function(models) {
-        // Associating User with Sales
-        // When a User is deleted, also delete any associated Sales
-        User.hasMany(models.Sale, {
-          onDelete: "cascade"
-        });
-      };
+    // User.associate = function(models) {
+    //     // Associating User with Sales
+    //     // When a User is deleted, also delete any associated Sales
+    //     User.hasMany(models.Sale, {
+    //       onDelete: "cascade"
+    //     });
+    //   };
 
     return User;
     
