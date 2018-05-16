@@ -11,40 +11,6 @@
 //if so, create and push password
 //else prompt for a different password
 
-
-// ///////////////////////////////////////////////////////////////////////////////////////////
-// //Part of post.js models /////////////////////////////////////////////////////////////////
-// var User = sequelize.define("users", {
-//     user_id: {
-//         type: DataTypes.STRING,
-//         allowNull: false
-//     },
-//     password: {
-//         type: DataTypes.STRING,
-//         allowNull: false
-//     }
-// });
-///////////////////////////////////////////////////////////////////////////////////////////
-//Part of api-routes.js //////////////////////////////////////////////////////////////////
-// var pw = require("../credintials");
-// app.get("/api/users", function (req, res) {
-//     User.findOne({
-//         where: {
-//             user_id: req.body.id
-//         }
-//     }).then(function (users) {
-
-//     });
-// });
-
-
-// app.post("/api/users/:id", function (req, res) {
-//     User.create({
-//         user_id: req.body.user_id,
-//         password: req.body.password //need to replace with hash password from createPW function
-//     });
-// });
-
 /////////////////////////////////////////////////////////////////////////////////////////////////
 //create password //////////////////////////////////////////////////////////////////////////////
 function createPW(password) {
@@ -66,15 +32,15 @@ function createPW(password) {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 //verify password is good//////////////////////////////////////////////////////////////////////////////
-//Need to change password and verifypassword to call in user input
-function verifyNCreatePW() {
+function verifyNCreatePW(password) {
     var space = /\s/
     var required = /(?=.*\/d)(?=.*\/[a-z])(?=.*\/[A-Z]).*/
+    //this should lead to the password does not have spaces in but does include lowercase, UPPERCASE, and 123 in any order
     if (password === verifyPassword) {
         if (required.search(password) !== -1 && space.search(password) == -1) {
             createPW(password);
         } else {
-            return alert("Password does not meet requirements.\nPassword can only contain letters and numbers and must contain at least one of each of the following:\nnumer 1-0\nlower case letter a-z\ncapital letter A-Z");
+            return alert("Password does not meet requirements.\nPassword must not have spaces in it and must contain at least one of each of the following:\nnumer 1-0\nlower case letter a-z\ncapital letter A-Z");
         }
     } else {
         return alert("The passwords did not match");

@@ -19,7 +19,7 @@ module.exports = uniqueUser;
 
 /*
 Will use the following controller, need to add to controllers:
-var pw = require("../credintials");
+var pw = require("../credentials");
     app.get("/api/users", function (req, res) {
         User.findOne({
             where: {
