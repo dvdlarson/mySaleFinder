@@ -101,6 +101,20 @@ app.get("/api/all", function(req, res){
 	})
 
 
+	app.get("/check", function(req, res){
+		// checks for a unique username
+		return user.users.count({ 
+			where: { username: req.body.username } 
+		})
+		.then(function(count) {
+			if (count != 0) {
+				return false;
+			  }
+			  return true;
+		});
+			
+	});
+
 //create  sale
 // router.post("/api/sales", function(req, res) {
   // sale.insertSale("sales",req.body.valueList, function() {
