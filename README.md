@@ -4,7 +4,7 @@ Project 2 - U of A bootcamp
 Responsibilities:
 Briana - 
 Chad - views folder
-Chay - credintials folder
+Chay - credentials folder
 David
 
 Map of files - indicates what each file requires and what each file exports as
