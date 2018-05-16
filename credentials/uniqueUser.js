@@ -16,7 +16,7 @@ function uniqueUser(dbUser, userInput) {
 // }
 
 module.exports = uniqueUser;
-
+}
 /*
 Will use the following controller, need to add to controllers:
 var pw = require("../credentials");
