@@ -8,7 +8,7 @@
   <h4 class="ui dividing header">Seller Information</h4>
   {{!-- first row --}} 
   {{!-- username --}}
-    <div class="field eight wide">
+    <div class="field five wide">
       <label>Username</label>
       <div class="field">
         <input type="text" placeholder="Username" id="username">
@@ -33,19 +33,20 @@
     </div>
 
 
-  {{!-- second row --}} {{!-- first name --}}
+  {{!-- second row --}} 
+  {{!-- first name --}}
   <div class="two fields">
     <div class="field">
       <label>First Name</label>
       <div class="field">
-        <input type="text" placeholder="First Name">
+        <input type="text" placeholder="First Name" required>
       </div>
     </div>
     {{!-- last name --}}
     <div class="field">
       <label>Last Name</label>
       <div class="field">
-        <input type="text" placeholder="Last Name">
+        <input type="text" placeholder="Last Name" required>
       </div>
     </div>
   </div>
@@ -55,14 +56,14 @@
     <div class="field">
       <label>Email</label>
       <div class="field">
-        <input type="text" placeholder="Email">
+        <input type="email" placeholder="Email" required>
       </div>
     </div>
     {{!-- phone --}}
     <div class="field">
       <label>Phone</label>
       <div class="field">
-        <input type="text" placeholder="" data-inputmask="'mask': '+1-999-999-9999'">
+        <input type="text" placeholder="#" id="phone">
       </div>
     </div>
   </div>
@@ -70,7 +71,7 @@
   <div class="one field">
     <label>Street</label>
     <div class="field">
-      <input type="text" placeholder="Street" id="street">
+      <input type="text" placeholder="Street" id="street" required>
     </div>
   </div>
   {{!-- fifth row --}} {{!-- city --}}
@@ -78,13 +79,13 @@
     <div class="field">
       <label>City</label>
       <div class="field">
-        <input type="text" placeholder="City">
+        <input type="text" placeholder="City" required>
       </div>
     </div>
     {{!-- state --}}
     <div class="field">
       <label>State</label>
-      <select class="ui fluid dropdown">
+      <select class="ui fluid dropdown" required>
         <option value="">State</option>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
@@ -143,10 +144,13 @@
     <div class="field">
       <label>Zip</label>
       <div class="field">
-        <input type="text" placeholder="Zip">
+        <input type="text" placeholder="Zip" required>
       </div>
     </div>
   </div>
+  <button class="ui button" type="submit">
+    Submit
+  </button>
 </form>
 {{!-- Navbar --}}
 <div class="ui bottom demo inverted nine item labeled icon sidebar menu overlay visible" style="">
