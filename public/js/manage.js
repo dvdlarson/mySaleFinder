@@ -20,6 +20,6 @@ $(".delete").click(function() {
                        .find(".id")     // Gets a descendent with class="id"
                        .text();         // Retrieves the text within <td>
 
-    var url="/api/sales/"+$item; 
+    var url="/api/edit/"+$item; 
     $(location).attr('href', url)      // Routes to the edit page
 });

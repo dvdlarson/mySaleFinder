@@ -1,5 +1,25 @@
+@font-face {
+    font-family: logo;
+    src: url("../font/Blenda\ Script.otf");
+}
+
+#logo {
+    font-family: logo;
+    font-size: 30px;
+    color: white;
+    position: absolute;
+    left: 15px;
+    top: 25px;
+    border: none;
+    user-select: none;
+}
+
 body {
     background-color: rgb(38, 50, 56);
+}
+
+#card1 {
+    margin-bottom: 10px;
 }
 
 #left-panel {
@@ -28,19 +48,29 @@ body {
     font-size: 70px; 
     color: white;
     z-index: 1001;
-    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .ui.vertical.divider:before, .ui.vertical.divider:after {
-    border-left: 1px solid rgba(255, 255, 255, 1);
-    border-right: 1px solid rgba(255, 255, 255, 1)
+    border-left: 1px solid rgba(255, 255, 255, 1)!important;
+    border-right: 1px solid rgba(255, 255, 255, 1)!important;
 }
 
 .ui.vertical.divider:after {
-    bottom: 71px;
+    bottom: 71px!important;
 }
 
 
 .ui.dimmer {
     background-color: rgba(0, 0, 0, 0.55);
+}
+
+@media screen and (max-width: 1024px) {
+    #left-panel, #right-panel {
+        width: 100%;
+        height: calc(50vh - 36px);
+    } 
+    #divider, #logo {
+        display: none;
+    }
 }
