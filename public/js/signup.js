@@ -20,6 +20,17 @@ $(document).ready(function(){
     
 });
 
+$("#password").focusOut(function() {
+    
+  var password = $(this).text();         // Retrieves the text 
+
+  //encrypt the password, then replace the form data with the hash
+  
+  // var hash = bcrypt.saltThatBadBoy(password);
+  // $(#.password).text(hash);
+
+});
+
 
 
 $('.signup')
