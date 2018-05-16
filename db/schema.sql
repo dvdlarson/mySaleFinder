@@ -13,8 +13,8 @@ USE salefinder;
 
 CREATE TABLE `users` (
 
-	id int NOT NULL AUTO_INCREMENT
-    ,user_id varchar(25)
+	user_id int NOT NULL AUTO_INCREMENT
+    ,username varchar(25)
     ,email varchar(100)
     ,phone varchar(20)
 	,first_name varchar(255) 
@@ -28,7 +28,7 @@ CREATE TABLE `users` (
     ,longitude varchar(50)
     ,buddy_contact boolean 
     ,hash varchar(300) 
-	,PRIMARY KEY (id, user_id)
+	,PRIMARY KEY (user_id, username)
 
 );
 
