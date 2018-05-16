@@ -25,14 +25,20 @@ $("#password").focusOut(function() {
 
   // update the password status
 
-  //$("#.passwordtext").text("Securing Password.");
-  //
-
-  //encrypt the password, then replace the form data with the hash
+        //$("#.passwordtext").text("Securing Password.");
   
-  // var hash = bcrypt.saltThatBadBoy(password);
-  // passwordWait(2000);  //will update the status 
-  // $("#.password").text(hash);
+
+  //encrypt the password
+  
+        // var hash = bcrypt.saltThatBadBoy(password);
+
+  //wait two seconds then update the status
+
+        // passwordWait(2000);  
+
+  //replace the form data with the hashed value
+
+        // $("#.password").text(hash);
   //
 
 });
