@@ -72,7 +72,7 @@ module.exports = function (app) {
                 }
                 bcrypt.hash(password, salt, function (err, saltyHash) {
                     hash = saltyHash;
-                    console.log("bcrypt.hash");
+                    //console.log("bcrypt.hash");
 
                     //let person continue with creating account
                     if (err) {
@@ -85,8 +85,8 @@ module.exports = function (app) {
             });
         }
         hashSalt(password);
-        console.log("line 73: " + hash);
-        console.log("User.users: " + User.users);
+        console.log("line 88: " + hash);
+        console.log("User.users: " + User.Users);
         User.User.create({
                 username: req.body.username,
                 email: req.body.email,
