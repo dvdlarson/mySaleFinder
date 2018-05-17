@@ -13,7 +13,7 @@ USE salefinder;
 
 CREATE TABLE `users` (
 
-	user_id int NOT NULL AUTO_INCREMENT
+	username int NOT NULL AUTO_INCREMENT
     ,username varchar(25)
     ,email varchar(100)
     ,phone varchar(20)
@@ -35,7 +35,7 @@ CREATE TABLE `users` (
 CREATE TABLE `sales`(
 	
 	sale_id int NOT NULL AUTO_INCREMENT
-    ,user_id varchar(25)
+    ,username varchar(25)
     ,title varchar(200)
     ,sale_type varchar(100)
     ,featured boolean
@@ -65,8 +65,8 @@ CREATE TABLE `sales`(
 CREATE TABLE `reviews`(
 	
 	id int NOT NULL AUTO_INCREMENT
-    ,sale_id int
-    ,user_id varchar(25)
+  --   ,sale_id int
+    -- ,user_id varchar(25)
     ,comment varchar(200)
     ,rating int
     ,PRIMARY KEY (id)
@@ -75,8 +75,10 @@ CREATE TABLE `reviews`(
 CREATE TABLE `mylist`(
 	
 	id int NOT NULL AUTO_INCREMENT
-    ,user_id varchar(25)
-    ,sale_id int
+    -- ,user_id varchar(25)
+    -- ,sale_id int
     ,notes varchar(250)
     ,PRIMARY KEY (id)
 );
+use salefinder;
+SELECT * FROM sales;
