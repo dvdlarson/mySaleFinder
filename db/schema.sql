@@ -13,20 +13,15 @@ USE salefinder;
 
 CREATE TABLE `users` (
 
-	username int NOT NULL AUTO_INCREMENT
+	user_id int NOT NULL AUTO_INCREMENT
     ,username varchar(25)
     ,email varchar(100)
     ,phone varchar(20)
 	,first_name varchar(255) 
     ,last_name varchar(255) 
-    ,address varchar(255) 
     ,city varchar(255) 
     ,state varchar(2) 
     ,zip_cd varchar(5) 
-    ,full_address varchar(255) 
-    ,latitude varchar(50) 
-    ,longitude varchar(50)
-    ,buddy_contact boolean 
     ,hash varchar(300) 
 	,PRIMARY KEY (user_id, username)
 

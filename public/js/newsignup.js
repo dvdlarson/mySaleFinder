@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     //add a burger
-    $(".signup").on("click", function (event) {
+    $(".submit").on("click", function (event) {
         event.preventDefault();
         var newUser = {
         username: $("#username").val().trim(),

@@ -1,11 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
 	var User = sequelize.define("users", {
-		// id: {
-		// 	type: DataTypes.INTEGER,
-		// 	allowNull: false,
-		// 	autoIncrement: true,
-		// 	primaryKey: true,
-		// },
+		user_id: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			autoIncrement: true,
+			primaryKey: true,
+		},
 		username: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -38,26 +38,7 @@ module.exports = function (sequelize, DataTypes) {
 				type: DataTypes.INTEGER,
 			allowNull: false,
 		},
-		// full_address: {
-		// 	type: DataTypes.TEXT,
-		// 	allowNull: false
-		// },
-		// latitude: {
-		// 	type: DataTypes.INTEGER,
-		// 	allowNull: true,
-		// 	defaultValue: null,
-		// },
-		// longitude: {
-		// 	type: DataTypes.INTEGER,
-		// 	allowNull: true,
-		// 	defaultValue: null,
-		// },
-		// buddy_contact: {
-		// 	type: DataTypes.BOOLEAN,
-		// 	allowNull: false,
-		// 	defaultValue: 1
-		// },
-		password: {
+		hash: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		}

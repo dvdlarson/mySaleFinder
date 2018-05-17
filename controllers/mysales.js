@@ -108,17 +108,17 @@ module.exports = function (app) { //home page route
 	// })
 
 
-	app.get("/check/:username", function (req, res) {
-		// checks for a unique username
-		user.users.findOne({
-			where: {
-				username: req.params.username
-			}
-		}).then(function (data) {
-			return data;
-		})
+	// app.get("/check/:username", function (req, res) {
+	// 	// checks for a unique username
+	// 	user.users.findOne({
+	// 		where: {
+	// 			username: req.params.username
+	// 		}
+	// 	}).then(function (data) {
+	// 		return data;
+	// 	})
 
-	});
+	// });
 
 	//create  sale
 	// router.post("/api/sales", function(req, res) {
