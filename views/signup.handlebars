@@ -1,12 +1,12 @@
 {{!-- Form --}}
 <form class="ui form">
-  <h4 class="ui dividing header">Seller Information</h4>
+  <h4 class="ui dividing header teal">Seller Information</h4>
   {{!-- first row --}} 
   {{!-- username --}}
     <div class="field five wide">
       <label>Username</label>
       <div class="field">
-        <input type="text" placeholder="Username" id="username" name="username">
+        <input type="text" placeholder="Username" id="username" required>
       </div>
     </div>
   {{!-- second row --}}
@@ -15,14 +15,14 @@
       <div class="field">
         <label>Password</label>
         <div class="field">
-          <input type="password" placeholder="Password" id="password">
+          <input type="password" placeholder="Password" id="password" required>
         </div>
       </div>
       {{!-- verify password --}}
       <div class="field">
         <label>Verify Password</label>
         <div class="field">
-          <input type="password" placeholder="" id="verifyPW">
+          <input type="password" placeholder="" id="verifyPassword">
         </div>
       </div>      
     </div>
@@ -63,7 +63,13 @@
     </div>
   </div>
   {{!-- fourth row --}}
-  <!--deleted address request-->
+  <h4 class="ui dividing header teal">Address</h4>
+  <div class="one field">
+    <label>Street</label>
+    <div class="field">
+      <input type="text" placeholder="Street" id="street" required>
+    </div>
+  </div>
   {{!-- fifth row --}} {{!-- city --}}
   <div class="three fields">
     <div class="field">
@@ -138,13 +144,11 @@
       </div>
     </div>
   </div>
-  <button class="ui button signup" type="submit">
-    Submit
-  </button>
+  <div class="ui fluid large teal submit login button">Sign Up</div>
 </form>
 {{!-- Navbar --}}
 <div class="ui bottom demo inverted nine item labeled icon sidebar menu overlay visible" style="">
-  <a class="item">
+  <a class="item" href="/">
     <i class="home icon"></i>
     Home
   </a>

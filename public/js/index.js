@@ -24,6 +24,10 @@ $(document).ready(function() {
         $("#right-panel h2").animate({
             zoom: 1
         });
+    });
+    // Sell panel click event
+    $("#right-panel").click(function() {
+        $(location).attr('href', "/login");
     })
 })
 

@@ -31,7 +31,6 @@ body {
     background-repeat: no-repeat;
 }
 #right-panel {
-    background-color: pink;
     width: 50%;
     height: calc(100vh - 71px);
     float: right;
@@ -40,7 +39,7 @@ body {
     background-repeat: no-repeat;
 }
 
-#right-panel h2, #left-panel h2 {
+#right-panel h2, #left-panel h2, .dimmer {
     pointer-events: none;
 }
 

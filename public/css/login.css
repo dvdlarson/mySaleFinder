@@ -1,0 +1,14 @@
+body {
+    background-color: rgb(38, 50, 56)!important;
+    padding: 40px!important;
+}
+
+form {
+    margin: 0 auto;
+    max-width: 400px!important;
+}
+
+.message {
+    max-width: 400px;
+    margin: 0 auto!important;
+}
