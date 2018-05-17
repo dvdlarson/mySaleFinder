@@ -35,7 +35,7 @@ module.exports = function (sequelize, DataTypes) {
 			allowNull: false,
 		},
 		zip_cd: {
-				type: DataTypes.INTEGER,
+			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
 		// full_address: {

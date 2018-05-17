@@ -17,7 +17,7 @@ module.exports = function (app) { //home page route
 			style: "buy"
 		});
 	});
-	
+
 	//generic page routing  
 	// router.get("/:page", function(req, res) {
 	//     res.render(req.params.page);
@@ -127,12 +127,27 @@ module.exports = function (app) { //home page route
 	// });
 	// });
 
-	//create  user
-	// router.post("/api/users", function(req, res) {
-	//   sale.insertUser("user",req.body.valueList, function() {
-	//     res.redirect('/');
-	//   });
-	// });
+
+	app.post("/api/users", function (req, res) {
+		console.log(JSON.stringify(req.body) + "server side")
+		sale.users.create({
+			username: req.body.username,
+			email: req.body.email,
+			first_name: req.body.first_name,
+			last_name: req.body.last_name,
+			city: req.body.city,
+			state: req.body.state,
+			zip_cd: req.body.zip_cd,
+			password: req.body.password
+		}).then(function (userInfo) {
+			res.json(userInfo);
+		})
+
+	});
+
+	//db.Author.create(req.body).then(function(dbAuthor) {
+	//res.json(dbAuthor);
+
 
 	//  update 
 	//requires posting function to supply two arrays populated from form data - one with column values, another with matching data values, the orm update function will iterate through the pairs and submit the update statements
