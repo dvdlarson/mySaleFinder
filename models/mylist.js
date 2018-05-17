@@ -9,20 +9,28 @@ module.exports = function (sequelize, DataTypes) {
 	MyList.associate = function (models) {
 		// Associating Author with Posts
 		// When an Author is deleted, also delete any associated Posts
-		MyList.hasMany(models.Sales, {
-			foreignKey: {
-				allowNull: false
-			}
-		});
+		MyList.hasMany(models.sales, {
+				as: "sales_foreignKey",
+				foreignKey: {
+					allowNull: false
+				}
+			}),
+			MyList.belongsTo(models.users, {
+				as: "user",
+				foreignKey: {
+					allowNull: false
+				}
+			})
 
 	};
-	MyList.associate = function (models) {
-		MyList.hasMany(models.users, {
-			foreignKey: {
-				allowNull: false
-			}
-		});
-	}
+	// MyList.associate = function (models) {
+	// 	MyList.belongsTo(models.users, {
+	// 		as: "user",
+	// 		foreignKey: {
+	// 			allowNull: false
+	// 		}
+	// 	});
+	// }
 
 	return MyList;
 };

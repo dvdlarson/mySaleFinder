@@ -8,22 +8,22 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
-            
+
         },
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-           
+
         },
         title: {
             type: DataTypes.STRING,
             allowNull: false,
-           
+
         },
         sale_type: {
             type: DataTypes.STRING,
             allowNull: false,
-            
+
         },
         featured: {
             type: DataTypes.BOOLEAN,
@@ -95,7 +95,7 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: null,
         },
 
-        
+
         items_desc: {
             type: DataTypes.TEXT,
             allowNull: true,
@@ -117,7 +117,7 @@ module.exports = function (sequelize, DataTypes) {
 
 
     })
-return Sale;
+    return Sale;
 
     //return an object that defines data relationships
 };
