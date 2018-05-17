@@ -1,12 +1,11 @@
 //used https://www.codementor.io/emjay/how-to-build-a-simple-session-based-authentication-system-with-nodejs-from-scratch-6vn67mcy3
 // as a source
 
-//user log in
 var bcrypt = requires("bcrypt");
 var User = requires("../models/users");
 var Credentials = requires("../credentials/");
 
-
+//user log in
 app.route('/login')
     .get(sessionChecker, (req, res) => {
         res.render("login", {style: "index"});
