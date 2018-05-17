@@ -12,6 +12,12 @@ module.exports = function (app) { //home page route
 		});
 	});
 
+	app.get("/buy", function (req, res) {
+		res.render("buy", {
+			style: "buy"
+		});
+	});
+	
 	//generic page routing  
 	// router.get("/:page", function(req, res) {
 	//     res.render(req.params.page);
