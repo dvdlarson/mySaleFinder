@@ -16,8 +16,31 @@ $(document).ready(function(){
       else {
         $("#usernameText").text("Username is available.")
       }
-    }
+    }) 
+});
+
+$("#password").focusOut(function() {
     
+  var password = $(this).text();  // Retrieves the text 
+
+  // update the password status
+
+        //$("#.passwordtext").text("Securing Password.");
+  
+
+  //encrypt the password
+  
+        // var hash = bcrypt.saltThatBadBoy(password);
+
+  //wait two seconds then update the status
+
+        // passwordWait(2000);  
+
+  //replace the form data with the hashed value
+
+        // $("#.password").text(hash);
+  //
+
 });
 
 
@@ -31,3 +54,7 @@ $('.signup')
     }
   })
 ;
+
+function passwordWait(ms){ setTimeout(function(ms){
+    $("#.passwordtext").text("Password secured.");
+},ms)}

@@ -101,17 +101,15 @@ app.get("/api/all", function(req, res){
 	})
 
 
-	app.get("/check", function(req, res){
+	app.get("/check/:username", function(req, res){
 		// checks for a unique username
-		return user.users.count({ 
-			where: { username: req.body.username } 
+		user.users.findOne({
+			where: {
+        username: req.params.username
+      }
+		}).then(function(data){
+			return data;
 		})
-		.then(function(count) {
-			if (count != 0) {
-				return false;
-			  }
-			  return true;
-		});
 			
 	});
 
