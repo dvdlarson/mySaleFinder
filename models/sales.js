@@ -10,7 +10,7 @@ module.exports = function (sequelize, DataTypes) {
             primaryKey: true,
             
         },
-        user_id: {
+        username: {
             type: DataTypes.STRING,
             allowNull: false,
            

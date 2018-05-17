@@ -6,8 +6,7 @@ var User = requires("../models/users");
 var Credentials = requires("../credentials/");
 
 //user log in
-app.route('/login')
-    .get(sessionChecker, (req, res) => {
+app.get('/login', sessionChecker, (req, res) => {
         res.render("login", {style: "login"});
     })
     .post((req, res) => {
@@ -16,7 +15,7 @@ app.route('/login')
 
         User.findOne({
             where: {
-                user_id: username
+                username: username
             }
         }).then(function (user, password) {
             //might need to remove the passsword from this function
@@ -35,26 +34,28 @@ app.route('/login')
     //console.logs will be our friends.
 
 //create account
-app.route('/signup')
-    .get(sessionChecker, (req, res) => {
+app.get('/signup', sessionChecker, (req, res) => {
         res.render("signup", {style: "signup"});
+        console.log(sessionChecker, res);
     })
     .post((req, res) => {
-        var hash = Credentials.verifyNCreatePW(req.body.password, req.body.verifyPW);
-        User.create({
-                username: req.body.username,
-                email: req.body.email,
-                phone: req.body.phone,
-                first_name: req.body.firstName,
-                last_name: req.body.lastName,
-                city: req.body.city,
-                state: req.body.state,
-                zip_cd: req.body.zip,
+        var hash = Credentials.verifyNCreatePW(req.param.password, req.param.verifyPW);
+        console.log(hash);
+        User.User.create({
+                username: req.param.username,
+                email: req.param.email,
+                phone: req.param.phone,
+                first_name: req.param.firstName,
+                last_name: req.param.lastName,
+                city: req.param.city,
+                state: req.param.state,
+                zip_cd: req.param.zip,
                 password: hash
 
                 //need to add all the information from signup page here
             })
             .then(user => {
+                console.log(user.username);
                 req.session.user = user.dataValues;
                 res.render("manage", {style: "manage"});
             })
