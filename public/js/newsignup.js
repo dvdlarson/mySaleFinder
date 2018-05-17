@@ -5,7 +5,15 @@ $(document).ready(function () {
         event.preventDefault();
         var newUser = {
         username: $("#username").val().trim(),
-        password: $("#password").val().trim()
+        email: $("#email").val().trim(),
+        phone: $("#phone").val().trim(),
+        first_name: $("#firstName").val().trim(),
+        last_name: $("#lastName").val().trim(),
+        city: $("#city").val().trim(),
+        state: $("#state").val().trim(),
+        zip_cd: $("#zip").val().trim(),
+        password: $("#password").val().trim(),
+
         };
         console.log(newUser);
 

@@ -3,56 +3,67 @@
 
 var bcrypt = require("bcrypt");
 var User = require("../models/users");
-var Create = require("../credentials/createPW");
+//var Create = require("../credentials/createPW");
 var Login = require("../credentials/login");
 var Unique = require("../credentials/uniqueUser")
 
-module.exports = function(app){
+module.exports = function (app) {
     var sessionChecker = (req, res, next) => {
         if (req.session.user && req.cookies.user_sid) {
-            res.redirect('/dashboard');
+            res.redirect('/manage');
         } else {
             next();
-        }    
+        }
     };
-//user log in
-app.get('/login', sessionChecker, (req, res) => {
-        res.render("login", {style: "login"});
-    })
-    .post((req, res) => {
-        var username = req.body.username,
-            password = req.body.password;
+    //user log in
+    app.get('/login', sessionChecker, (req, res) => {
+            res.render("login", {
+                style: "login"
+            });
+        })
+        .post((req, res) => {
+            var username = req.body.username,
+                password = req.body.password;
 
-        User.findOne({
-            where: {
-                username: username
-            }
-        }).then(function (user, password) {
-            //might need to remove the passsword from this function
-            if (!user) {
-                res.render("login", {style: "login"});
-            } else if (!User.checkPW(password, user.hash)) {
-                res.render("login", {style: "login"});
-            } else {
-                req.session.user = user.dataValues;
-                res.render("manage", {style: "manage"});
-            }
+            User.findOne({
+                where: {
+                    username: username
+                }
+            }).then(function (user, password) {
+                //might need to remove the passsword from this function
+                if (!user) {
+                    res.render("login", {
+                        style: "login"
+                    });
+                } else if (!User.checkPW(password, user.hash)) {
+                    res.render("login", {
+                        style: "login"
+                    });
+                } else {
+                    req.session.user = user.dataValues;
+                    res.render("manage", {
+                        style: "manage"
+                    });
+                }
+            });
         });
-    });
     //in the .then function, added password, added hash to the else if line
     //checkPW compares 2 passwords, need to make sure I am properly calling them
     //console.logs will be our friends.
 
-//create account
-app.get('/signup', sessionChecker, (req, res) => {
-        res.render("signup", {style: "signup"});
+    //create account
+    app.get('/signup', sessionChecker, (req, res) => {
+        res.render("signup", {
+            style: "signup"
+        });
         //console.log("sessionChecker, res");
     });
+    var hash;
     app.post('/api/users', (req, res) => {
         var password = req.body.password
         console.log("password: " + req.body.password);
-        var hash;
-        function hashSalt (password) {
+
+        function hashSalt(password) {
             saltRounds = 10;
             bcrypt.genSalt(saltRounds, function (err, salt) {
                 console.log("salt: " + salt);
@@ -62,20 +73,21 @@ app.get('/signup', sessionChecker, (req, res) => {
                 bcrypt.hash(password, salt, function (err, saltyHash) {
                     hash = saltyHash;
                     console.log("bcrypt.hash");
-        
+
                     //let person continue with creating account
                     if (err) {
                         console.error("Error in bcrypt.hash: " + err);
                     }
                     console.log("the hashed password is: " + hash);
                     //return hash;
+                    return hash;
                 });
             });
         }
         hashSalt(password);
         console.log("line 73: " + hash);
-        console.log(User.users);
-        User.users.create({
+        console.log("User.users: " + User.users);
+        User.User.create({
                 username: req.body.username,
                 email: req.body.email,
                 phone: req.body.phone,
@@ -91,7 +103,9 @@ app.get('/signup', sessionChecker, (req, res) => {
             .then(user => {
                 console.log(user.username);
                 req.session.user = user.dataValues;
-                res.render("manage", {style: "manage"});
+                res.render("manage", {
+                    style: "manage"
+                });
             })
             .catch(error => {
                 console.error(error);
@@ -99,13 +113,13 @@ app.get('/signup', sessionChecker, (req, res) => {
             });
     });
 
-//logout
-app.get('/logout', (req, res) => {
-    if (req.session.user && req.cookies.user_sid) {
-        res.clearCookie('user_sid');
-        res.redirect('/');
-    } else {
-        res.redirect('/login');
-    }
-});
+    //logout
+    app.get('/logout', (req, res) => {
+        if (req.session.user && req.cookies.user_sid) {
+            res.clearCookie('user_sid');
+            res.redirect('/');
+        } else {
+            res.redirect('/login');
+        }
+    });
 }
