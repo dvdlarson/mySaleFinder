@@ -11,7 +11,7 @@
     <div class="field five wide">
       <label>Username</label>
       <div class="field">
-        <input type="text" placeholder="Username" id="username">
+        <input type="text" placeholder="Username" id="username" name="username">
       </div>
     </div>
   {{!-- second row --}}
@@ -20,14 +20,14 @@
       <div class="field">
         <label>Password</label>
         <div class="field">
-          <input type="password" placeholder="Password">
+          <input type="password" placeholder="Password" name="password">
         </div>
       </div>
       {{!-- verify password --}}
       <div class="field">
         <label>Verify Password</label>
         <div class="field">
-          <input type="password" placeholder="">
+          <input type="password" placeholder="" name="verifyPW">
         </div>
       </div>      
     </div>
@@ -39,14 +39,14 @@
     <div class="field">
       <label>First Name</label>
       <div class="field">
-        <input type="text" placeholder="First Name" required>
+        <input type="text" placeholder="First Name" name="firstName" required>
       </div>
     </div>
     {{!-- last name --}}
     <div class="field">
       <label>Last Name</label>
       <div class="field">
-        <input type="text" placeholder="Last Name" required>
+        <input type="text" placeholder="Last Name" name="lastName" required>
       </div>
     </div>
   </div>
@@ -56,36 +56,31 @@
     <div class="field">
       <label>Email</label>
       <div class="field">
-        <input type="email" placeholder="Email" required>
+        <input type="email" placeholder="Email" required name="email">
       </div>
     </div>
     {{!-- phone --}}
     <div class="field">
       <label>Phone</label>
       <div class="field">
-        <input type="text" placeholder="#" id="phone">
+        <input type="text" placeholder="#" id="phone" name="phone">
       </div>
     </div>
   </div>
   {{!-- fourth row --}}
-  <div class="one field">
-    <label>Street</label>
-    <div class="field">
-      <input type="text" placeholder="Street" id="street" required>
-    </div>
-  </div>
+  <!--deleted address request-->
   {{!-- fifth row --}} {{!-- city --}}
   <div class="three fields">
     <div class="field">
       <label>City</label>
       <div class="field">
-        <input type="text" placeholder="City" required>
+        <input type="text" placeholder="City" name="city" required>
       </div>
     </div>
     {{!-- state --}}
     <div class="field">
       <label>State</label>
-      <select class="ui fluid dropdown" required>
+      <select class="ui fluid dropdown" name="state" required>
         <option value="">State</option>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
@@ -144,7 +139,7 @@
     <div class="field">
       <label>Zip</label>
       <div class="field">
-        <input type="text" placeholder="Zip" required>
+        <input type="text" placeholder="Zip" name="zip" required>
       </div>
     </div>
   </div>
