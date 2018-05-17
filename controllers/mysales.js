@@ -97,11 +97,9 @@ module.exports = function (app) { //home page route
 
 	});
 
-	app.get("/signup", function (req, res) {
-		res.render("signup", {
-			style: "signup"
-		});
-	})
+	// app.get("/signup", function(req, res) {
+	// 	res.render("signup", {style: "signup"});
+	// })
 
 
 	app.get("/check/:username", function (req, res) {

@@ -13,7 +13,10 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 //create password //////////////////////////////////////////////////////////////////////////////
+var bcrypt = require("bcrypt");
+
 function createPW(password) {
+    saltRounds = 10;
     bcrypt.genSalt(saltRounds, function (err, salt) {
         if (err) {
             console.error("Error in bcrypt.genSalt: " + err);
@@ -21,31 +24,31 @@ function createPW(password) {
         bcrypt.hash(createPW, salt, function (err, hash) {
             return hash;
 
+            //let person continue with creating account
+            if (err) {
+                console.error("Error in bcrypt.hash: " + err);
+            }
+            console.log("the hashed password is: " + hash);
         });
-        //let person continue with creating account
-        if (err) {
-            console.error("Error in bcrypt.hash: " + err);
-        }
-        console.log("the hashed password is: " + hash);
     });
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 //verify password is good//////////////////////////////////////////////////////////////////////////////
-function verifyNCreatePW(password) {
-    var space = /\s/
-    var required = /(?=.*\/d)(?=.*\/[a-z])(?=.*\/[A-Z]).*/
+function verifyNCreatePW(password, verifyPassword) {
+    // var space = /\s/
+    // var required = /(?=.*\/d)(?=.*\/[a-z])(?=.*\/[A-Z]).*/
     //this should lead to the password does not have spaces in but does include lowercase, UPPERCASE, and 123 in any order
     if (password === verifyPassword) {
-        if (required.search(password) !== -1 && space.search(password) == -1) {
-            createPW(password);
-        } else {
-            return alert("Password does not meet requirements.\nPassword must not have spaces in it and must contain at least one of each of the following:\nnumer 1-0\nlower case letter a-z\ncapital letter A-Z");
-        }
+        // if (required.search(password) !== -1 && space.search(password) == -1) {
+        createPW(password);
+        // } else {
+        //     return alert("Password does not meet requirements.\nPassword must not have spaces in it and must contain at least one of each of the following:\nnumer 1-0\nlower case letter a-z\ncapital letter A-Z");
+        //}
     } else {
         return alert("The passwords did not match");
     };
 }
 
-module.exports = verifyNCreatePW;
+module.exports = verifyNCreatePW();
 //////////////////////////////////////////////////////////////////////////////////////////////////////
