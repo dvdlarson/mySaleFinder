@@ -96,9 +96,9 @@ app.get("/api/all", function(req, res){
 			
 	});
 
-	app.get("/signup", function(req, res) {
-		res.render("signup", {style: "signup"});
-	})
+	// app.get("/signup", function(req, res) {
+	// 	res.render("signup", {style: "signup"});
+	// })
 
 
 	app.get("/check/:username", function(req, res){
