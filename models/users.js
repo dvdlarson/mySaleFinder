@@ -1,11 +1,8 @@
+
 module.exports = function (sequelize, DataTypes) {
-	var User = sequelize.define("users", {
-		// id: {
-		// 	type: DataTypes.INTEGER,
-		// 	allowNull: false,
-		// 	autoIncrement: true,
-		// 	primaryKey: true,
-		// },
+
+	var User = sequelize.define("User", {
+		
 		username: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -35,8 +32,8 @@ module.exports = function (sequelize, DataTypes) {
 			allowNull: false,
 		},
 		zip_cd: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
+				type: DataTypes.INTEGER,
+			allowNull: true,
 		},
 		// full_address: {
 		// 	type: DataTypes.TEXT,
@@ -63,6 +60,35 @@ module.exports = function (sequelize, DataTypes) {
 		}
 	});
 
+	User.associate = function(models) {
+		// Associating Author with Posts
+		// When an Author is deleted, also delete any associated Posts
+		User.hasMany(models.Sale, {
+		  onDelete: "cascade"
+		});
+		User.hasMany(models.Favorite, {
+			onDelete: "cascade"
+		  });
+	  };
+
+
+	// MyList.associate = function (models) {
+	// 	// Associating Author with Posts
+	// 	// When an Author is deleted, also delete any associated Posts
+	// 	MyList.hasMany(models.sales, {
+	// 			as: "sales_foreignKey",
+	// 			foreignKey: {
+	// 				allowNull: false
+	// 			}
+	// 		}),
+	// 		MyList.belongsTo(models.users, {
+	// 			as: "user",
+	// 			foreignKey: {
+	// 				allowNull: false
+	// 			}
+	// 		})
+
+	// };
 	// User.associate = function(models) {
 	//     // Associating User with Sales
 	//     // When a User is deleted, also delete any associated Sales

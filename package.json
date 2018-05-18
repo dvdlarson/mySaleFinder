@@ -28,6 +28,7 @@
     "mocha": "^5.1.1",
     "moment": "^2.22.1",
     "mysql2": "^1.5.3",
+    "nodemon": "^1.17.4",
     "npm": "^6.0.1",
     "password-hash-and-salt": "^0.1.4",
     "sass": "*",

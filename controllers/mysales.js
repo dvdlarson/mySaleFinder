@@ -37,7 +37,7 @@ module.exports = function (app) { //home page route
 				// send to the home file to display the sales
 				console.log(dbSale);
 				// res.json(dbSale);
-				res.render("home", hbsObject);
+				res.render("buy", hbsObject);
 			});
 	});
 
