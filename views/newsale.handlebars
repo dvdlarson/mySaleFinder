@@ -1,0 +1,105 @@
+{{!-- Form --}} {{!-- Start Date/End Date Start Time/End Time Is there ample street parking? Inside or Outside? Will you
+cancel for rain? Items for sale description (Upload picture) --}}
+<form class="ui form">
+	<h4 class="ui dividing header teal">Create a Sale</h4>
+	{{!-- first row --}} {{!-- username --}}
+	<div class="field five wide">
+		<label>Title</label>
+		<div class="field">
+			<input type="text" placeholder="Title" id="title" required>
+		</div>
+	</div>
+	{{!-- second row --}} {{!-- password --}}
+
+	<div class="field">
+		<label>Sale Type</label>
+		<select class="ui fluid dropdown" id="sale_type" required>
+			<option value="">State</option>
+			<option value="yard_sale">Yard Sale</option>
+			<option value="estate_sale">Estate Sale</option>
+
+		</select>
+	</div>
+
+	{{!-- second row --}} {{!-- first name --}}
+	<div class="two fields">
+		<div class="field">
+			<label>Start Date</label>
+			<div class="field">
+				<input type="text" id="startdate" required>
+			</div>
+		</div>
+		{{!-- last name --}}
+		<div class="field">
+			<label>Last Name</label>
+			<div class="field">
+				<input type="text" placeholder="Last Name" id="lastName" required>
+			</div>
+		</div>
+	</div>
+	{{!-- third row --}} {{!-- email --}}
+	<div class="two fields">
+		<div class="field">
+			<label>Email</label>
+			<div class="field">
+				<input type="email" placeholder="Email" required id="email">
+			</div>
+		</div>
+		{{!-- phone --}}
+		<div class="field">
+			<label>Phone</label>
+			<div class="field">
+				<input type="text" placeholder="#" id="phone" name="phone">
+			</div>
+		</div>
+	</div>
+	{{!-- fourth row --}}
+	<h4 class="ui dividing header teal">Address</h4>
+	<div class="one field">
+		<label>Street</label>
+		<div class="field">
+			<input type="text" placeholder="Street" id="street" required>
+		</div>
+	</div>
+	{{!-- fifth row --}} {{!-- city --}}
+	<div class="three fields">
+		<div class="field">
+			<label>City</label>
+			<div class="field">
+				<input type="text" placeholder="City" id="city" required>
+			</div>
+		</div>
+
+		{{!-- zip --}}
+		<div class="field">
+			<label>Zip</label>
+			<div class="field">
+				<input type="text" placeholder="Zip" id="zip" required>
+			</div>
+		</div>
+	</div>
+	<div class="ui fluid large teal submit login button">Sign Up</div>
+</form>
+{{!-- Navbar --}}
+<div class="ui bottom demo inverted nine item labeled icon sidebar menu overlay visible" style="">
+	<a class="item" href="/">
+		<i class="home icon"></i>
+		Home
+	</a>
+	<a class="item">
+		<i class="mail icon"></i>
+		Messages
+	</a>
+	<a class="item">
+		<i class="heart icon"></i>
+		Favorites
+	</a>
+	<a class="item">
+		<i class="shop icon"></i>
+		My Shop
+	</a>
+	<a class="item">
+		<i class="settings icon"></i>
+		Settings
+	</a>
+</div>
