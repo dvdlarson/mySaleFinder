@@ -19,9 +19,11 @@ module.exports = function (app) { //home page route
 	});
 
 	//generic page routing  
-	// router.get("/:page", function(req, res) {
-	//     res.render(req.params.page);
-	// });
+	app.get("/sale", function (req, res) {
+		res.render("newsale", {
+			style: "newsale"
+		});
+	});
 
 
 	// creates a route for the base 
