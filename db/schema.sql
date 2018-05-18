@@ -1,7 +1,41 @@
 -- DROP DATABASE saleFinder;
-DROP DATABASE IF EXISTS salefinder;
-CREATE DATABASE salefinder;
+--DROP DATABASE IF EXISTS salefinder;
+--CREATE DATABASE salefinder;
 USE salefinder;
+
+
+-- test VIEW so we can just findAll from my_sales like it was a normal table. this is the sql that the tool generated from my human sql. i edited to remove some columns and get more just what we need 
+
+-- not sure why this is not running in the whole create database thing.
+
+CREATE OR REPLACE VIEW `salefinder`.`my_sales` AS
+    SELECT 
+        `u`.`username` AS `site_user`,
+        `s`.`id` AS `id`,
+        `s`.`username` AS `posting_user`,
+        `s`.`title` AS `title`,
+        `s`.`sale_type` AS `sale_type`,
+        `s`.`start_date` AS `start_date`,
+        `s`.`end_date` AS `end_date`,
+        `s`.`start_time` AS `start_time`,
+        `s`.`end_time` AS `end_time`,
+        `s`.`on_street_parking` AS `on_street_parking`,
+        `s`.`inside_outside` AS `inside_outside`,
+        `s`.`weather_cancel` AS `weather_cancel`,
+        `s`.`address` AS `address`,
+        `s`.`city` AS `city`,
+        `s`.`state` AS `state`,
+        `s`.`zip_cd` AS `zip_cd`,
+        `s`.`full_address` AS `full_address`,
+        `s`.`latitude` AS `latitude`,
+        `s`.`longitude` AS `longitude`,
+        `s`.`items_desc` AS `items_desc`,
+        `s`.`photo_url` AS `photo_url`
+    FROM
+        ((`salefinder`.`favorites` `f`
+        LEFT JOIN `salefinder`.`users` `u` ON ((`f`.`UserId` = `u`.`id`)))
+        LEFT JOIN `salefinder`.`sales` `s` ON ((`f`.`sale_id` = `s`.`id`)))
+
 
 -- idk why but I have to do the grant statement here in order for 'root' to be able to use the
 -- db and I always have to use a password, not sure why

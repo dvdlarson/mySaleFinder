@@ -1,9 +1,22 @@
 {{!-- Google maps API --}}
-<script async defer src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap" type="text/javascript"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW5Lqqx7a84oy9vgiTC4ueDHU7ecjLCLw&callback=getPos" type="text/javascript"></script>
 <script src="../public/js/buy.js"></script>
 
 {{!-- Map --}}
-<div id="map"></div>
+<div id="map" class="ui center aligned grid" style="width:50%;height:50%"></div>
+
+<div id="salecards">
+  <h4>Find a Sale!</h4>
+     <ul style="color:black">
+     {{#each sale}}
+        <li><h2>{{title}}</h2></li>
+        <li>{{start_date}}</li>
+        <li>{{user_id}}</li>
+        <li>{{city}}</li>
+     {{/each}}
+     
+    </ul>     
+ </div>
 {{!-- Navbar --}}
 <div class="ui bottom demo inverted nine item labeled icon sidebar menu overlay visible" style="">
   <a class="item" href="/">

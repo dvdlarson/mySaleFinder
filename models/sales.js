@@ -2,14 +2,8 @@
 
 // var orm = require("../config/config.js");
 module.exports = function (sequelize, DataTypes) {
-    var Sale = sequelize.define("sales", {
-        sale_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true,
-
-        },
+    var Sale = sequelize.define("Sale", {
+        
         username: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -117,7 +111,36 @@ module.exports = function (sequelize, DataTypes) {
 
 
     })
+    
+    Sale.associate = function(models) {
+        // We're saying that a Sale should belong to a User
+        // A Sale can't be created without a User due to the foreign key constraint
+        Sale.belongsTo(models.User, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
+      };
+
     return Sale;
 
     //return an object that defines data relationships
 };
+
+
+
+// var Author = sequelize.define("Author", {
+//     // Giving the Author model a name of type STRING
+//     name: DataTypes.STRING
+//   });
+
+//   Author.associate = function(models) {
+//     // Associating Author with Posts
+//     // When an Author is deleted, also delete any associated Posts
+//     Author.hasMany(models.Post, {
+//       onDelete: "cascade"
+//     });
+//   };
+
+//   return Author;
+// };
