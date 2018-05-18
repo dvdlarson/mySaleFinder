@@ -130,7 +130,7 @@ module.exports = function (app) { //home page route
 
 	app.post("/api/users", function (req, res) {
 		console.log(JSON.stringify(req.body) + "server side")
-		sale.users.create({
+		sale.User.create({
 			username: req.body.username,
 			email: req.body.email,
 			first_name: req.body.first_name,

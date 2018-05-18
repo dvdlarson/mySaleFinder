@@ -21,7 +21,8 @@ $(document).ready(function () {
             type: "POST",
             data: newUser
         }).then(function () {
-            console.log("Added new burger: " + newUser);
+            location.href = "/login";
+            console.log("Added new user: " + newUser);
         });
     });
 });

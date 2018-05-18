@@ -51,7 +51,7 @@ require("./controllers/userControllers.js")(app);
 //     console.log("Server started on port " + app.get("port"));
 // }); 
 db.sequelize.sync({
-    force: true
+    //force: true
 }).then(function () {
     app.listen(app.get("port"), function () {
         console.log("App listening on PORT " + app.get("port"));
