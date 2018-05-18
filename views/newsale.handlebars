@@ -21,63 +21,80 @@ cancel for rain? Items for sale description (Upload picture) --}}
 		</select>
 	</div>
 
-	{{!-- second row --}} {{!-- first name --}}
-	<div class="two fields">
-		<div class="field">
-			<label>Start Date</label>
+	<h3>Dates</h3>
+	<div class="ui form">
+		<div class="two fields">
 			<div class="field">
-				<input type="text" id="startdate" required>
+				<label>Start date</label>
+				<div class="ui calendar" id="rangestart">
+					<div class="ui input left icon">
+						<i class="calendar icon"></i>
+						<input type="text" placeholder="Start">
+					</div>
+				</div>
 			</div>
-		</div>
-		{{!-- last name --}}
-		<div class="field">
-			<label>Last Name</label>
 			<div class="field">
-				<input type="text" placeholder="Last Name" id="lastName" required>
-			</div>
-		</div>
-	</div>
-	{{!-- third row --}} {{!-- email --}}
-	<div class="two fields">
-		<div class="field">
-			<label>Email</label>
-			<div class="field">
-				<input type="email" placeholder="Email" required id="email">
-			</div>
-		</div>
-		{{!-- phone --}}
-		<div class="field">
-			<label>Phone</label>
-			<div class="field">
-				<input type="text" placeholder="#" id="phone" name="phone">
+				<label>End date</label>
+				<div class="ui calendar" id="rangeend">
+					<div class="ui input left icon">
+						<i class="calendar icon"></i>
+						<input type="text" placeholder="End">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	{{!-- fourth row --}}
-	<h4 class="ui dividing header teal">Address</h4>
-	<div class="one field">
-		<label>Street</label>
-		<div class="field">
-			<input type="text" placeholder="Street" id="street" required>
+	<br/> {{!-- last name --}}
+	<h3>Time of Sale</h3>
+	<div class="ui calendar" id="startTime">
+		<div class="ui input left icon">
+			<i class="time icon"></i>
+			<input type="text" placeholder="Start Time">
 		</div>
 	</div>
-	{{!-- fifth row --}} {{!-- city --}}
-	<div class="three fields">
-		<div class="field">
-			<label>City</label>
-			<div class="field">
-				<input type="text" placeholder="City" id="city" required>
-			</div>
-		</div>
+	<br/>
 
-		{{!-- zip --}}
-		<div class="field">
-			<label>Zip</label>
-			<div class="field">
-				<input type="text" placeholder="Zip" id="zip" required>
-			</div>
+	<div class="ui calendar" id="endTime">
+		<div class="ui input left icon">
+			<i class="time icon"></i>
+			<input type="text" placeholder="End Time">
 		</div>
 	</div>
+	<br/>
+
+	<div class="field">
+		<label>Will there be street parking available?</label>
+
+		<select class="ui fluid dropdown" id="parking" required>
+			<option value="">Parking</option>
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+
+		</select>
+	</div>
+	<div class="field">
+		<label>Will the sale be inside or outside?</label>
+
+		<select class="ui fluid dropdown" id="inside_outside" required>
+			<option value="">Inside</option>
+			<option value="inside">Inside</option>
+			<option value="outside">Outside</option>
+
+		</select>
+	</div>
+	<div class="field">
+		<label>Is this a rain or shine sale?</label>
+
+		<select class="ui fluid dropdown" id="weather_cancel" required>
+			<option value="">Yes</option>
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+
+		</select>
+	</div>
+
+
+
 	<div class="ui fluid large teal submit login button">Sign Up</div>
 </form>
 {{!-- Navbar --}}
