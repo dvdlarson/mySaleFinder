@@ -32,6 +32,7 @@
     "npm": "^6.0.1",
     "password-hash-and-salt": "^0.1.4",
     "sass": "*",
+    "semantic-ui-calendar": "0.0.8",
     "sequelize": "^4.37.7"
   }
 }
