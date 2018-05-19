@@ -18,11 +18,11 @@ module.exports = function (app) { //home page route
 		});
 	});
 
-	app.get("/manage", function (req, res) {
-		res.render("manage", {
-			style: "manage"
-		});
-	});
+	// app.get("/manage", function (req, res) {
+	// 	res.render("manage", {
+	// 		style: "manage"
+	// 	});
+	// });
 
 	app.get("/login", function (req, res) {
 		res.render("login", {
@@ -42,7 +42,7 @@ module.exports = function (app) { //home page route
 	// route for the sale display all 
 	app.get("/api/all", function (req, res) {
 		// gets the data from the userinput and creates a handlebar object will that data
-		sale.sales.findAll({})
+		sale.Sale.findAll({})
 			.then(function (dbSale) {
 				console.log(dbSale + "hello my name is Fred");
 				var hbsObject = {
@@ -57,11 +57,11 @@ module.exports = function (app) { //home page route
 
 	// routes to the manage page, selects all sales where the user_ID matches param ID, supplied from the 'manage my posts' link or however users get routed but picks up user ID from some session variable
 
-	app.get("/api/manage/:id", function (req, res) {
-
-		sale.sales.findAll({
+	app.get("/manage", function (req, res) {
+		console.log("userId: " + req.session.user.id);
+		sale.Sale.findAll({
 				where: {
-					user_id: req.params.id
+					UserId: req.session.user.id
 				}
 			})
 			.then(function (dbSale) {
@@ -126,7 +126,7 @@ module.exports = function (app) { //home page route
 	// 	if(typeof req.cookies['connect.sid'] !== 'undefined') {
 	// 		console.log(req.cookies['connect.sid']);
 	// 	}
-	 
+
 	// 	next(); // Call the next middleware
 	//  });
 
@@ -139,12 +139,12 @@ module.exports = function (app) { //home page route
 			for (var i = 0; i < data.length; i++) {
 				if (req.query.username === data[i].dataValues.username &&
 					req.query.password === data[i].dataValues.password) {
-						req.session.user=data[i];
+					req.session.user = data[i];
 					console.log("session: " + JSON.stringify(req.session.user));
 					console.log("user ID: " + req.session.user.id);
 					// console.log(data[0].dataValues.password);
 					// console.log(req.query.username); //.username, req.query.password);
-					res.redirect("/manage");
+					res.render("manage");
 					//return;
 				}
 			}
