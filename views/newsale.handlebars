@@ -14,9 +14,10 @@ cancel for rain? Items for sale description (Upload picture) --}}
 	<div class="field">
 		<label>Sale Type</label>
 		<select class="ui fluid dropdown" id="sale_type" required>
+			<option value="">State</option>
 			<option value="yard_sale">Yard Sale</option>
 			<option value="estate_sale">Estate Sale</option>
-			<option value="auction">Auction</option>
+
 		</select>
 	</div>
 
@@ -53,8 +54,8 @@ cancel for rain? Items for sale description (Upload picture) --}}
 	</div>
 	<br/>
 
-	<div class="ui calendar" >
-		<div class="ui input left icon" id="endTime">
+	<div class="ui calendar" id="endTime">
+		<div class="ui input left icon">
 			<i class="time icon"></i>
 			<input type="text" placeholder="End Time">
 		</div>
@@ -75,9 +76,9 @@ cancel for rain? Items for sale description (Upload picture) --}}
 		<label>Will the sale be inside or outside?</label>
 
 		<select class="ui fluid dropdown" id="inside_outside" required>
-			<option value="Inside">Inside</option>
-			<option value="Outside">Inside</option>
-			<option value="Inside/Outside">Both</option>
+			<option value="">Inside</option>
+			<option value="inside">Inside</option>
+			<option value="outside">Outside</option>
 
 		</select>
 	</div>
@@ -94,7 +95,7 @@ cancel for rain? Items for sale description (Upload picture) --}}
 
 
 
-	<div class="ui fluid large teal submit addsale button">Sign Up</div>
+	<div class="ui fluid large teal submit login button">Sign Up</div>
 </form>
 {{!-- Navbar --}}
 <div class="ui bottom demo inverted nine item labeled icon sidebar menu overlay visible" style="">

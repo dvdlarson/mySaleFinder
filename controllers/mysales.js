@@ -20,7 +20,7 @@ module.exports = function (app) { //home page route
 
 	//generic page routing  
 	app.get("/sale", function (req, res) {
-		res.render("alt-newsale-delete", {
+		res.render("newsale", {
 			style: "newsale"
 		});
 	});
@@ -101,7 +101,7 @@ module.exports = function (app) { //home page route
 				console.log(dbSale);
 				// res.json(dbSale);
 				res.render("home", hbsObject);
-			}); 
+			});
 
 	});
 
@@ -141,32 +141,6 @@ module.exports = function (app) { //home page route
 			state: req.body.state,
 			zip_cd: req.body.zip_cd,
 			password: req.body.password
-		}).then(function (userInfo) {
-			res.json(userInfo);
-		})
-
-	});
-
-	app.post("/api/addsale", function (req, res) {
-		console.log(JSON.stringify(req.body) + "server side")
-		sale.Sale.create({
-			title: req.body.title,
-            sale_type: req.body.sale_type,
-            start_date: req.body.start_date,
-            end_date: req.body.end_date,
-            start_time: req.body.start_time,
-            end_time:req.body.end_time,
-            on_street_parking:1,
-            inside_outside:1,
-            weather_cancel:1,
-            items_desc:req.body.items_desc,
-            city: req.body.city,
-            state: req.body.state,
-            zip_cd: req.body.zip_cd,
-            full_address:req.body.full_address,
-			active:req.body.active,
-			UserId:req.body.UserId
-            
 		}).then(function (userInfo) {
 			res.json(userInfo);
 		})
