@@ -2,7 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 var session = require("express-session");
-//var cookieParser = require("cookie-parser");
+var cookieParser = require("cookie-parser");
 //According to express-sessions this is no longer needed.  Leaving it here just in case.
 
 var app = express();
@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({
 // parse application/json
 app.use(bodyParser.json());
 
-//app.use(cookieParser()); 
+app.use(cookieParser());
 //According to express-sessions this is no longer needed.  Leaving it here just in case.
 
 //creates a session for the user. {secure: true} means that it is secure and can only be run on https
@@ -37,9 +37,12 @@ app.use(session({
     secret: "WE'RE HAVING A FIRE ... sale",
     resave: false,
     saveUninitialized: true,
-    cookie: {
-        secure: true
-    }
+    cookieName: "session",
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000,
+    httpOnly: true,
+    secure: true,
+    ephemeral: true
 }));
 
 // Import routes and give the server access to them.
