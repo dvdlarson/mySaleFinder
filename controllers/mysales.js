@@ -101,7 +101,7 @@ module.exports = function (app) { //home page route
 				console.log(dbSale);
 				// res.json(dbSale);
 				res.render("home", hbsObject);
-			});
+			}); 
 
 	});
 
@@ -156,16 +156,17 @@ module.exports = function (app) { //home page route
             end_date: req.body.end_date,
             start_time: req.body.start_time,
             end_time:req.body.end_time,
-            on_street_parking:req.body.on_street_parking,
-            inside_outside:req.body.inside_outside,
-            weather_cancel:req.body.weather_cancel,
+            on_street_parking:1,
+            inside_outside:1,
+            weather_cancel:1,
             items_desc:req.body.items_desc,
             city: req.body.city,
             state: req.body.state,
             zip_cd: req.body.zip_cd,
-            full_address:full_address,
-            active:1,
-            UserId:1
+            full_address:req.body.full_address,
+			active:req.body.active,
+			UserId:req.body.UserId
+            
 		}).then(function (userInfo) {
 			res.json(userInfo);
 		})
