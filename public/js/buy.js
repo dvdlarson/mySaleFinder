@@ -16,6 +16,20 @@ function getPos() {
           },
           zoom: 9
         });
+        var infowindow = new google.maps.InfoWindow({
+          content: "<h1>You are here</h1>"
+        });
+        var marker = new google.maps.Marker({
+          position: {
+            lat: lat,
+            lng: lng
+          },
+          map: map,
+          title: "Your location"
+        });
+        marker.addListener("click", function() {
+          infowindow.open(map, marker);
+        })
     });
   }    
 }
