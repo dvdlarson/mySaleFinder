@@ -8,11 +8,11 @@ INSERT INTO `salefinder`.`sales`
 ('sonoflars', 'Greatest yard sale in HISTORY 2- Yard Sale Boogaloo', 'Yard Sale', '0', '0', '2013-05-26', '2013-05-27', '06:30', '16:00', '1', 'Outside', '0', '1041 w. kilarea ave', 'mesa', 'az', '85210', '1041 w kilarea ave. mesa az 85210', '33.374806', '-111.856696', 'Heck yeah! Its happening again! The first one was Epic. You guys bought ALL my stuff. But I got all new used stuff so lets do a garage sale.', '0',  '0');
 
 INSERT INTO `salefinder`.`sales`
-(`username`, `title`, `sale_type`, `featured`, `super_featured`, `start_date`, `end_date`, `start_time`, `end_time`, `on_street_parking`, `inside_outside`, `weather_cancel`, `address`, `city`, `state`, `zip_cd`, `full_address`, `latitude`, `longitude`, `items_desc`, `going_count`, , `active`) VALUES
+(`username`, `title`, `sale_type`, `featured`, `super_featured`, `start_date`, `end_date`, `start_time`, `end_time`, `on_street_parking`, `inside_outside`, `weather_cancel`, `address`, `city`, `state`, `zip_cd`, `full_address`, `latitude`, `longitude`, `items_desc`, `going_count`, `active`) VALUES
 ('kingofthehill', 'Im having a gol dang yard sale yall.', 'Yard Sale', '0', '0', '2013-05-26', '2013-05-27', '07:00', '16:00', '1', 'Outside', '0', '1310 w. laird st', 'tempe', 'az', '85281', '1310 w. laird st tempe az 85281', '33.420546', '-111.959073', 'Propane and propane accessories. Camping and fishing gear. Seven blenders and a box of comic books. Acoustic guitar maybe some hippy would probably like.', '0',  '0');
 
 INSERT INTO `salefinder`.`sales`
-(`username`, `title`, `sale_type`, `featured`, `super_featured`, `start_date`, `end_date`, `start_time`, `end_time`, `on_street_parking`, `inside_outside`, `weather_cancel`, `address`, `city`, `state`, `zip_cd`, `full_address`, `latitude`, `longitude`, `items_desc`, `going_count`, , `active`) VALUES
+(`username`, `title`, `sale_type`, `featured`, `super_featured`, `start_date`, `end_date`, `start_time`, `end_time`, `on_street_parking`, `inside_outside`, `weather_cancel`, `address`, `city`, `state`, `zip_cd`, `full_address`, `latitude`, `longitude`, `items_desc`, `going_count`, `active`) VALUES
 ('caseymoore', 'Come to the 8th annual Casey Moores BAR-d Sale! Eat, drink, & find treasures!', 'Yard Sale', '1', '0', '2013-05-26', '2013-05-27', '10:00', '16:00', '1', 'Outside', '0', '850 S Ash Ave', 'tempe', 'az', '85281', '850 S Ash Ave Tempe AZ 85281', '33.420633', '-111.942631', 'You never know what people are going to bring! Last year we had furniture, jewelry, art, a pinball machine, and so much more! Special deals on food and drinks throughout the day. If you are interested in getting a space, contact Patty at 602-555-1212 prior to 5/26', '0',  '0');
 
 INSERT INTO `salefinder`.`sales`
@@ -21,8 +21,29 @@ INSERT INTO `salefinder`.`sales`
 
 INSERT INTO `salefinder`.`sales`
 (`username`, `title`, `sale_type`, `featured`, `super_featured`, `start_date`, `end_date`, `start_time`, `end_time`, `on_street_parking`, `inside_outside`, `weather_cancel`, `address`, `city`, `state`, `zip_cd`, `full_address`, `latitude`, `longitude`, `items_desc`, `going_count`,  `active`) VALUES
-('bobbyAZ99', 'Estate Sale - Two Days Only! May 26 & 27th - EVERYTHING MUST GO', 'Estate Sale', '0', '0', '2013-05-26', '2013-05-27', '07:00', '17:00', '1', 'Inside', '0', '1200 W monterey street', 'chandler', 'az', '', ' 1200 W monterey street chandler, az', '33.315253', '-111.863705', 'My great aunt passed away recently. She was a total jerk. Our gain is YOUR gain. Everything must go. Super stupid prices. There is an electronic organ from the 80s, costume jewelry, a 1992 buick skylark, rodeo memorabilia, a thimble collection, much too much to list.', '0',  '0');
+('bobbyAZ99', 'Estate Sale - Two Days Only! May 26 & 27th - EVERYTHING MUST GO', 'Estate Sale', '0', '0', '2013-05-26', '2013-05-27', '07:00', '17:00', '1', 'Inside', '0', '1200 W monterey street', 'chandler', 'az', '85226', ' 1200 W monterey street chandler, az 85226', '33.315253', '-111.863705', 'My great aunt passed away recently. She was a total jerk. Our gain is YOUR gain. Everything must go. Super stupid prices. There is an electronic organ from the 80s, costume jewelry, a 1992 buick skylark, rodeo memorabilia, a thimble collection, much too much to list.', '0',  '0');
 
 INSERT INTO `salefinder`.`sales`
 (`username`, `title`, `sale_type`, `featured`, `super_featured`, `start_date`, `end_date`, `start_time`, `end_time`, `on_street_parking`, `inside_outside`, `weather_cancel`, `address`, `city`, `state`, `zip_cd`, `full_address`, `latitude`, `longitude`, `items_desc`, `going_count`,  `active`) VALUES
 ('thecolonel', 'Multi-family Yard Sale 5/26-5/27 Lots of Good Stuff!', 'Yard Sale', '0', '0', '2013-05-26', '2013-05-27', '06:00', '15:00', '1', 'Outside', '0', '2010 w chambers st', 'phoenix', 'az', '', '2010 w chambers st phoenix az', '33.397486', '-112.100756', 'Multi-family yard sale to benefit the Dobbs family who recently lost their BBQ grill in a crazy incident. Sporting & Camping gear, tools, smartphones, aquarium, jewelry, rugs, furniture and more. Credit cards will be accepted.', '0',  '0');
+
+
+ALTER TABLE `salefinder`.`users` 
+CHANGE COLUMN `createdAt` `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+CHANGE COLUMN `updatedAt` `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+ALTER TABLE `salefinder`.`sales` 
+CHANGE COLUMN `createdAt` `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+CHANGE COLUMN `updatedAt` `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+ALTER TABLE `salefinder`.`sales` 
+DROP FOREIGN KEY `sales_ibfk_1`;
+ALTER TABLE `salefinder`.`sales` 
+CHANGE COLUMN `UserId` `UserId` INT(11) NOT NULL DEFAULT 1 ;
+ALTER TABLE `salefinder`.`sales` 
+ADD CONSTRAINT `sales_ibfk_1`
+  FOREIGN KEY (`UserId`)
+  REFERENCES `salefinder`.`users` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE CASCADE;
+
