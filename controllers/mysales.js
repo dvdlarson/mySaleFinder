@@ -18,6 +18,13 @@ module.exports = function (app) { //home page route
 		});
 	});
 
+	app.get("/api/buy", function (req, res) {
+		sale.Sale.findAll({})
+		.then(function(dbSales) {
+			res.send(dbSales);
+		})
+	})
+
 	app.get("/login", function (req, res) {
 		res.render("login", {
 			style: "login"

@@ -16,19 +16,30 @@ function getPos() {
           },
           zoom: 9
         });
-        var infowindow = new google.maps.InfoWindow({
-          content: "<h1>You are here</h1>"
-        });
-        var marker = new google.maps.Marker({
-          position: {
-            lat: lat,
-            lng: lng
-          },
-          map: map,
-          title: "Your location"
-        });
-        marker.addListener("click", function() {
-          infowindow.open(map, marker);
+        //create the sale markers
+        $.get("/api/buy", function(data) {
+          console.log(data);
+          //loop through sales
+          for (var i = 0; i < data.length; i++) {
+            var infowindow = new google.maps.InfoWindow({
+              //create infowindow for marker
+              content: "<h4 id='markerTitle'>" + data[i].title + "</h4>"
+                        + "<p>" + data[i].address + "</p>"
+            });
+            //display the markers for every sale
+            var marker = new google.maps.Marker({
+              position: {
+                lat: data[i].latitude,
+                lng: data[i].longitude
+              },
+              map: map,
+              title: data[i].title
+            });
+            marker.addListener("click", function() {
+              infowindow.open(map, marker);
+            })            
+          }
+
         })
     });
   }    
