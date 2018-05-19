@@ -25,9 +25,11 @@ module.exports = function (app) { //home page route
 	});
 
 	//generic page routing  
-	// router.get("/:page", function(req, res) {
-	//     res.render(req.params.page);
-	// });
+	app.get("/sale", function (req, res) {
+		res.render("newsale", {
+			style: "newsale"
+		});
+	});
 
 
 	// creates a route for the base 
@@ -116,8 +118,8 @@ module.exports = function (app) { //home page route
 
 	app.get("/api/users", function (req, res) {
 		// checks for a unique username
-		res.send(req.query.username);
-		console.log(req.query.username);
+		res.send(req.body.username);
+		console.log(req.body.username);
 		sale.User.findAll({}).then(function (data) {
 			//for (var i = 0; i < data.length; i++) {
 			console.log(data[0].dataValues.username);

@@ -18,11 +18,14 @@ $(document).ready(function () {
         //     //     console.log(data);
         //     // }
         // });
-        getUsers();
+        getUsers(user);
     });
 
-    function getUsers() {
-        $.get("/api/users", function (data) {
+    function getUsers(user) {
+        $.ajax("/api/users", {
+            type: "GET",
+            data: user
+        }, function (data) {
             console.log("data: " + data);
         });
     }
