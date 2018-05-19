@@ -1,4 +1,23 @@
 
+ALTER TABLE `salefinder`.`users` 
+CHANGE COLUMN `createdAt` `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+CHANGE COLUMN `updatedAt` `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+ALTER TABLE `salefinder`.`sales` 
+CHANGE COLUMN `createdAt` `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+CHANGE COLUMN `updatedAt` `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+ALTER TABLE `salefinder`.`sales` 
+DROP FOREIGN KEY `sales_ibfk_1`;
+ALTER TABLE `salefinder`.`sales` 
+CHANGE COLUMN `UserId` `UserId` INT(11) NOT NULL DEFAULT 1 ;
+ALTER TABLE `salefinder`.`sales` 
+ADD CONSTRAINT `sales_ibfk_1`
+  FOREIGN KEY (`UserId`)
+  REFERENCES `salefinder`.`users` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE CASCADE;
+
 INSERT INTO `salefinder`.`sales`
 (`username`, `title`, `sale_type`, `featured`, `super_featured`, `start_date`, `end_date`, `start_time`, `end_time`, `on_street_parking`, `inside_outside`, `weather_cancel`, `address`, `city`, `state`, `zip_cd`, `full_address`, `latitude`, `longitude`, `items_desc`, `going_count`,  `active`) VALUES
 ('sonoflars', 'Greatest yard sale in HISTORY!', 'Yard Sale', '0', '0', '2013-05-12', '2013-05-13', '06:30', '16:00', '1', 'Inside', '0', '1041 w. kilarea ave', 'mesa', 'az', '85210', '1041 w kilarea ave. mesa az 85210', '33.374806', '-111.856696', 'Electronics, Tools, Clothes, Baby Gear, Sporting Goods, 1985 Lime Green Ford Pinto', '0',  '0');
@@ -27,23 +46,10 @@ INSERT INTO `salefinder`.`sales`
 (`username`, `title`, `sale_type`, `featured`, `super_featured`, `start_date`, `end_date`, `start_time`, `end_time`, `on_street_parking`, `inside_outside`, `weather_cancel`, `address`, `city`, `state`, `zip_cd`, `full_address`, `latitude`, `longitude`, `items_desc`, `going_count`,  `active`) VALUES
 ('thecolonel', 'Multi-family Yard Sale 5/26-5/27 Lots of Good Stuff!', 'Yard Sale', '0', '0', '2013-05-26', '2013-05-27', '06:00', '15:00', '1', 'Outside', '0', '2010 w chambers st', 'phoenix', 'az', '', '2010 w chambers st phoenix az', '33.397486', '-112.100756', 'Multi-family yard sale to benefit the Dobbs family who recently lost their BBQ grill in a crazy incident. Sporting & Camping gear, tools, smartphones, aquarium, jewelry, rugs, furniture and more. Credit cards will be accepted.', '0',  '0');
 
+INSERT INTO `Users` (`id`,`username`,`email`,`first_name`,`last_name`,`city`,`state`,`zip_cd`,`password`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'sonoflars','dvdlarson2010@gmail.com','dave','larson','mesa','AZ','85210','pass','2018-05-19 07:38:28','2018-05-19 07:38:28');
 
-ALTER TABLE `salefinder`.`users` 
-CHANGE COLUMN `createdAt` `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-CHANGE COLUMN `updatedAt` `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
 
-ALTER TABLE `salefinder`.`sales` 
-CHANGE COLUMN `createdAt` `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-CHANGE COLUMN `updatedAt` `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
 
-ALTER TABLE `salefinder`.`sales` 
-DROP FOREIGN KEY `sales_ibfk_1`;
-ALTER TABLE `salefinder`.`sales` 
-CHANGE COLUMN `UserId` `UserId` INT(11) NOT NULL DEFAULT 1 ;
-ALTER TABLE `salefinder`.`sales` 
-ADD CONSTRAINT `sales_ibfk_1`
-  FOREIGN KEY (`UserId`)
-  REFERENCES `salefinder`.`users` (`id`)
-  ON DELETE NO ACTION
-  ON UPDATE CASCADE;
+
+
 

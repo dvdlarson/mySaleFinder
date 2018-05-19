@@ -20,7 +20,7 @@ module.exports = function (app) { //home page route
 
 	//generic page routing  
 	app.get("/sale", function (req, res) {
-		res.render("newsale", {
+		res.render("alt-newsale-delete", {
 			style: "newsale"
 		});
 	});
@@ -141,6 +141,31 @@ module.exports = function (app) { //home page route
 			state: req.body.state,
 			zip_cd: req.body.zip_cd,
 			password: req.body.password
+		}).then(function (userInfo) {
+			res.json(userInfo);
+		})
+
+	});
+
+	app.post("/api/addsale", function (req, res) {
+		console.log(JSON.stringify(req.body) + "server side")
+		sale.Sale.create({
+			title: req.body.title,
+            sale_type: req.body.sale_type,
+            start_date: req.body.start_date,
+            end_date: req.body.end_date,
+            start_time: req.body.start_time,
+            end_time:req.body.end_time,
+            on_street_parking:req.body.on_street_parking,
+            inside_outside:req.body.inside_outside,
+            weather_cancel:req.body.weather_cancel,
+            items_desc:req.body.items_desc,
+            city: req.body.city,
+            state: req.body.state,
+            zip_cd: req.body.zip_cd,
+            full_address:full_address,
+            active:1,
+            UserId:1
 		}).then(function (userInfo) {
 			res.json(userInfo);
 		})
