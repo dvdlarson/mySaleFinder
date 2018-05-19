@@ -37,7 +37,20 @@ module.exports = function (app) { //home page route
 		});
 	});
 
+	app.get("/edit/:id", function (req, res) {
+		sale.Sale.findOne({
+			where: {
+				id: req.params.id
+			}
+		}).then(function (dbSale) {
+			var hbsObject = {
+				sale: dbSale,
+				style: "newsale"
+			};
 
+			res.render("editsale", hbsObject);
+		});
+	});
 	// creates a route for the base 
 	// route for the sale display all 
 	app.get("/api/all", function (req, res) {
