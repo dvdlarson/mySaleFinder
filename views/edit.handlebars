@@ -1,29 +1,39 @@
 
-{{#each sale}}
-<div class="ui form">
+<div class=""><h4>Let's edit this sale!</h4></div>
+
+<form class="ui form">
   
     <div class="field">
       <label>Title</label>
-      <input placeholder={{title}} type="text">
+      <input id="title" placeholder={{sale.title}} type="text">
     </div>
+    <br>
+    <div class="field">
+		<label>Sale Type</label>
+		<select class="ui fluid dropdown" id="sale_type" required>
+			<option value="yard_sale">Yard Sale</option>
+			<option value="estate_sale">Estate Sale</option>
+			<option value="auction">Auction</option>
+		</select>
+	</div>
     <br/>
     <h3>Start & End Dates</h3>
     <div class="two fields">
       <div class="field">
         <label>Start date</label>
-        <div class="ui calendar" id="rangestart">
+        <div class="ui calendar" >
           <div class="ui input left icon">
             <i class="calendar icon"></i>
-            <input type="text" placeholder={{start_date}}>
+            <input id="rangestart" type="text" placeholder={{sale.start_date}}>
           </div>
         </div>
       </div>
       <div class="field">
         <label>End date</label>
-        <div class="ui calendar" id="rangeend">
+        <div class="ui calendar" >
           <div class="ui input left icon">
             <i class="calendar icon"></i>
-            <input type="text" placeholder={{end_date}}>
+            <input id="rangeend" type="text" placeholder="Enter the end date">
           </div>
         </div>
       </div>
@@ -32,51 +42,51 @@
     <div class="two fields">
       <div class="field">
         <label>Start Time</label>
-        <div class="ui calendar" id="startTime">
+        <div class="ui calendar" >
           <div class="ui input left icon">
             <i class="time icon"></i>
-            <input type="text" placeholder={{start_time}}>
+            <input id="startTime" type="text" placeholder="Time">
           </div>
         </div>
       </div>
       <div class="field">
         <label>End date</label>
-        <div class="ui calendar" id="endTime">
+        <div class="ui calendar" >
           <div class="ui input left icon">
-            <i class="time icon"></i>
-            <input type="text" placeholder={{end_time}}>
+            <i class="time icon">16:00</i>
+            <input id="endTime" type="text" placeholder="Time">
           </div>
         </div>
       </div>
     </div>
     <div class="field">
     <label>Description - Items for sale, special notes, etc</label>
-    <textarea>{{items_desc}}</textarea>
+    <textarea id="desc">What are you selling? Be descriptive!</textarea>
     </div>
     <div class="field">
     <label>Address</label>
-    <textarea>{{address}}</textarea>
+    <textarea id="address"></textarea>
     </div>
     <div class="field">
     <label>City</label>
-    <textarea>{{city}}</textarea>
+    <textarea id="city"></textarea>
     </div>
     <div class="field">
     <label>State</label>
-    <textarea>{{state}}</textarea>
+    <textarea id="state"></textarea>
     </div>
     <div class="field">
     <label>Zip Code</label>
-    <textarea>{{zip_cd}}</textarea>
+    <textarea id="zip"></textarea>
     </div>
    <h3>Additonal Details</h3>
     <div class="three fields">
         <div class="field">
-            <label>Is there parking on the street or nearby?</label>
+            <label>Is there street parking available?</label>
             <div class="ui selection dropdown">
-            <input name="parking" type="hidden">
+            <input id="parking" name="parking" type="hidden">
             <i class="dropdown icon"></i>
-            <div class="default text">{{zip_cd}}</div>
+            <div class="default text">Yes</div>
             <div class="menu">
                 <div class="item" data-value="1">Yes</div>
                 <div class="item" data-value="0">No</div>
@@ -86,9 +96,9 @@
         <div class="field">
             <label>Is it inside, outside, or both?</label>
             <div class="ui selection dropdown">
-            <input name="insideOutside" type="hidden">
+            <input id="inside_outside" name="inside_outside" type="hidden">
             <i class="dropdown icon"></i>
-            <div class="default text">{{inside_outside}}</div>
+            <div class="default text">Inside</div>
             <div class="menu">
                 <div class="item" data-value="Inside">Inside</div>
                 <div class="item" data-value="Outside">Outside</div>
@@ -99,9 +109,9 @@
         <div class="field">
             <label>Will you cancel for rain?</label>
             <div class="ui selection dropdown">
-            <input name="parking" type="hidden">
+            <input id="weather_cancel" name="weather_cancel" type="hidden">
             <i class="dropdown icon"></i>
-            <div class="default text">{{weather_cancel}}</div>
+            <div class="default text">No</div>
             <div class="menu">
                 <div class="item" data-value="1">Yes</div>
                 <div class="item" data-value="0">No</div>
@@ -110,14 +120,9 @@
         </div>    
     </div>
       
- <div class="ui submit button">Submit</div>
+ <div class="ui submit addsale button">Submit</div>
 
 
 
 
-</div>  
-{{/each}}
-  
-  
-  
-  
+</form>  
