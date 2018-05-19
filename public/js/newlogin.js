@@ -9,15 +9,6 @@ $(document).ready(function () {
         };
         console.log(user);
 
-        // $.get("/api/users").then(function (data) {
-        //     console.log("data: " + data);
-        //     // if (user.password = data.password) {
-        //     //     console.log("hazzah");
-        //     // } else {
-        //     //     console.log(user.password, data.password);
-        //     //     console.log(data);
-        //     // }
-        // });
         getUsers(user);
     });
 
@@ -25,9 +16,17 @@ $(document).ready(function () {
         $.ajax("/api/users", {
             type: "GET",
             data: user
-        }, function (data) {
+        }).then(function (data) {
             console.log("data: " + data);
+            location.href = "/manage";
         });
-    }
-    //getUsers();
+        //getUsers();
+    };
 });
+
+// function nextPage() {
+//     $.ajax("/manage", {
+//         type: "PUT"
+//   //      data: 
+//     });
+// }
