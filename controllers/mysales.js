@@ -12,26 +12,18 @@ module.exports = function (app) { //home page route
 		});
 	});
 
-	app.get("/buy", function (req, res) {
-		res.render("buy", {
-			style: "buy"
-		});
-	});
+	// app.get("/buy", function (req, res) {
+	// 	res.render("buy", {
+	// 		style: "buy"
+	// 	});
+	// });
 
-<<<<<<< HEAD
 	app.get("/api/buy", function (req, res) {
 		sale.Sale.findAll({})
 		.then(function(dbSales) {
 			res.send(dbSales);
-		})
-	})
-=======
-	// app.get("/manage", function (req, res) {
-	// 	res.render("manage", {
-	// 		style: "manage"
-	// 	});
-	// });
->>>>>>> a15960d33108729355feb98b77bea1f5451bd86c
+		});
+	});
 
 	app.get("/login", function (req, res) {
 		res.render("login", {
@@ -49,13 +41,14 @@ module.exports = function (app) { //home page route
 
 	// creates a route for the base 
 	// route for the sale display all 
-	app.get("/api/all", function (req, res) {
+	app.get("/buy", function (req, res) {
 		// gets the data from the userinput and creates a handlebar object will that data
 		sale.Sale.findAll({})
 			.then(function (dbSale) {
 				console.log(dbSale + "hello my name is Fred");
 				var hbsObject = {
-					sale: dbSale
+					sale: dbSale,
+					style: "buy"
 				};
 				// send to the home file to display the sales
 				console.log(dbSale);
