@@ -18,6 +18,12 @@ module.exports = function (app) { //home page route
 		});
 	});
 
+	app.get("/login", function (req, res) {
+		res.render("login", {
+			style: "login"
+		});
+	});
+
 	//generic page routing  
 	// router.get("/:page", function(req, res) {
 	//     res.render(req.params.page);
@@ -83,39 +89,40 @@ module.exports = function (app) { //home page route
 
 	});
 
-	app.get("/api/:id", function (req, res) {
-		// gets the data from the userinput and creates a handlebar object will that data
-		var page = req.params.page;
-		sale.sales.findOne({
-				where: {
-					sale_id: req.params.id
-				}
-			})
-			.then(function (dbSale) {
-				var hbsObject = {
-					sale: dbSale
-				};
-				// send to the home file to display the sales
-				console.log(dbSale);
-				// res.json(dbSale);
-				res.render("home", hbsObject);
-			});
+	// app.get("/api/:id", function (req, res) {
+	// 	// gets the data from the userinput and creates a handlebar object will that data
+	// 	var page = req.params.page;
+	// 	sale.sales.findOne({
+	// 			where: {
+	// 				sale_id: req.params.id
+	// 			}
+	// 		})
+	// 		.then(function (dbSale) {
+	// 			var hbsObject = {
+	// 				sale: dbSale
+	// 			};
+	// 			// send to the home file to display the sales
+	// 			console.log(dbSale);
+	// 			// res.json(dbSale);
+	// 			res.render("home", hbsObject);
+	// 		});
 
-	});
+	// });
 
 	// app.get("/signup", function(req, res) {
 	// 	res.render("signup", {style: "signup"});
 	// })
 
 
-	app.get("/check/:username", function (req, res) {
+	app.get("/api/users", function (req, res) {
 		// checks for a unique username
-		user.users.findOne({
-			where: {
-				username: req.params.username
-			}
-		}).then(function (data) {
-			return data;
+		res.send(req.query.username);
+		console.log(req.query.username);
+		sale.User.findAll({}).then(function (data) {
+			//for (var i = 0; i < data.length; i++) {
+			console.log(data[0].dataValues.username);
+			console.log(data[0].dataValues.password);
+			console.log(req.query);//.username, req.query.password);
 		})
 
 	});
@@ -141,8 +148,7 @@ module.exports = function (app) { //home page route
 			password: req.body.password
 		}).then(function (userInfo) {
 			res.json(userInfo);
-		})
-
+		});
 	});
 
 	//db.Author.create(req.body).then(function(dbAuthor) {

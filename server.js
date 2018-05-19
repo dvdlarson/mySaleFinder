@@ -27,6 +27,7 @@ app.use(bodyParser.urlencoded({
 
 // parse application/json
 app.use(bodyParser.json());
+
 //app.use(cookieParser()); 
 //According to express-sessions this is no longer needed.  Leaving it here just in case.
 

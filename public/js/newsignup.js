@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    //add a burger
+
     $(".login").on("click", function (event) {
         event.preventDefault();
         var newUser = {
