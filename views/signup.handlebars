@@ -1,35 +1,36 @@
+<script src="../../public/js/inputmask/jquery.inputmask.bundle.min.js"></script>
+<script src="../../public/js/inputmask/inputmask.phone.extensions.js"></script>
+<script src="../../public/js/inputmask/phone.js"></script>
+<script src="../../public/js/newsignup.js"></script> 
 {{!-- Form --}}
 <form class="ui form">
   <h4 class="ui dividing header teal">Seller Information</h4>
-  {{!-- first row --}} 
-  {{!-- username --}}
-    <div class="field five wide">
-      <label>Username</label>
+  {{!-- first row --}} {{!-- username --}}
+  <div class="field five wide">
+    <label>Username</label>
+    <div class="field">
+      <input type="text" placeholder="Username" id="username" required>
+    </div>
+  </div>
+  {{!-- second row --}} {{!-- password --}}
+  <div class="two fields">
+    <div class="field">
+      <label>Password</label>
       <div class="field">
-        <input type="text" placeholder="Username" id="username" required>
+        <input type="password" placeholder="Password" id="password" required>
       </div>
     </div>
-  {{!-- second row --}}
-    {{!-- password --}}
-    <div class="two fields">
+    {{!-- verify password --}}
+    <div class="field">
+      <label>Verify Password</label>
       <div class="field">
-        <label>Password</label>
-        <div class="field">
-          <input type="password" placeholder="Password" id="password" required>
-        </div>
+        <input type="password" placeholder="" id="verifyPassword">
       </div>
-      {{!-- verify password --}}
-      <div class="field">
-        <label>Verify Password</label>
-        <div class="field">
-          <input type="password" placeholder="" id="verifyPassword">
-        </div>
-      </div>      
     </div>
+  </div>
 
 
-  {{!-- second row --}} 
-  {{!-- first name --}}
+  {{!-- second row --}} {{!-- first name --}}
   <div class="two fields">
     <div class="field">
       <label>First Name</label>
@@ -45,8 +46,7 @@
       </div>
     </div>
   </div>
-  {{!-- third row --}} 
-  {{!-- email --}}
+  {{!-- third row --}} {{!-- email --}}
   <div class="two fields">
     <div class="field">
       <label>Email</label>

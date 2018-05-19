@@ -58,60 +58,60 @@ module.exports = function (app) {
         });
         //console.log("sessionChecker, res");
     });
-    var hash;
-    app.post('/api/users', (req, res) => {
-        var password = req.body.password
-        console.log("password: " + req.body.password);
+    // var hash;
+    // app.post('/api/users', (req, res) => {
+    //     var password = req.body.password
+    //     console.log("password: " + req.body.password);
 
-        function hashSalt(password) {
-            saltRounds = 10;
-            bcrypt.genSalt(saltRounds, function (err, salt) {
-                console.log("salt: " + salt);
-                if (err) {
-                    console.error("Error in bcrypt.genSalt: " + err);
-                }
-                bcrypt.hash(password, salt, function (err, saltyHash) {
-                    hash = saltyHash;
-                    console.log("bcrypt.hash");
+    //     function hashSalt(password) {
+    //         saltRounds = 10;
+    //         bcrypt.genSalt(saltRounds, function (err, salt) {
+    //             console.log("salt: " + salt);
+    //             if (err) {
+    //                 console.error("Error in bcrypt.genSalt: " + err);
+    //             }
+    //             bcrypt.hash(password, salt, function (err, saltyHash) {
+    //                 hash = saltyHash;
+    //                 console.log("bcrypt.hash");
 
-                    //let person continue with creating account
-                    if (err) {
-                        console.error("Error in bcrypt.hash: " + err);
-                    }
-                    console.log("the hashed password is: " + hash);
-                    //return hash;
-                    return hash;
-                });
-            });
-        }
-        hashSalt(password);
-        console.log("line 73: " + hash);
-        console.log("User.users: " + User.users);
-        User.User.create({
-                username: req.body.username,
-                email: req.body.email,
-                phone: req.body.phone,
-                first_name: req.body.firstName,
-                last_name: req.body.lastName,
-                city: req.body.city,
-                state: req.body.state,
-                zip_cd: req.body.zip,
-                password: hash
+    //                 //let person continue with creating account
+    //                 if (err) {
+    //                     console.error("Error in bcrypt.hash: " + err);
+    //                 }
+    //                 console.log("the hashed password is: " + hash);
+    //                 //return hash;
+    //                 return hash;
+    //             });
+    //         });
+    //     }
+    //     hashSalt(password);
+    //     console.log("line 73: " + hash);
+    //     console.log("User.users: " + User.users);
+    //     User.User.create({
+    //             username: req.body.username,
+    //             email: req.body.email,
+    //             phone: req.body.phone,
+    //             first_name: req.body.firstName,
+    //             last_name: req.body.lastName,
+    //             city: req.body.city,
+    //             state: req.body.state,
+    //             zip_cd: req.body.zip,
+    //             password: hash
 
-                //need to add all the information from signup page here
-            })
-            .then(user => {
-                console.log(user.username);
-                req.session.user = user.dataValues;
-                res.render("manage", {
-                    style: "manage"
-                });
-            })
-            .catch(error => {
-                console.error(error);
-                res.redirect('/signup');
-            });
-    });
+    //             //need to add all the information from signup page here
+    //         })
+    //         .then(user => {
+    //             console.log(user.username);
+    //             req.session.user = user.dataValues;
+    //             res.render("manage", {
+    //                 style: "manage"
+    //             });
+    //         })
+    //         .catch(error => {
+    //             console.error(error);
+    //             res.redirect('/signup');
+    //         });
+    // });
 
     //logout
     app.get('/logout', (req, res) => {
