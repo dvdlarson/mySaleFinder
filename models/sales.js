@@ -4,50 +4,46 @@
 module.exports = function (sequelize, DataTypes) {
     var Sale = sequelize.define("Sale", {
         
-        username: {
-            type: DataTypes.STRING,
-            allowNull: false,
 
-        },
         title: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
 
         },
         sale_type: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
 
         },
         featured: {
             type: DataTypes.BOOLEAN,
             defaultValue: 0,
-            allowNull: false
+            allowNull: true
         },
         super_featured: {
             type: DataTypes.BOOLEAN,
             defaultValue: 0,
-            allowNull: false
+            allowNull: true
         },
         start_date: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
         },
         end_date: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
         },
         start_time: {
             type: DataTypes.TIME,
-            allowNull: false,
+            allowNull: true,
         },
         end_time: {
             type: DataTypes.TIME,
-            allowNull: false,
+            allowNull: true,
         },
         on_street_parking: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
+            allowNull: true,
         },
         inside_outside: {
             type: DataTypes.STRING,
@@ -56,27 +52,27 @@ module.exports = function (sequelize, DataTypes) {
         weather_cancel: {
             type: DataTypes.BOOLEAN,
             defaultValue: 0,
-            allowNull: false
+            allowNull: true
         },
         address: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         city: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         state: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         zip_cd: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         full_address: {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: true
         },
         latitude: {
             type: DataTypes.INTEGER,
@@ -100,12 +96,12 @@ module.exports = function (sequelize, DataTypes) {
         },
         going_count: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             defaultValue: 0,
         },
         active: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
+            allowNull: true,
             defaultValue: 1,
         }
 
