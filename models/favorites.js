@@ -1,9 +1,9 @@
 module.exports = function (sequelize, DataTypes) {
 	var Favorite = sequelize.define("Favorite", {
 
-		sale_id: {
-            type: DataTypes.INTEGER,
-		},
+		// sale_id: {
+    //         type: DataTypes.INTEGER,
+		// },
 		notes: {
 			type: DataTypes.TEXT,
 			allowNull: true,
@@ -25,7 +25,13 @@ module.exports = function (sequelize, DataTypes) {
           foreignKey: {
             allowNull: false
           }
-        });
-      };
+				});
+				//  Favorite.belongsTo(models.Sale, {
+				// 	 foreignKey: {
+				// 		 allowNull: false
+				// 	 }
+				//  });
+			};
+			
 	return Favorite;
 };

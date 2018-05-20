@@ -78,23 +78,26 @@ $(document).ready(function () {
   //Create new map and go to users position
   // initMap();
   getPos();
-});
 
-$(".addfav").on("click", function (event) {
-  event.preventDefault();
-  //if user isnt logged in, display an alert
-  var saleID = $(this).val();
-  var favData = {
-    sale_id: saleID,
-    UserId: req.session.user.id
 
-  };
-  console.log(newSale);
+  $(".like").on("click", function (event) {
+    event.preventDefault();
+    //if user isnt logged in, display an alert
+    var saleID = this.id;
+    $(this).css({"color": "red"});
+    var favData = {
+      sale_id: saleID,
+      //UserId: req.session.user.id
 
-  $.ajax("/api/addfav", {
-    type: "POST",
-    data: favData
-  }).then(function () {
-    console.log("Added new sale: " + newSale);
+    };
+    console.log(favData);
+
+    $.ajax("/api/addfav", {
+      type: "POST",
+      data: favData
+    }).then(function () {
+
+      console.log("Added new sale: " + favData);
+    });
   });
 });

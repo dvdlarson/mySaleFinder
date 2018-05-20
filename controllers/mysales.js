@@ -13,6 +13,21 @@ module.exports = function (app) { //home page route
 		});
 	});
 
+	app.get("/favorites", function (req, res) {
+		console.log("user.id: " + req.session.user.id);
+		sale.Favorite.findAll({
+			where: {
+				UserId: req.session.user.id, 
+			},
+			include: [sale.User],
+			//include: [sale.Sale]
+		}).then(function () {
+			res.render("mylist", {
+				style: "mylist"
+			});
+		});
+	});
+
 	// app.get("/buy", function (req, res) {
 	// 	res.render("buy", {
 	// 		style: "buy"
@@ -66,27 +81,27 @@ module.exports = function (app) { //home page route
 			res.render("edit", hbsObject);
 		});
 	});
-// function verifyOwner(id) {
-// 	sale.Sale.findOne({
-// 		where: {
-// 			id: id
-// 		}
-// 	}).then(function (dbSale) {
-// 		if (dbSale.userid==req.session.user.id){
-// 			return true;
-// 		}
-// 		alert("You may only edit sales you have posted.");
-// 		return false;
-// 	})
-// }
+	// function verifyOwner(id) {
+	// 	sale.Sale.findOne({
+	// 		where: {
+	// 			id: id
+	// 		}
+	// 	}).then(function (dbSale) {
+	// 		if (dbSale.userid==req.session.user.id){
+	// 			return true;
+	// 		}
+	// 		alert("You may only edit sales you have posted.");
+	// 		return false;
+	// 	})
+	// }
 
-//This will make the sale no longer active and no longer visible to users.  It stays in the database though.
+	//This will make the sale no longer active and no longer visible to users.  It stays in the database though.
 	app.put("/api/delete/:id", function (req, res) {
 		var id = req.params.id;
 		console.log("deleting sale: " + id);
 		sale.Sale.update({
 			active: 0
-		},{
+		}, {
 			where: {
 				id: id
 			}
@@ -259,13 +274,17 @@ module.exports = function (app) { //home page route
 	});
 
 	app.post("/api/addfav", function (req, res) {
-		console.log(JSON.stringify(req.body) + "server side")
+		console.log(JSON.stringify(req.body) + "server side");
+
 		sale.Favorite.create({
-			sale_id:req.body.sale_id,
-			UserId: req.body.UserId
+			sale_id: req.body.sale_id,
+			UserId: req.session.user.id
 
 		}).then(function (result) {
 			console.log("added favorite for userid: " + req.session.user.id);
+			if (!req.session.user.id) {
+				return res.error;
+			}
 		});
 	});
 
@@ -286,9 +305,9 @@ module.exports = function (app) { //home page route
 			state: req.body.state,
 			zip_cd: req.body.zip_cd,
 			full_address: req.body.full_address,
-		//	active: req.body.active,
-		//	UserId: req.body.UserId
-		},{
+			//	active: req.body.active,
+			//	UserId: req.body.UserId
+		}, {
 			where: {
 				id: req.params.id
 			}
@@ -298,25 +317,25 @@ module.exports = function (app) { //home page route
 		});
 	});
 
-//photo upload test
+	//photo upload test
 
-app.post('/upload', function(req, res) {
-	if (!req.files)
-	  return res.status(400).send('No files were uploaded.');
-   
-	// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-	let sampleFile = req.files.sampleFile;
-	let filename = req.files.sampleFile.name;
-	let path = 'C:\\Users\\Dave\\Desktop\\HOMEWORK\\PROJECT_2\\mySaleFinder\\public\\uploads\\'+filename;
-   
-	// Use the mv() method to place the file somewhere on your server
-	sampleFile.mv(path, function(err) {
-	  if (err)
-		return res.status(500).send(err);
-   
-	  res.send('File uploaded!');
+	app.post('/upload', function (req, res) {
+		if (!req.files)
+			return res.status(400).send('No files were uploaded.');
+
+		// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+		let sampleFile = req.files.sampleFile;
+		let filename = req.files.sampleFile.name;
+		let path = 'C:\\Users\\Dave\\Desktop\\HOMEWORK\\PROJECT_2\\mySaleFinder\\public\\uploads\\' + filename;
+
+		// Use the mv() method to place the file somewhere on your server
+		sampleFile.mv(path, function (err) {
+			if (err)
+				return res.status(500).send(err);
+
+			res.send('File uploaded!');
+		});
 	});
-  });
 
 	//  update 
 	//requires posting function to supply two arrays populated from form data - one with column values, another with matching data values, the orm update function will iterate through the pairs and submit the update statements
