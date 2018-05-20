@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $(".addsale").on("click", function (event) {
+    $(".editsale").on("click", function (event) {
         event.preventDefault();
         var id = $(this).data("id");
         var fullAddress=$("#address").val().trim()+" "+$("#city").val().trim()+" "+$("#state").val().trim()+" "+$("#zip").val().trim()
@@ -23,7 +23,7 @@ $(document).ready(function () {
             zip_cd: $("#zip").val().trim(),
             full_address:fullAddress,
             active:1,
-            UserId:1
+            UserId:req.session.user.id
 
         };
         console.log(newSale);
