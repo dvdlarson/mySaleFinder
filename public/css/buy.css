@@ -1,6 +1,38 @@
+#content-wrapper {
+    height: calc(100vh - 71px);
+}
+
 #salecards {
     /* float: left; */
     list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#cards-wrapper {
+    height: calc(100vh - 56px);
+    width: 500px;
+    overflow: auto;
+    /* float: left; */
+    background-color: rgba(0, 0, 0, 0.87);
+}
+
+.card {
+    width: 100%!important;
+    border-radius: 0!important;
+    margin: 5px!important;
+    box-shadow: none!important;
+}
+
+#map-wrapper {
+    height: 100%;
+    width: calc(100% - 500px); /* subract width of #cards-wrapper */
+    float: left;
+}
+
+.tint {
+    color: blue;
 }
 
 #map {

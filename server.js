@@ -3,6 +3,7 @@ var bodyParser = require("body-parser");
 var path = require("path");
 var session = require("express-session");
 var cookieParser = require("cookie-parser");
+var moment = require("moment");
 //According to express-sessions this is no longer needed.  Leaving it here just in case.
 
 var app = express();
@@ -12,7 +13,12 @@ var exphbs = require("express-handlebars");
 var db = require("./models");
 
 app.engine("handlebars", exphbs({
-    defaultLayout: "main"
+    defaultLayout: "main",
+    helpers: {
+        formatDate: function (date, format) {
+            return moment(date).format(format);
+        }
+    }
 }));
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));

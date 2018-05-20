@@ -3,6 +3,7 @@
 // var router = express.Router();
 // require sale.js
 var sale = require("../models/");
+var moment = require("moment");
 
 module.exports = function (app) { //home page route
 	app.get("/", function (req, res) {
@@ -58,14 +59,11 @@ module.exports = function (app) { //home page route
 		// gets the data from the userinput and creates a handlebar object will that data
 		sale.Sale.findAll({})
 			.then(function (dbSale) {
-				console.log(dbSale + "hello my name is Fred");
 				var hbsObject = {
 					sale: dbSale,
-					style: "buy"
+					style: "buy",
 				};
-				// send to the home file to display the sales
-				console.log(dbSale);
-				// res.json(dbSale);
+				// send to the buy file to display the sales
 				res.render("buy", hbsObject);
 			});
 	});
