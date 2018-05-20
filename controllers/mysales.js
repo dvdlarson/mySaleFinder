@@ -20,10 +20,15 @@ module.exports = function (app) { //home page route
 
 	app.get("/api/buy", function (req, res) {
 		sale.Sale.findAll({})
-		.then(function(dbSales) {
-			res.send(dbSales);
-		});
-	});
+			.then(function (dbSales) {
+				res.send(dbSales);
+			})
+	})
+	// app.get("/manage", function (req, res) {
+	// 	res.render("manage", {
+	// 		style: "manage"
+	// 	});
+	// });
 
 	app.get("/login", function (req, res) {
 		res.render("login", {
@@ -61,7 +66,7 @@ module.exports = function (app) { //home page route
 			}
 		}, {
 			active: 0
-		}).then(function(data){
+		}).then(function (data) {
 			res.render("manage");
 		})
 	});
@@ -237,7 +242,7 @@ module.exports = function (app) { //home page route
 			where: {
 				id: req.params.id
 			}
-		},{
+		}, {
 			title: req.body.title,
 			sale_type: req.body.sale_type,
 			start_date: req.body.start_date,
