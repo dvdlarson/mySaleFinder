@@ -77,12 +77,13 @@ module.exports = function (app) { //home page route
 // }
 	app.put("/api/delete/:id", function (req, res) {
 		var id = req.params.id;
+		console.log("deleting sale: " + id);
 		sale.Sale.update({
-			where: {
-				id: req.params.id
-			}
-		}, {
 			active: 0
+		},{
+			where: {
+				id: id
+			}
 		}).then(function (data) {
 			res.render("manage");
 		})
