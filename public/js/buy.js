@@ -15,16 +15,9 @@ function getPos() {
           },
           zoom: 11
         });
-        //create the sale markers
         $.get("/api/buy", function(data) {
-          console.log(data);
           //loop through sales
           for (var i = 0; i < data.length; i++) {
-            // var infowindow = new google.maps.InfoWindow({
-            //   //create infowindow for marker
-            //   content: "<h4 class='markerTitle'>" + data[i].title + "</h4>"
-            //             + "<p>" + data[i].address + "</p>"
-            // });
             //display the markers for every sale
             var marker = new google.maps.Marker({
               position: {
@@ -33,14 +26,24 @@ function getPos() {
               },
               map: map,
               title: data[i].title, 
-              id: data[i].id
+              id: (i + 1)
             });
-            // marker.addListener("click", function() {
-            //   infowindow.open(map, marker);
-            //   console.log(marker)
-            // });            
+            //marker info window content
+            marker.content = "<h3>" + data[i].title + "</h3>";
+            //display info window on marker click and scroll to the relevant sale
+            var infoWindow = new google.maps.InfoWindow();
+            google.maps.event.addListener(marker, 'click', function () {
+                infoWindow.setContent(this.content);
+                infoWindow.open(this.getMap(), this);
+                //scroll to sale
+                $("#cards-wrapper").animate({scrollTop: $("#cards-wrapper").scrollTop() + $("#" + this.id).position().top})
+                $(".card").css("border", "none")
+            }); 
+            //close window if you click anywhere else on the map
+            map.addListener("click", function(event) {
+              infoWindow.close();
+            });
           }
-
         });
     });
   }    

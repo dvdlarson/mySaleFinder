@@ -15,7 +15,7 @@
     width: 500px;
     overflow: auto;
     /* float: left; */
-    background-color: rgba(0, 0, 0, 0.87);
+    background-color: #1B1C1D;
 }
 
 .card {
@@ -23,6 +23,11 @@
     border-radius: 0!important;
     margin: 5px!important;
     box-shadow: none!important;
+    background-color: rgb(38, 50, 56)!important;
+}
+
+.color-white  {
+    color: white!important;
 }
 
 #map-wrapper {
