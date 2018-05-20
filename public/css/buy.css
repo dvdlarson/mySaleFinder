@@ -1,5 +1,16 @@
+@font-face {
+    font-family: logoFont;
+    src: url("../font/Painter_PERSONAL_USE_ONLY.ttf");    
+}
+
 #content-wrapper {
     height: calc(100vh - 71px);
+}
+
+#logo {
+    font-family: logoFont;
+    color: #00B5AD;
+    font-size: 40px;  
 }
 
 #salecards {

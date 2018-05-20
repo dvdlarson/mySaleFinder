@@ -1,0 +1,21 @@
+body {
+    background-color: rgb(38, 50, 56)!important;
+    padding: 40px!important;
+}
+
+form {
+    margin: 0 auto;
+    margin-bottom: 100px;
+    width: 800px!important;
+}
+
+form h4, label, form h3 {
+    color: white!important;
+}
+
+/* @media screen and (max-width: 844px) {
+    body {
+        padding-left: 10px!important;
+        padding-right: 10px!important
+    }
+} */
