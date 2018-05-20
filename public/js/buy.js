@@ -14,8 +14,35 @@ function getPos() {
             lat: lat,
             lng: lng
           },
-          zoom: 9
+          zoom: 11
         });
+        //create the sale markers
+        $.get("/api/buy", function(data) {
+          console.log(data);
+          //loop through sales
+          for (var i = 0; i < data.length; i++) {
+            // var infowindow = new google.maps.InfoWindow({
+            //   //create infowindow for marker
+            //   content: "<h4 class='markerTitle'>" + data[i].title + "</h4>"
+            //             + "<p>" + data[i].address + "</p>"
+            // });
+            //display the markers for every sale
+            var marker = new google.maps.Marker({
+              position: {
+                lat: data[i].latitude,
+                lng: data[i].longitude
+              },
+              map: map,
+              title: data[i].title, 
+              id: data[i].id
+            });
+            // marker.addListener("click", function() {
+            //   infowindow.open(map, marker);
+            //   console.log(marker)
+            // });            
+          }
+
+        })
     });
   }    
 }

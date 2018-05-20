@@ -75,12 +75,12 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true
         },
         latitude: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             allowNull: true,
             defaultValue: null,
         },
         longitude: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             allowNull: true,
             defaultValue: null,
         },

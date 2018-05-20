@@ -1,6 +1,12 @@
+#salecards {
+    /* float: left; */
+    list-style: none;
+}
+
 #map {
-    height: calc(100% - 71px);
-  }
+    height: 100%;
+    width: 100%;
+}
   /* Optional: Makes the sample page fill the window. */
 html, body {
     height: 100%;
