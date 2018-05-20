@@ -39,12 +39,16 @@ module.exports = function (app) { //home page route
 
 	//generic page routing  
 	app.get("/sale", function (req, res) {
-		res.render("alt-newsale-delete", {
+		res.render("newsale", {
 			style: "newsale"
 		});
 	});
 
 	app.get("/edit/:id", function (req, res) {
+		//var id=req.params.id;
+		// if(!verifyOwner(id)){
+		// 	location.href="/buy"
+		// };
 		sale.Sale.findOne({
 			where: {
 				id: req.params.id
@@ -58,7 +62,19 @@ module.exports = function (app) { //home page route
 			res.render("edit", hbsObject);
 		});
 	});
-
+// function verifyOwner(id) {
+// 	sale.Sale.findOne({
+// 		where: {
+// 			id: id
+// 		}
+// 	}).then(function (dbSale) {
+// 		if (dbSale.userid==req.session.user.id){
+// 			return true;
+// 		}
+// 		alert("You may only edit sales you have posted.");
+// 		return false;
+// 	})
+// }
 	app.put("/api/delete/:id", function (req, res) {
 		var id = req.params.id;
 		sale.Sale.update({

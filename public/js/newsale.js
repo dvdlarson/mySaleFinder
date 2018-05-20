@@ -25,7 +25,7 @@ $(document).ready(function () {
     console.log("loaded the functions");
     if (typeof jQuery != 'undefined') {  
         // jQuery is loaded => print the version
-        alert(jQuery.fn.jquery,req.session.user.id,req.session.user.username);
+        alert(jQuery.fn.jquery);
     }
 
     $("#rangestart").on("click",function(event){
