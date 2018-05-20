@@ -75,6 +75,8 @@ module.exports = function (app) { //home page route
 // 		return false;
 // 	})
 // }
+
+//This will make the sale no longer active and no longer visible to users.  It stays in the database though.
 	app.put("/api/delete/:id", function (req, res) {
 		var id = req.params.id;
 		console.log("deleting sale: " + id);
@@ -118,7 +120,7 @@ module.exports = function (app) { //home page route
 				var hbsObject = {
 					sale: dbSale
 				};
-				console.log(dbSale);
+				//console.log(dbSale);
 				// res.json(dbSale);
 				res.render("manage", hbsObject);
 			});
@@ -263,12 +265,9 @@ module.exports = function (app) { //home page route
 		});
 	});
 
-	app.put("/api/addsale/:id", function (req, res) {
+	app.put("/api/editsale/:id", function (req, res) {
+		console.log("sale ID: " + req.params.id);
 		sale.Sale.update({
-			where: {
-				id: req.params.id
-			}
-		}, {
 			title: req.body.title,
 			sale_type: req.body.sale_type,
 			start_date: req.body.start_date,
@@ -283,8 +282,12 @@ module.exports = function (app) { //home page route
 			state: req.body.state,
 			zip_cd: req.body.zip_cd,
 			full_address: req.body.full_address,
-			active: req.body.active,
-			UserId: req.body.UserId
+		//	active: req.body.active,
+		//	UserId: req.body.UserId
+		},{
+			where: {
+				id: req.params.id
+			}
 		}).then(function (userInfo) {
 			console.log(userInfo);
 			res.json(userInfo);

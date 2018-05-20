@@ -15,11 +15,15 @@ $(function () {
     $(".delete").click(function (event) {
         event.preventDefault();
         var item = $(this).closest("tr") // Finds the closest row <tr> 
-        .find(".id") // Gets a descendent with class="id"
-        .text(); // Retrieves the text within <td>        console.log("devoured button " + id + " clicked");
+            .find(".id") // Gets a descendent with class="id"
+            .text(); // Retrieves the text within <td>        console.log("devoured button " + id + " clicked");
         var deleted = {
             active: false
         };
+        var confirmDelete = confirm("This can not be un-done. Continue?");
+        if (confirmDelete == false) {
+            return;
+        } else {
 
         $.ajax("/api/delete/" + item, {
             type: "PUT",
@@ -27,7 +31,7 @@ $(function () {
         }).then(function () {
             location.reload();
         });
-    });
+    }});
     // $(".delete").click(function () {
     //     var confirmDelete = confirm("This can not be un-done. Continue?");
     //     if (confirmDelete == false) {
