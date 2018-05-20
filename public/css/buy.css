@@ -25,6 +25,7 @@
     height: calc(100vh - 56px);
     width: 500px;
     overflow: auto;
+    overflow-x: hidden;
     /* float: left; */
     background-color: #1B1C1D;
 }
