@@ -3,7 +3,7 @@
 // var router = express.Router();
 // require sale.js
 var sale = require("../models/");
-var moment = require("moment");
+// var moment = require("moment");
 
 module.exports = function (app) { //home page route
 	app.get("/", function (req, res) {
@@ -35,6 +35,10 @@ module.exports = function (app) { //home page route
 		res.render("login", {
 			style: "login"
 		});
+	});
+
+	app.get("/test", function (req, res) {
+		res.render("test");
 	});
 
 	//generic page routing  
@@ -75,6 +79,8 @@ module.exports = function (app) { //home page route
 // 		return false;
 // 	})
 // }
+
+//This will make the sale no longer active and no longer visible to users.  It stays in the database though.
 	app.put("/api/delete/:id", function (req, res) {
 		var id = req.params.id;
 		console.log("deleting sale: " + id);
@@ -118,7 +124,7 @@ module.exports = function (app) { //home page route
 				var hbsObject = {
 					sale: dbSale
 				};
-				console.log(dbSale);
+				//console.log(dbSale);
 				// res.json(dbSale);
 				res.render("manage", hbsObject);
 			});
@@ -263,12 +269,9 @@ module.exports = function (app) { //home page route
 		});
 	});
 
-	app.put("/api/addsale/:id", function (req, res) {
+	app.put("/api/editsale/:id", function (req, res) {
+		console.log("sale ID: " + req.params.id);
 		sale.Sale.update({
-			where: {
-				id: req.params.id
-			}
-		}, {
 			title: req.body.title,
 			sale_type: req.body.sale_type,
 			start_date: req.body.start_date,
@@ -283,15 +286,37 @@ module.exports = function (app) { //home page route
 			state: req.body.state,
 			zip_cd: req.body.zip_cd,
 			full_address: req.body.full_address,
-			active: req.body.active,
-			UserId: req.body.UserId
+		//	active: req.body.active,
+		//	UserId: req.body.UserId
+		},{
+			where: {
+				id: req.params.id
+			}
 		}).then(function (userInfo) {
 			console.log(userInfo);
 			res.json(userInfo);
 		});
 	});
 
+//photo upload test
 
+app.post('/upload', function(req, res) {
+	if (!req.files)
+	  return res.status(400).send('No files were uploaded.');
+   
+	// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+	let sampleFile = req.files.sampleFile;
+	let filename = req.files.sampleFile.name;
+	let path = 'C:\\Users\\Dave\\Desktop\\HOMEWORK\\PROJECT_2\\mySaleFinder\\public\\uploads\\'+filename;
+   
+	// Use the mv() method to place the file somewhere on your server
+	sampleFile.mv(path, function(err) {
+	  if (err)
+		return res.status(500).send(err);
+   
+	  res.send('File uploaded!');
+	});
+  });
 
 	//  update 
 	//requires posting function to supply two arrays populated from form data - one with column values, another with matching data values, the orm update function will iterate through the pairs and submit the update statements
