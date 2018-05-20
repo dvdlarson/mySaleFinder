@@ -14,29 +14,30 @@
   <div id="cards-wrapper">
     <ul id="salecards">
       {{#each sale}}
-      <li>
+      <li id="{{id}}">
         <div class="ui card">
           <div class="content">
-            <div class="header">{{title}}</div>
+            <div class="header color-white">{{title}}</div>
             <div class="description">
-                <img src="http://garagesaleacademy.com/wp-content/uploads/2013/11/yardsalesign.jpg" alt="">
-                <p>{{formatDate start_date "MMM Do"}} - {{formatDate end_date "MMM Do"}}</p>
+                <img src="https://www.hope2all.org/wp-content/uploads/2017/09/YardSale-1.gif"  width="100px" alt="yard sale">
+                {{!-- <span>{{formatTime start_time "hh:mm"}} - {{formatTime end_time "hh:mm"}}</span> --}}
+                <p class="color-white">{{items_desc}}</p>
             </div>
           </div>
           <div class="extra content">
-            <span class="right floated star" data-id={{id}}>
+            <span class="right floated star color-white" data-id={{id}}>
               <i class="like icon"></i>
               Favorite
             </span>
-
-            {{#if sale.weather_cancel}} 
+            <span class="left floated color-white">{{formatDate start_date "MMM Do"}} - {{formatDate end_date "MMM Do"}}</span>
+            {{!-- {{#if sale.weather_cancel}} 
             
             {{else}}
             <span class="left floated tint" data-id={{id}}>
               <i class="tint icon"></i>
               Open during rain
             </span>
-            {{/if}}
+            {{/if}} --}}
           </div>
         </div>
       </li>
