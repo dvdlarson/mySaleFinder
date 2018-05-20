@@ -1,11 +1,17 @@
     <script src="../../public/js/manage.js"></script>
 
-<table class="ui sortable striped celled table">
+
+
+
+<div>
+  <button class="addsale_btn" onclick="window.location.href='/sale'">Add a New Sale!</button>
+</div>
+<table class="ui sortable striped table manage">
   <thead>
-      <tr class="center aligned"><th class="sixteen wide">My Sales</th></tr>
+     
     <tr>
-      <th class="">Sale ID</th>
       <th class="">Title</th>
+      <th class="">Sale ID</th>
       <th class="sorted descending">Start Date</th>
       <th class="">End Date</th>
       <th class=""># Going</th>
@@ -17,8 +23,8 @@
 {{#each sale}}
       
   <tr>
-      <td class="id">{{id}}</td>
       <td>{{title}}</td>
+      <td class="id">{{id}}</td>
       <td>{{start_date}}</td>
       <td>{{end_date}}</td>
       <td>{{going_count}}</td>
