@@ -1,5 +1,25 @@
-$(document).ready(function () {
 
+
+$(document).ready(function () {
+    $('#example1').calendar();
+
+    $("#rangestart").timepicker();
+     
+
+      $('#rangeend').calendar({
+        type: 'date',
+        startCalendar: $('#rangestart')
+      });
+    
+      $('#startTime').timepicker();
+      $('#endTime').calendar({
+        type: 'time'
+      });
+      $('.ui.radio.checkbox')
+      .checkbox();
+      $('select.dropdown')
+      .dropdown();
+console.log("loaded the functions");
     //add a burger
     $(".addsale").on("click", function (event) {
         event.preventDefault();
@@ -35,4 +55,9 @@ $(document).ready(function () {
             console.log("Added new sale: " + newSale);
         });
     });
+
+    
 });
+
+
+
