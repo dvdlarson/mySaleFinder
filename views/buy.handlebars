@@ -11,6 +11,7 @@
   {{!--
   <div id="map" class="ui center aligned grid"></div> --}}
 
+<<<<<<< HEAD
   <div id="cards-wrapper">
     <ul id="salecards">
       {{#each sale}}
@@ -21,6 +22,29 @@
             <div class="description">
                 <img src="http://garagesaleacademy.com/wp-content/uploads/2013/11/yardsalesign.jpg" alt="">
                 <p>{{formatDate start_date "MMM Do"}} - {{formatDate end_date "MMM Do"}}</p>
+=======
+<div id="salecards">
+  <h4>Find a Sale!</h4>
+     <ul style="color:black">
+     {{#each sale}}
+        {{!-- <li><h2>{{title}}</h2></li>
+        <li>{{start_date}}</li>
+        <li>{{user_id}}</li>
+        <li>{{city}}</li> --}}
+        <li>
+          <div class="ui card">
+            <div class="content">
+              <div class="header">{{title}}</div>
+              <div class="description">
+                <p></p>
+              </div>
+            </div>
+            <div class="extra content">
+              <span class="right floated star" data-id={{id}}>
+                <i class="like icon addfav"></i>
+                Favorite
+              </span>
+>>>>>>> 35a1e7b678d4b7659c510ed9c1c9aba8df518b1d
             </div>
           </div>
           <div class="extra content">

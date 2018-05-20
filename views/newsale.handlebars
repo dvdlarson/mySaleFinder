@@ -1,5 +1,13 @@
 {{!-- Form --}} {{!-- Start Date/End Date Start Time/End Time Is there ample street parking? Inside or Outside? Will you
 cancel for rain? Items for sale description (Upload picture) --}}
+
+<script src="../../public/js/newsale.js"></script>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
+
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+ 
+
 <form class="ui form">
 	<h4 class="ui dividing header teal">Create a Sale</h4>
 	{{!-- first row --}} {{!-- username --}}
@@ -32,6 +40,23 @@ cancel for rain? Items for sale description (Upload picture) --}}
 					</div>
 				</div>
 			</div>
+			<br>
+			<div>
+				<h2 class="ui header">
+				<i class="calendar icon"></i>
+					<div class="content"> 
+						Start Date 
+					</div>
+				</h2>
+			<div class="ui calendar" id="example1">
+			<div class="ui input left icon">
+			<i class="calendar icon"></i>
+			<input type="text" placeholder="Date/Time">
+			</div>
+      		</div>
+
+			</div>
+			<br>
 			<div class="field">
 				<label>End date</label>
 				<div class="ui calendar" id="rangeend">
@@ -96,6 +121,30 @@ cancel for rain? Items for sale description (Upload picture) --}}
 
 	<div class="ui fluid large teal submit addsale button">Sign Up</div>
 </form>
+<div>
+        <br/>
+        <h2 class="ui header">
+        <i class="calendar icon"></i>
+          <div class="content"> 
+            Set Lifetime of Form 
+          </div>
+        </h2>
+
+        <select class="ui selection dropdown">
+             <option value="">Choose Application Form Type</option>
+             <option value="1">Application Form 1</option>
+             <option value="0">Application Form 2</option>
+        </select>
+        <br/>
+
+      <div class="ui calendar" id="example1">
+        <div class="ui input left icon">
+          <i class="calendar icon"></i>
+          <input type="text" placeholder="Date/Time">
+        </div>
+      </div>
+    </div>
+
 {{!-- Navbar --}}
 <div class="ui bottom demo inverted nine item labeled icon sidebar menu overlay visible" style="">
 	<a class="item" href="/">
@@ -119,3 +168,4 @@ cancel for rain? Items for sale description (Upload picture) --}}
 		Settings
 	</a>
 </div>
+
