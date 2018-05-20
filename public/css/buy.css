@@ -7,10 +7,16 @@
     height: calc(100vh - 71px);
 }
 
+.ui {
+    /* background-color: rgba(255, 255, 255, 0.8)!important; */
+}
+
 #logo {
     font-family: logoFont;
     color: #00B5AD;
     font-size: 40px;  
+    /* float: left; */
+    /* position: absolute; */
 }
 
 #salecards {
@@ -19,6 +25,12 @@
     width: 100%;
     margin: 0;
     padding: 0;
+}
+
+#soon-icon {
+    width: 80px!important;
+    position: absolute;
+    bottom: 26px;
 }
 
 #cards-wrapper {
@@ -62,3 +74,13 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+/* @media screen and (max-width: 1024px) {
+    #map {
+        width: 100vw;
+        height: 50vh;
+    }
+    #cards-wrapper {
+        
+    }
+} */
