@@ -59,9 +59,9 @@ function getPos() {
 //   });
 // }
 
-// $(document).ready(function () {
-//   //Create new map and go to users position
-//  // initMap();
-//   getPos();
-// });
+$(document).ready(function () {
+  //Create new map and go to users position
+ // initMap();
+  getPos();
+});
 

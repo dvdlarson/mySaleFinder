@@ -43,7 +43,7 @@ console.log("loaded the functions");
             zip_cd: $("#zip").val().trim(),
             full_address:fullAddress,
             active:1,
-            UserId:1
+            UserId:req.session.user.id
 
         };
         console.log(newSale);
