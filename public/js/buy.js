@@ -1,5 +1,5 @@
 var map;
-var key = process.env.API_KEY;
+//var key = process.env.API_KEY;
 
 function getPos() {
   if (navigator.geolocation) {
