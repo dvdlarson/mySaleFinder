@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     $(".addsale").on("click", function (event) {
         event.preventDefault();
+        var id = $(this).data("id");
         var fullAddress=$("#address").val().trim()+" "+$("#city").val().trim()+" "+$("#state").val().trim()+" "+$("#zip").val().trim()
         console.log("full addr: "+fullAddress);
 
@@ -27,11 +28,11 @@ $(document).ready(function () {
         };
         console.log(newSale);
 
-        $.ajax("/api/addsale", {
-            type: "POST",
+        $.ajax("/api/addsale/"+id, {
+            type: "PUT",
             data: newSale
         }).then(function () {
-            console.log("Added new sale: " + newSale);
+            console.log("Updated sale: " + newSale);
         });
     });
 });
