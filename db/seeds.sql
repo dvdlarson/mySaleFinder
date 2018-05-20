@@ -1,3 +1,5 @@
+-- DROP DATABASE IF EXISTS salefinder;
+-- CREATE DATABASE salefinder;
 
 ALTER TABLE `salefinder`.`users` 
 CHANGE COLUMN `createdAt` `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
