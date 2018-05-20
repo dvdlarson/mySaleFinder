@@ -1,7 +1,7 @@
 $(document).ready(function () {
     // $('#example1').calendar();
 
-    $('#rangestart').calendar({
+    $('.caldar').calendar({
         type: 'date',
         endCalendar: $('#rangeend')
     });
@@ -23,6 +23,15 @@ $(document).ready(function () {
     $('select.dropdown')
         .dropdown();
     console.log("loaded the functions");
+    if (typeof jQuery != 'undefined') {  
+        // jQuery is loaded => print the version
+        alert(jQuery.fn.jquery);
+    }
+
+    $("#rangestart").on("click",function(event){
+        event.preventDefault();
+        alert("you clicked that ish");
+    })
     //add a burger
     $(".addsale").on("click", function (event) {
         event.preventDefault();
