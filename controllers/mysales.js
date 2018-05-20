@@ -237,6 +237,17 @@ module.exports = function (app) { //home page route
 		});
 	});
 
+	app.post("/api/addfav", function (req, res) {
+		console.log(JSON.stringify(req.body) + "server side")
+		sale.Favorite.create({
+			sale_id:req.body.sale_id,
+			UserId: req.body.UserId
+
+		}).then(function (result) {
+			console.log("added favorite for userid: " + req.session.user.id);
+		});
+	});
+
 	app.put("/api/addsale/:id", function (req, res) {
 		sale.Sale.update({
 			where: {
