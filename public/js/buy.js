@@ -36,8 +36,13 @@ function getPos() {
                 infoWindow.setContent(this.content);
                 infoWindow.open(this.getMap(), this);
                 //scroll to sale
-                $("#cards-wrapper").animate({scrollTop: $("#cards-wrapper").scrollTop() + $("#" + this.id).position().top})
-                $(".card").css("border", "none")
+                $("#cards-wrapper").animate({scrollTop: $("#cards-wrapper").scrollTop() + $("#" + this.id).position().top});
+                //reset border highlights
+                $("li").css({"border-left": "none"});
+                $(".card").attr("style", "margin-left: 6px!important");
+                //selected sale border highlight
+                $("#" + this.id).css({"border-left": "6px solid gold"});
+                $("#" + this.id + " .card").attr("style", "margin-left: 0px!important");
             }); 
             //close window if you click anywhere else on the map
             map.addListener("click", function(event) {
@@ -46,7 +51,7 @@ function getPos() {
           }
         });
     });
-  }    
+  }
 }
 
 $(document).ready(function () {
