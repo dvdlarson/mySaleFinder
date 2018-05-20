@@ -4,6 +4,9 @@ var path = require("path");
 var session = require("express-session");
 var cookieParser = require("cookie-parser");
 var moment = require("moment");
+var formidable = require('formidable');
+var fileUpload = require('express-fileupload');
+
 //According to express-sessions this is no longer needed.  Leaving it here just in case.
 
 var app = express();
@@ -25,6 +28,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("port", (process.env.PORT || 8080));
 
 app.use("/public", express.static("public"));
+app.use(fileUpload());
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
