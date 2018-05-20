@@ -48,10 +48,24 @@ module.exports = function (app) { //home page route
 				sale: dbSale,
 				style: "newsale"
 			};
-
-			res.render("editsale", hbsObject);
+			console.log(hbsObject.sale.title);
+			res.render("edit", hbsObject);
 		});
 	});
+
+	app.put("/api/delete/:id", function (req, res) {
+		var id = req.params.id;
+		sale.Sale.update({
+			where: {
+				id: req.params.id
+			}
+		}, {
+			active: 0
+		}).then(function(data){
+			res.render("manage");
+		})
+	});
+
 	// creates a route for the base 
 	// route for the sale display all 
 	app.get("/buy", function (req, res) {
@@ -215,12 +229,37 @@ module.exports = function (app) { //home page route
 
 		}).then(function (userInfo) {
 			res.json(userInfo);
-		})
-
+		});
 	});
 
-	//db.Author.create(req.body).then(function(dbAuthor) {
-	//res.json(dbAuthor);
+	app.put("/api/addsale/:id", function (req, res) {
+		sale.Sale.update({
+			where: {
+				id: req.params.id
+			}
+		},{
+			title: req.body.title,
+			sale_type: req.body.sale_type,
+			start_date: req.body.start_date,
+			end_date: req.body.end_date,
+			start_time: req.body.start_time,
+			end_time: req.body.end_time,
+			on_street_parking: 1,
+			inside_outside: 1,
+			weather_cancel: 1,
+			items_desc: req.body.items_desc,
+			city: req.body.city,
+			state: req.body.state,
+			zip_cd: req.body.zip_cd,
+			full_address: req.body.full_address,
+			active: req.body.active,
+			UserId: req.body.UserId
+		}).then(function (userInfo) {
+			console.log(userInfo);
+			res.json(userInfo);
+		});
+	});
+
 
 
 	//  update 
