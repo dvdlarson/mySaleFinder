@@ -1,142 +1,134 @@
-{{!-- Form --}} {{!-- Start Date/End Date Start Time/End Time Is there ample street parking? Inside or Outside? Will you
-cancel for rain? Items for sale description (Upload picture) --}}
 
-<script src="../../public/js/newsale.js"></script>
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
 
-<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
- 
+<div class="">
+  <h4>Let's have a sale!</h4>
+</div>
 
 <form class="ui form">
-	<h4 class="ui dividing header teal">Create a Sale</h4>
-	{{!-- first row --}} {{!-- username --}}
-	<div class="field five wide">
-		<label>Title</label>
-		<div class="field">
-			<input type="text" placeholder="Title" id="title" required>
-		</div>
-	</div>
-	{{!-- second row --}} {{!-- password --}}
 
-	<div class="field">
-		<label>Sale Type</label>
-		<select class="ui fluid dropdown" id="sale_type" required>
-			<option value="yard_sale">Yard Sale</option>
-			<option value="estate_sale">Estate Sale</option>
-			<option value="auction">Auction</option>
-		</select>
-	</div>
-
-	<h3>Dates</h3>
-	<div class="ui form">
-		<div class="two fields">
-			<div class="field">
-				<label>Start date</label>
-				<div class="ui calendar" id="rangestart">
-					<div class="ui input left icon">
-						<i class="calendar icon"></i>
-						<input type="text" placeholder="Start">
-					</div>
-				</div>
-			</div>
-			<br>
-			<div>
-				<h2 class="ui header">
-				<i class="calendar icon"></i>
-					<div class="content"> 
-						Start Date 
-					</div>
-				</h2>
-			<div class="ui calendar" id="example1">
-			<div class="ui input left icon">
-			<i class="calendar icon"></i>
-			<input type="text" placeholder="Date/Time">
-			</div>
-      		</div>
-
-			</div>
-			<br>
-			<div class="field">
-				<label>End date</label>
-				<div class="ui calendar" id="rangeend">
-					<div class="ui input left icon">
-						<i class="calendar icon"></i>
-						<input type="text" placeholder="End">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br/> {{!-- last name --}}
-	<h3>Time of Sale</h3>
-	<div class="ui calendar" id="startTime">
-		<div class="ui input left icon">
-			<i class="time icon"></i>
-			<input type="text" placeholder="Start Time">
-		</div>
-	</div>
-	<br/>
-
-	<div class="ui calendar" >
-		<div class="ui input left icon" id="endTime">
-			<i class="time icon"></i>
-			<input type="text" placeholder="End Time">
-		</div>
-	</div>
-	<br/>
-
-	<div class="field">
-		<label>Will there be street parking available?</label>
-
-		<select class="ui fluid dropdown" id="parking" required>
-			<option value="">Parking</option>
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-
-		</select>
-	</div>
-	<div class="field">
-		<label>Will the sale be inside or outside?</label>
-
-		<select class="ui fluid dropdown" id="inside_outside" required>
-			<option value="Inside">Inside</option>
-			<option value="Outside">Inside</option>
-			<option value="Inside/Outside">Both</option>
-
-		</select>
-	</div>
-	<div class="field">
-		<label>Is this a rain or shine sale?</label>
-
-		<select class="ui fluid dropdown" id="weather_cancel" required>
-			<option value="">Yes</option>
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-
-		</select>
-	</div>
-
-
-
-	<div class="ui fluid large teal submit addsale button">Sign Up</div>
-</form>
-<div>
-        <br/>
-        <h2 class="ui header">
-        <i class="calendar icon"></i>
-          <div class="content"> 
-            Set Lifetime of Form 
+  <div class="field">
+    <label>Title</label>
+    <input id="title" placeholder="Type an attention grabbing title!" type="text">
+  </div>
+  <br>
+  <div class="field">
+    <label>Sale Type</label>
+    <select class="ui fluid dropdown" id="sale_type" required>
+      <option value="yard_sale">Yard Sale</option>
+      <option value="estate_sale">Estate Sale</option>
+      <option value="auction">Auction</option>
+    </select>
+  </div>
+  <br/>
+  <h3>Start & End Dates</h3>
+  <div class="two fields">
+    <div class="field">
+      <label>Sale Type</label>
+      <select class="ui fluid dropdown" id="sale_type" required>
+        <option value="yard_sale">Yard Sale</option>
+        <option value="estate_sale">Estate Sale</option>
+        <option value="auction">Auction</option>
+      </select>
+    </div>
+    <br/>
+    <h3>Start & End Dates</h3>
+    <div class="two fields">
+      <div class="field">
+        <label>Start date</label>
+        <div class="ui calendar">
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            <input class="caldar" id="rangestart" type="text" placeholder="Enter the start date">
           </div>
-        </h2>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>End date</label>
+      <div class="ui calendar">
+        <div class="ui input left icon">
+          <i class="calendar icon"></i>
+          <input id="rangeend" type="text" placeholder="Enter the end date">
+        </div>
+      </div>
+    </div>
+  </div>
+  <h3>Start & End Times</h3>
+  <div class="two fields">
+    <div class="field">
+      <label>Start Time</label>
+      <div class="ui calendar">
+        <div class="ui input left icon">
+          <i class="time icon"></i>
+          <input id="startTime" type="text" placeholder="Time">
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>End date</label>
+      <div class="ui calendar">
+        <div class="ui input left icon">
+          <i class="time icon">16:00</i>
+          <input id="endTime" type="text" placeholder="Time">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Description - Items for sale, special notes, etc</label>
+    <textarea id="desc">What are you selling? Be descriptive!</textarea>
+  </div>
+  <div class="field">
+    <label>Address</label>
+    <textarea id="address"></textarea>
+  </div>
+  <div class="field">
+    <label>City</label>
+    <textarea id="city"></textarea>
+  </div>
+  <div class="field">
+    <label>State</label>
+    <textarea id="state"></textarea>
+  </div>
+  <div class="field">
+    <label>Zip Code</label>
+    <textarea id="zip"></textarea>
+  </div>
+  <h3>Additonal Details</h3>
+  <div class="three fields">
+    <div class="field">
+      <label>Is there street parking available?</label>
+      <select class "ui fluid dropdown" id="parking">
+        <option selected="selected" value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Is it inside, outside, or both?</label>
+      <select class "ui fluid dropdown" id="inside_outside">
+        <option selected="selected" value="outside">Outside</option>
+        <option value="inside">Inside</option>
+        <option value="both">Both</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Will you cancel for rain?</label>
+      <select class "ui fluid dropdown" id="weather_cancel">
+        <option selected="selected" value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+    </div>
 
-        <select class="ui selection dropdown">
-             <option value="">Choose Application Form Type</option>
-             <option value="1">Application Form 1</option>
-             <option value="0">Application Form 2</option>
-        </select>
-        <br/>
-
+    <div class="ui submit addsale button">Submit</div>
+    <div>
+      <br/>
+      <h2 class="ui header">
+        <i class="calendar icon"></i>
+        <div class="content">
+          Set Lifetime of Form
+        </div>
+      </h2>
+      <br/>
       <div class="ui calendar" id="example1">
         <div class="ui input left icon">
           <i class="calendar icon"></i>
@@ -145,27 +137,9 @@ cancel for rain? Items for sale description (Upload picture) --}}
       </div>
     </div>
 
-{{!-- Navbar --}}
-<div class="ui bottom demo inverted nine item labeled icon sidebar menu overlay visible" style="">
-	<a class="item" href="/">
-		<i class="home icon"></i>
-		Home
-	</a>
-	<a class="item">
-		<i class="mail icon"></i>
-		Messages
-	</a>
-	<a class="item">
-		<i class="heart icon"></i>
-		Favorites
-	</a>
-	<a class="item">
-		<i class="shop icon"></i>
-		My Shop
-	</a>
-	<a class="item">
-		<i class="settings icon"></i>
-		Settings
-	</a>
-</div>
+    <div class="ui submit addsale button">Submit</div>
 
+
+
+
+</form>
