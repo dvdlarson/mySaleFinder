@@ -3,7 +3,7 @@
 // var router = express.Router();
 // require sale.js
 var sale = require("../models/");
-var moment = require("moment");
+// var moment = require("moment");
 
 module.exports = function (app) { //home page route
 	app.get("/", function (req, res) {
@@ -35,6 +35,10 @@ module.exports = function (app) { //home page route
 		res.render("login", {
 			style: "login"
 		});
+	});
+
+	app.get("/test", function (req, res) {
+		res.render("test");
 	});
 
 	//generic page routing  
@@ -294,7 +298,25 @@ module.exports = function (app) { //home page route
 		});
 	});
 
+//photo upload test
 
+app.post('/upload', function(req, res) {
+	if (!req.files)
+	  return res.status(400).send('No files were uploaded.');
+   
+	// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+	let sampleFile = req.files.sampleFile;
+	let filename = req.files.sampleFile.name;
+	let path = 'C:\\Users\\Dave\\Desktop\\HOMEWORK\\PROJECT_2\\mySaleFinder\\public\\uploads\\'+filename;
+   
+	// Use the mv() method to place the file somewhere on your server
+	sampleFile.mv(path, function(err) {
+	  if (err)
+		return res.status(500).send(err);
+   
+	  res.send('File uploaded!');
+	});
+  });
 
 	//  update 
 	//requires posting function to supply two arrays populated from form data - one with column values, another with matching data values, the orm update function will iterate through the pairs and submit the update statements
