@@ -1,11 +1,9 @@
-<<<<<<< HEAD
-ALTER TABLE `salefinder`.`users` 
-=======
+
 -- DROP DATABASE IF EXISTS salefinder;
 -- CREATE DATABASE salefinder;
 
 ALTER TABLE `salefinder`.`Users` 
->>>>>>> 35a1e7b678d4b7659c510ed9c1c9aba8df518b1d
+
 CHANGE COLUMN `createdAt` `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
 CHANGE COLUMN `updatedAt` `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
 
