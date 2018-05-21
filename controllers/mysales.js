@@ -65,7 +65,7 @@ module.exports = function (app) { //home page route
 				style: "newsale"
 			};
 			console.log(hbsObject.sale.title);
-			res.render("edit", hbsObject);
+			res.sendFile(path.join(__dirname, "../public/html/edit_sale.html"));
 		});
 	});
 	// function verifyOwner(id) {
@@ -136,9 +136,9 @@ module.exports = function (app) { //home page route
 
 	app.get("/api/edit/:id", function (req, res) {
 
-		sale.sales.findOne({
+		sale.Sale.findOne({
 				where: {
-					sale_id: req.params.id
+					id: req.params.id
 				}
 			})
 			.then(function (dbSale) {
@@ -149,7 +149,7 @@ module.exports = function (app) { //home page route
 				// send to the home file to display the sales
 				console.log(dbSale);
 				// res.json(dbSale);
-				res.render("edit", hbsObject);
+				res.send(hbsObject);
 			});
 
 	});
