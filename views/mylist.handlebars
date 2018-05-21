@@ -1,7 +1,7 @@
 {{!-- Google maps API --}}
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW5Lqqx7a84oy9vgiTC4ueDHU7ecjLCLw&callback=getPos"
   type="text/javascript"></script>
-<script src="../public/js/buy.js"></script>
+<script src="../public/js/mylist.js"></script>
 
 <div id="content-wrapper">
   {{!-- Map --}}
@@ -13,34 +13,34 @@
     <div>
         <div class="ui form ">
             <div class="field">
-                <label>Enter your starting address</label>
-                <input placeholder="joe@schmoe.com" type="text">
+                <label id="yourAddress">Enter your starting address</label>
+                <input placeholder="123 Main St." type="text">
             </div>
             <div id="getroute" class="ui submit button">Get My Route!</div>
         </div>
     </div>
   <div id="cards-wrapper">
     <ul id="salecards">
-      {{#each sale}}
+      {{#each fav}}
       <li>
         <div class="ui card">
           <div class="content">
-            <div class="header">{{title}}</div>
+            <div class="header">{{dataValues.Sale.dataValues.title}}</div>
             <div class="description">
-                <img src="http://garagesaleacademy.com/wp-content/uploads/2013/11/yardsalesign.jpg" alt="">
-                <p>{{formatDate start_date "MMM Do"}} - {{formatDate end_date "MMM Do"}}</p>
+                {{!-- <img src="http://garagesaleacademy.com/wp-content/uploads/2013/11/yardsalesign.jpg" alt=""> --}}
+                <p>{{formatDate dataValues.Sale.dataValues.start_date "MMM Do"}} - {{formatDate dataValues.Sale.dataValues.end_date "MMM Do"}}</p>
             </div>
           </div>
           <div class="extra content">
-            <span class="right floated star" data-id={{id}}>
+            <span class="right floated star" data-id={{dataValues.Sale.dataValues.id}}>
               <i class="like icon"></i>
               Favorite
             </span>
 
-            {{#if sale.weather_cancel}} 
+            {{#if dataValues.Sale.dataValues.weather_cancel}} 
             
             {{else}}
-            <span class="left floated tint" data-id={{id}}>
+            <span class="left floated tint" data-id={{dataValues.Sale.dataValues.id}}>
               <i class="tint icon"></i>
               Open during rain
             </span>

@@ -1,45 +1,64 @@
 geocoder.geocode(fullAddress)
-  .then(function(res) {
-    latitude=res.latitude;
-	longitude=res.longitude;
-  })
-  .catch(function(err) {
-    console.log(err);
-  });
-
-
-
-app.get("/api/mylist", function(req, res) {
-    // Here we add an "include" property to our options in our findOne query
-    // We set the value to an array of the models we want to include in a left outer join
-    // In this case, just db.Post
-    sale.Favorite.findOne({
-      where: {
-        id: req.session.user.id
-      },
-      include: [db.Sale]
-    }).then(function (results) {
-
-        var hbsObject = {
-            sale: dbSale,
-            style: "mylist",
-        };
-        var waypoints=[];
-        for(var i = 0;i<results.length;i++){
-           waypoints.push(results[i].full_address);
-        }
-        getRoute(waypoints);
-        
-        
-       
-        // send to the buy file to display the sales
-        res.render("buy", hbsObject);
+    .then(function (res) {
+        latitude = res.latitude;
+        longitude = res.longitude;
+    })
+    .catch(function (err) {
+        console.log(err);
     });
-  });
 
-  var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
-var map;
+
+
+// app.get("/api/mylist", function(req, res) {
+//     // Here we add an "include" property to our options in our findOne query
+//     // We set the value to an array of the models we want to include in a left outer join
+//     // In this case, just db.Post
+//     sale.Favorite.findOne({
+//       where: {
+//         id: req.session.user.id
+//       },
+//       include: [db.Sale]
+//     }).then(function (results) {
+
+//         var hbsObject = {
+//             sale: dbSale,
+//             style: "mylist",
+//         };
+//         var waypoints=[];
+//         for(var i = 0;i<results.length;i++){
+//            waypoints.push(results[i].full_address);
+//         }
+//         getRoute(waypoints);
+
+
+
+//         // send to the buy file to display the sales
+//         res.render("buy", hbsObject);
+//     });
+//   });
+$(document).ready(function () {
+    $("#getroute").click(function (event) {
+        event.preventDefault();
+        $.ajax({
+            method: "GET",
+            URL: "/api/favorites"
+        }).then(function (fav) {
+            var addressArr = [];
+            var startAddress = $("#yourAddress").val().trim();
+
+            for (var i = 0; i < fav.length; i++) {
+                addressArr.push(fav[i].dataValues.Sale.dataValues.full_address);
+            }
+            var directionsDisplay;
+            var directionsService = new google.maps.DirectionsService();
+            var map;
+            initialize(addressArr);
+
+
+
+        });
+    });
+});
 
 function initialize(waypoints) {
     directionsDisplay = new google.maps.DirectionsRenderer();
@@ -62,7 +81,7 @@ function calcRoute(waypoints) {
     var start = userStart;
     var end = userEnd;
     var waypts = [];
-    var wayptsIn = ["Apache Junction, AZ", "Chandler, AZ", "Phoenix, AZ", "Casa Grande, AZ", "Tempe, AZ", "Scottsdale, AZ", "Laveen, AZ"];
+    var wayptsIn = addressArr;
     for (var i = 0; i < wayptsIn.length; i++) {
         waypts.push({
             location: wayptsIn[i],
@@ -95,5 +114,4 @@ function calcRoute(waypoints) {
     });
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
-  
+// google.maps.event.addDomListener(window, 'load', initialize);

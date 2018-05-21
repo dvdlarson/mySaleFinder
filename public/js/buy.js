@@ -86,7 +86,7 @@ $(document).ready(function () {
     var saleID = this.id;
     $(this).css({"color": "red"});
     var favData = {
-      sale_id: saleID,
+      saleId: saleID,
       //UserId: req.session.user.id
 
     };

@@ -21,12 +21,12 @@ module.exports = function (sequelize, DataTypes) {
 	Favorite.associate = function(models) {
         // We're saying that a Favorite should belong to a User
         // A Favorite can't be created without a User due to the foreign key constraint
-        Favorite.belongsTo(models.User, {
+        Favorite.belongsTo(models.Sale, {
           foreignKey: {
             allowNull: false
           }
 				});
-				//  Favorite.belongsTo(models.Sale, {
+				//  Favorite.belongsTo(models.User, {
 				// 	 foreignKey: {
 				// 		 allowNull: false
 				// 	 }
