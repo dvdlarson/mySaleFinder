@@ -8,6 +8,7 @@
 	<title>YardPicker</title>
 	{{!-- Semantic --}}
 	<link rel="icon" href="../../public/img/favicon.png">
+	<link rel="stylesheet" href="../public/css/global.css">
 	<link rel="stylesheet" type="text/css" href="../../public/css/newsale.css">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet" type="text/css" />
@@ -21,118 +22,125 @@
 </head>
 
 <body>
+	<script src="../../public/js/inputmask/jquery.inputmask.bundle.min.js"></script>
+	<script src="../../public/js/inputmask/inputmask.phone.extensions.js"></script>
+	<script src="../../public/js/inputmask/phone.js"></script>
+	<script src="../../public/js/newsignup.js"></script>
+
 	<div class="">
 		<h4>Let's have a sale!</h4>
 	</div>
 
 	<form class="ui form">
-
-		<div class="field">
-			<label>Title</label>
-			<input id="title" placeholder="Type an attention grabbing title!" type="text">
-		</div>
-		<br>
-		<div class="field">
-			<label>Sale Type</label>
-			<select class="ui fluid dropdown" id="sale_type" required>
-				<option value="yard_sale">Yard Sale</option>
-				<option value="estate_sale">Estate Sale</option>
-				<option value="auction">Auction</option>
-			</select>
-		</div>
-		<br/>
-
-
-		<br/>
-		<h3>Range</h3>
-		<div class="ui form">
+		<h3 class="ui dividing header teal">Sale Info</h4>
 			<div class="two fields">
 				<div class="field">
-					<label>Start date</label>
-					<div class="ui calendar" id="rangestart">
-						<div class="ui input left icon">
-							<i class="calendar icon"></i>
-							<input type="text" placeholder="Start" id="startDate">
-						</div>
-					</div>
+					<label>Title</label>
+					<input id="title" placeholder="Type an attention grabbing title!" type="text">
 				</div>
+				<br>
 				<div class="field">
-					<label>End date</label>
-					<div class="ui calendar" id="rangeend">
-						<div class="ui input left icon">
-							<i class="calendar icon"></i>
-							<input type="text" placeholder="End" id="endDate">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<br/>
-		<h3>Start Times</h3>
-		<div class="two fields">
-			<div class="ui calendar" id="starttime">
-				<div class="ui input left icon">
-					<i class="time icon"></i>
-					<input type="text" placeholder="Time" id="startTime">
+					<label>Sale Type</label>
+					<select class="ui fluid dropdown" id="sale_type" required>
+						<option value="yard_sale">Yard Sale</option>
+						<option value="estate_sale">Estate Sale</option>
+						<option value="auction">Auction</option>
+					</select>
 				</div>
 			</div>
 			<br/>
-			<h3>End Times</h3>
-			<div class="ui calendar" id="endtime">
-				<div class="ui input left icon">
-					<i class="time icon"></i>
-					<input type="text" placeholder="Time" id="endTime">
+
+
+			<br/>
+			<h3>Range</h3>
+			<div class="ui form">
+				<div class="two fields">
+					<div class="field">
+						<label>Start date</label>
+						<div class="ui calendar" id="rangestart">
+							<div class="ui input left icon">
+								<i class="calendar icon"></i>
+								<input type="text" placeholder="Start" id="startDate">
+							</div>
+						</div>
+					</div>
+					<div class="field">
+						<label>End date</label>
+						<div class="ui calendar" id="rangeend">
+							<div class="ui input left icon">
+								<i class="calendar icon"></i>
+								<input type="text" placeholder="End" id="endDate">
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-
-
-		<div class="field">
-			<label>Description - Items for sale, special notes, etc</label>
-			<textarea id="desc">What are you selling? Be descriptive!</textarea>
-		</div>
-		<div class="field">
-			<label>Address</label>
-			<textarea id="address"></textarea>
-		</div>
-		<div class="field">
-			<label>City</label>
-			<textarea id="city"></textarea>
-		</div>
-		<div class="field">
-			<label>State</label>
-			<textarea id="state"></textarea>
-		</div>
-		<div class="field">
-			<label>Zip Code</label>
-			<textarea id="zip"></textarea>
-		</div>
-		<h3>Additonal Details</h3>
-		<div class="three fields">
-			<div class="field">
-				<label>Is there street parking available?</label>
-				<select class "ui fluid dropdown" id="parking">
-					<option selected="selected" value="true">Yes</option>
-					<option value="false">No</option>
-				</select>
-			</div>
-			<div class="field">
-				<label>Is it inside, outside, or both?</label>
-				<select class "ui fluid dropdown" id="inside_outside">
-					<option selected="selected" value="outside">Outside</option>
-					<option value="inside">Inside</option>
-					<option value="both">Both</option>
-				</select>
-			</div>
-			<div class="field">
-				<label>Will you cancel for rain?</label>
-				<select class "ui fluid dropdown" id="weather_cancel">
-					<option selected="selected" value="true">Yes</option>
-					<option value="false">No</option>
-				</select>
+			<br/>
+			<h3>Start Times</h3>
+			<div class="two fields">
+				<div class="ui calendar" id="starttime">
+					<div class="ui input left icon">
+						<i class="time icon"></i>
+						<input type="text" placeholder="Time" id="startTime">
+					</div>
+				</div>
+				<br/>
+				<h3>End Times</h3>
+				<div class="ui calendar" id="endtime">
+					<div class="ui input left icon">
+						<i class="time icon"></i>
+						<input type="text" placeholder="Time" id="endTime">
+					</div>
+				</div>
 			</div>
 
-			<!-- <div class="ui submit addsale button">Submit</div>
+
+			<div class="field">
+				<label>Description - Items for sale, special notes, etc</label>
+				<textarea id="desc">What are you selling? Be descriptive!</textarea>
+			</div>
+			<div class="field">
+				<label>Address</label>
+				<textarea id="address"></textarea>
+			</div>
+			<div class="field">
+				<label>City</label>
+				<textarea id="city"></textarea>
+			</div>
+			<div class="field">
+				<label>State</label>
+				<textarea id="state"></textarea>
+			</div>
+			<div class="field">
+				<label>Zip Code</label>
+				<textarea id="zip"></textarea>
+			</div>
+			<h3>Additonal Details</h3>
+			<div class="three fields">
+				<div class="field">
+					<label>Is there street parking available?</label>
+					<select class "ui fluid dropdown" id="parking">
+						<option selected="selected" value="true">Yes</option>
+						<option value="false">No</option>
+					</select>
+				</div>
+				<div class="field">
+					<label>Is it inside, outside, or both?</label>
+					<select class "ui fluid dropdown" id="inside_outside">
+						<option selected="selected" value="outside">Outside</option>
+						<option value="inside">Inside</option>
+						<option value="both">Both</option>
+					</select>
+				</div>
+				<div class="field">
+					<label>Will you cancel for rain?</label>
+					<select class "ui fluid dropdown" id="weather_cancel">
+						<option selected="selected" value="true">Yes</option>
+						<option value="false">No</option>
+					</select>
+				</div>
+
+				<!-- <div class="ui submit addsale button">Submit</div>
 			<div>
 				<br/>
 				<h2 class="ui header">
@@ -150,7 +158,7 @@
 				</div>
 			</div> -->
 
-			<div class="ui submit addsale button">Submit</div>
+				<div class="ui submit addsale button">Submit</div>
 
 
 

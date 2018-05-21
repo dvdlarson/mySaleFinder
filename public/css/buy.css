@@ -1,21 +1,79 @@
-#content-wrapper {
+#logo {
+    font-family: logo;
+    color: #00B5AD;
+    font-size: 35px;
+    position: absolute;
+    margin-top: 115px;
+    bottom: auto;
+    left: 30px;
+    z-index: 50000;
+    width: 200px;
+}
+
+#logo span {
+    font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: white;
+    position: absolute;
+    top: 20px;
+    left: 50px;
+}
+
+.page-wrapper {
     height: calc(100vh - 71px);
+    width: 100%;
+    position: absolute;
+    background-image: url("../img/left_panel.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.6;
+    /* filter: blur(3px); */
+}
+
+.img-background {
+    height: calc(100vh - 71px);
+    width: 100%;
+    position: absolute;
+    background-color: black;
+}
+
+#content-wrapper {
+    height: calc(100vh - 180px);
+    margin: 0px 50px 0px 50px;
+    top: 50px;
+    border: 5px solid black;
+    position: relative;
 }
 
 #salecards {
-    /* float: left; */
     list-style: none;
     width: 100%;
     margin: 0;
     padding: 0;
 }
 
+.header {
+    color: #00B5AD!important;
+    text-align: justify;
+}
+
 #cards-wrapper {
-    height: calc(100vh - 56px);
+    height: calc(100vh - 190px);
     width: 500px;
     overflow: auto;
-    /* float: left; */
+    overflow-x: hidden;
     background-color: #1B1C1D;
+}
+
+.image {
+    display: block;
+    margin: 0 auto;
+    text-align: center!important;
+    width: 440px;
+    height: 200px;
+    border: 2px solid black;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .card {
@@ -24,6 +82,14 @@
     margin: 5px!important;
     box-shadow: none!important;
     background-color: rgb(38, 50, 56)!important;
+}
+
+.card .description {
+    text-align: justify;
+}
+
+.card:first-of-type {
+    margin-top: 0px!important
 }
 
 .color-white  {
@@ -44,9 +110,4 @@
     height: 100%;
     width: 100%;
 }
-  /* Optional: Makes the sample page fill the window. */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
+/* Optional: Makes the sample page fill the window. */

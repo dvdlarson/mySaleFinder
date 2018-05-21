@@ -1,0 +1,22 @@
+body {
+    background-color: rgb(38, 50, 56)!important;
+    padding: 40px!important;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    margin: 0 auto;
+    border: 1px solid white!important;
+}
+
+#table-wrapper {
+    display: flex;
+    justify-content: center;
+    max-width: 1200px
+}
+
+.addsale_btn {
+    position: relative;
+    top: 10px;
+}
