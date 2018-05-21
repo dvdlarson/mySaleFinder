@@ -14,6 +14,15 @@ module.exports = function (app) { //home page route
 		});
 	});
 
+	app.get("/*", function(req, res, next) {
+
+		if(typeof req.cookies['connect.sid'] !== 'undefined') {
+			console.log("cookies: " + req.cookies['connect.sid']);
+		}
+
+		next(); // Call the next middleware
+	 });
+
 	app.get("/favorites", function (req, res) {
 		console.log("user.id: " + req.session.user.id);
 		sale.Favorite.findAll({
@@ -209,15 +218,6 @@ module.exports = function (app) { //home page route
 	// app.get("/signup", function(req, res) {
 	// 	res.render("signup", {style: "signup"});
 	// })
-
-	// app.get("/*", function(req, res, next) {
-
-	// 	if(typeof req.cookies['connect.sid'] !== 'undefined') {
-	// 		console.log(req.cookies['connect.sid']);
-	// 	}
-
-	// 	next(); // Call the next middleware
-	//  });
 
 	app.get("/api/users", function (req, res) {
 		// checks for a unique username
