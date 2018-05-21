@@ -21,6 +21,9 @@ app.engine("handlebars", exphbs({
         formatDateDynamic: function (date, format) {
             return moment(date).format(format);
         },
+        formatDateDynamic: function (date, format) {
+            return moment(date).format(format);
+        },
         formatTime: function (time, format) {
             return moment(time, "HH:mm:ss").format(format);
         },

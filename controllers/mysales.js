@@ -4,6 +4,7 @@
 // require sale.js
 var sale = require("../models/");
 var moment = require("moment");
+var path = require("path");
 
 module.exports = function (app) { //home page route
 	app.get("/", function (req, res) {
@@ -34,9 +35,7 @@ module.exports = function (app) { //home page route
 
 	//generic page routing  
 	app.get("/sale", function (req, res) {
-		res.render("alt-newsale-delete", {
-			style: "newsale"
-		});
+		res.sendFile(path.join(__dirname, "../public/html/sale_form.html"));
 	});
 
 	app.get("/edit/:id", function (req, res) {
