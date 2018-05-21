@@ -24,8 +24,11 @@
     "cookie-parser": "^1.4.3",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
+    "flatpickr": "^4.5.0",
+    "formidable": "^1.2.1",
     "mocha": "^5.1.1",
     "moment": "^2.22.1",
     "mysql2": "^1.5.3",
@@ -33,7 +36,8 @@
     "npm": "^6.0.1",
     "password-hash-and-salt": "^0.1.4",
     "sass": "*",
-    "semantic-ui-calendar": "0.0.8",
-    "sequelize": "^4.37.7"
+    "semantic-ui-calendar": "^0.0.8",
+    "sequelize": "^4.37.7",
+    "timepicker": "^1.11.12"
   }
 }

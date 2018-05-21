@@ -56,11 +56,21 @@ module.exports = function (app) {
 				if (req.query.username === data[i].dataValues.username &&
 					req.query.password === data[i].dataValues.password) {
 					req.session.user = data[i];
-					res.redirect(req.session.returnTo || '/');
+					if(!req.session.returnTo) {
+						res.redirect('/');
+					} 
+					res.redirect(req.session.returnTo);
 					delete req.session.returnTo;
 				}
 			}
 		});
+	});
+
+	//sends the original requested route to the front end login js
+	app.get("/origpath", function (req, res) {
+		var originalPath = req.session.returnTo;
+		console.log("originalPath: " + originalPath);
+		res.send(originalPath);
 	});
 
 	//post user information to database
@@ -80,25 +90,7 @@ module.exports = function (app) {
 		});
 	});
 
-	app.get("/origpath", function (req, res) {
-		var originalPath = req.session.returnTo;
-		console.log("originalPath: " + originalPath);
-		res.send(originalPath);
-	});
-
 	//account needed for all routes below/////////////////////////////////////////////////////////////////
-	// causes all other pages to go to the login page if not logged in
-	// app.get("/*", function (req, res, next) {
-	// 	if (typeof req.cookies['connect.sid'] === undefined) {
-	// 		req.session.returnTo = req.path;
-	// 		console.log("cookies: " + req.cookies['connect.sid']);
-	// 		res.render("login", {
-	// 			style: "login"
-	// 		});
-	// 	} else {
-	// 		next(); // Call the next middleware
-	// 	}
-	// });
 	app.use(function (req, res, next) {
 		if (req.session.user == null) {
 			req.session.returnTo = req.path;
@@ -216,18 +208,20 @@ module.exports = function (app) {
 
 	});
 
-	// //check for users' info to log in
-	// app.get("/api/users", function (req, res) {
-	// 	sale.User.findAll({}).then(function (data) {
-	// 		for (var i = 0; i < data.length; i++) {
-	// 			if (req.query.username === data[i].dataValues.username &&
-	// 				req.query.password === data[i].dataValues.password) {
-	// 				req.session.user = data[i];
-	// 				// res.render("manage");
-	// 				res.redirect(req.session.returnTo || '/');
-	// 				delete req.session.returnTo;
-	// 			}
-	// 		}
+	// //post user information to database
+	// app.post("/api/users", function (req, res) {
+	// 	console.log(JSON.stringify(req.body) + "server side")
+	// 	sale.User.create({
+	// 		username: req.body.username,
+	// 		email: req.body.email,
+	// 		first_name: req.body.first_name,
+	// 		last_name: req.body.last_name,
+	// 		city: req.body.city,
+	// 		state: req.body.state,
+	// 		zip_cd: req.body.zip_cd,
+	// 		password: req.body.password
+	// 	}).then(function (userInfo) {
+	// 		res.json(userInfo);
 	// 	});
 	// });
 
@@ -326,62 +320,3 @@ module.exports = function (app) {
 	});
 
 }
-
-
-//requires posting function to supply two arrays populated from form data - one with column values, another with matching data values, the orm update function will iterate through the pairs and submit the update statements
-// router.put("/api/sales/:id", function(req, res){
-// sale.updateOne(req.body.updateColArray,req.body.updateValArray,req.params.id, function(results){
-// 	if (results.changedRows == 0) {
-//     return res.status(404).end();
-// } else {
-//     res.status(200).end();
-// }
-// 	});
-// });
-//});
-
-// function verifyOwner(id) {
-// 	sale.Sale.findOne({
-// 		where: {
-// 			id: id
-// 		}
-// 	}).then(function (dbSale) {
-// 		if (dbSale.userid==req.session.user.id){
-// 			return true;
-// 		}
-// 		alert("You may only edit sales you have posted.");
-// 		return false;
-// 	})
-// }
-
-// app.get("/manage", function (req, res) {
-// 	res.render("manage", {
-// 		style: "manage"
-// 	});
-// });
-
-// app.get("/api/:id", function (req, res) {
-// 	// gets the data from the userinput and creates a handlebar object will that data
-// 	var page = req.params.page;
-// 	sale.sales.findOne({
-// 			where: {
-// 				sale_id: req.params.id
-// 			}
-// 		})
-// 		.then(function (dbSale) {
-// 			var hbsObject = {
-// 				sale: dbSale
-// 			};
-// 			// send to the home file to display the sales
-// 			console.log(dbSale);
-// 			// res.json(dbSale);
-// 			res.render("home", hbsObject);
-// 		});
-
-// });
-
-// app.get("/signup", function(req, res) {
-// 	res.render("signup", {style: "signup"});
-// })
-
-//module.exports = router;

@@ -6,6 +6,7 @@ var cookieParser = require("cookie-parser");
 var moment = require("moment");
 var formidable = require('formidable');
 var fileUpload = require('express-fileupload');
+
 //According to express-sessions this is no longer needed.  Leaving it here just in case.
 
 var app = express();
@@ -21,14 +22,11 @@ app.engine("handlebars", exphbs({
             return moment(date).format("M/D");
         },
         formatDate: function (date, format) {
-            return moment(date).format(format);
-        },
-        formatDateDynamic: function (date, format) {
-            return moment(date).format(format);
+            return moment(date).format("MM-DD-YYYY");
         },
         formatTime: function (time, format) {
             return moment(time, "HH:mm:ss").format(format);
-        },
+        }
     }
 }));
 app.set("view engine", "handlebars");
@@ -70,7 +68,7 @@ app.use(session({
 
 // Import routes and give the server access to them.
 require("./controllers/mysales.js")(app);
-// require("./controllers/userControllers.js")(app);
+//require("./controllers/userControllers.js")(app);
 //app.use(routes);
 
 // Start our server so that it can begin listening to client requests.
