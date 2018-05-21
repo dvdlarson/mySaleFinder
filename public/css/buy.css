@@ -1,3 +1,24 @@
+#logo {
+    font-family: logo;
+    color: #00B5AD;
+    font-size: 35px;
+    position: absolute;
+    margin-top: 115px;
+    bottom: auto;
+    left: 30px;
+    z-index: 50000;
+    width: 200px;
+}
+
+#logo span {
+    font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: white;
+    position: absolute;
+    top: 20px;
+    left: 50px;
+}
+
 .page-wrapper {
     height: calc(100vh - 71px);
     width: 100%;
@@ -33,7 +54,7 @@
 
 .header {
     color: #00B5AD!important;
-    text-align: center;
+    text-align: justify;
 }
 
 #cards-wrapper {
@@ -90,8 +111,3 @@
     width: 100%;
 }
   /* Optional: Makes the sample page fill the window. */
-html, body {
-    /* height: 100%; */
-    margin: 0;
-    padding: 0;
-}

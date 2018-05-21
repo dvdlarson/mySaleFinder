@@ -66,7 +66,7 @@ $(document).ready(function () {
   getPos();
   for (var i = 0; i < $(".image").length; i++) {
     $(".image").each(function() {
-      $(this).css({"background-image": "url('../public/img/sale" + Math.floor(Math.random() * 5 + 1) + ".PNG')"})
+      $(this).css({"background-image": "url('../public/img/sale" + Math.floor(Math.random() * 7 + 1) + ".PNG')"})
     });
   }
 

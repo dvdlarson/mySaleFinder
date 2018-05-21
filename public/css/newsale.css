@@ -13,13 +13,6 @@ form h4, label, form h3 {
     color: white!important;
 }
 
-/* @media screen and (max-width: 844px) {
-    body {
-        padding-left: 10px!important;
-        padding-right: 10px!important
-    }
-} */
-
 label {
 	color: white!important;
 }
@@ -41,4 +34,8 @@ label {
 
 textarea {
     max-height: 8em!important;
+}
+
+#logo {
+    bottom: 5px;
 }

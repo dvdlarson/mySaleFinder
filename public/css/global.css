@@ -1,0 +1,31 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+@font-face {
+    font-family: logo;
+    src: url("../font/Painter_PERSONAL_USE_ONLY.ttf");
+}
+
+#logo {
+    font-family: logo;
+    color: #00B5AD;
+    font-size: 35px;
+    position: fixed;
+    margin-top: 115px;
+    bottom: 20px;
+    left: 30px;
+    z-index: 50000;
+    width: 200px;
+}
+
+#logo span {
+    font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: white;
+    position: absolute;
+    top: 20px;
+    left: 50px;
+}

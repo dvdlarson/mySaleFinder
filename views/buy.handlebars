@@ -9,50 +9,48 @@
 <div class="page-wrapper">
 
 </div>
-  <div id="content-wrapper">
-    {{!-- Map --}}
-    <div class="" id="map-wrapper">
-      <div id="map"></div>
-    </div>
-    {{!--
-    <div id="map" class="ui center aligned grid"></div> --}}
+<div id="content-wrapper">
+  {{!-- Map --}}
+  <div class="" id="map-wrapper">
+    <div id="map"></div>
+  </div>
+  {{!--
+  <div id="map" class="ui center aligned grid"></div> --}}
 
-    <div id="cards-wrapper">
-      <ul id="salecards">
-        {{#each sale}}
-        <li id="{{id}}">
-          <div class="ui card">
-            <div class="content">
-              <div class="header">{{title}}</div>
-                <div class="image">
+  <div id="cards-wrapper">
+    <ul id="salecards">
+      {{#each sale}}
+      <li id="{{id}}">
+        <div class="ui card">
+          <div class="content">
+            <div class="header">{{title}}</div>
+            <div class="image">
 
-                </div>
-              <div class="description"> 
-                  <p class="color-white">{{items_desc}}</p>
-              </div>
             </div>
-            <div class="extra content">
-              <span class="right floated star color-white">
-                <i class="like icon" id={{id}}></i>
-                Favorite
-              </span>
-              <span class="left floated color-white">{{formatDateDynamic start_date "MMM Do"}} - {{formatDateDynamic end_date "MMM Do"}} | {{formatTime start_time "h:mm A"}} - {{formatTime end_time "h:mm A"}}</span>
-              {{!-- {{#if sale.weather_cancel}} 
-              
-              {{else}}
-              <span class="left floated tint" data-id={{id}}>
-                <i class="tint icon"></i>
-                Open during rain
-              </span>
-              {{/if}} --}}
+            <div class="description">
+              <p class="color-white">{{items_desc}}</p>
             </div>
           </div>
-        </li>
-        {{/each}}
-      </ul>
-    </div>
-  </div>  
-
+          <div class="extra content">
+            <span class="right floated star color-white">
+              <i class="like icon" id={{id}}></i>
+              Favorite
+            </span>
+            <span class="left floated color-white">{{formatDateDynamic start_date "MMM Do"}} - {{formatDateDynamic end_date "MMM Do"}} | {{formatTime start_time
+              "h:mm A"}} - {{formatTime end_time "h:mm A"}}</span>
+            {{!-- {{#if sale.weather_cancel}} {{else}}
+            <span class="left floated tint" data-id={{id}}>
+              <i class="tint icon"></i>
+              Open during rain
+            </span>
+            {{/if}} --}}
+          </div>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
 
 {{!-- Navbar --}}
 <div class="ui bottom demo inverted nine item labeled icon sidebar menu overlay visible" style="">
@@ -77,3 +75,8 @@
     Settings
   </a>
 </div>
+
+<h1 id="logo" href="/">
+  YardPicker
+  <span><i>Yard Sales Made Easy!</i></span>
+</h1>
