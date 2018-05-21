@@ -33,4 +33,10 @@ table {
 
 button {
     position: relative;
+    width: 150px;
+}
+
+.plus {
+    color: #00B5AD;
+    width: 50px;
 }

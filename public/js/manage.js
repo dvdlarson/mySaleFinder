@@ -49,9 +49,9 @@ $(function () {
 $(document).ready(function() {
     if ($("td").length === 0) {
         console.log("no sales");
-        $("table").after("<div id='nosales'><h1 >No sales! :(</h1><button class='ui button'>Add one?</button></div>")
+        $("table").after("<div id='nosales'><h1 >No sales! :(</h1></div>")
     }
-    $(document).on("click", "#nosales", function() {
+    $(document).on("click", ".addsale", function() {
         window.location = "/sale"
     })
 });
