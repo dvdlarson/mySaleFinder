@@ -19,7 +19,7 @@ module.exports = function (app) {
 
 	//login page
 	app.get("/login", function (req, res) {
-		
+
 		console.log("saved route: " + req.session.returnTo);
 		res.render("login", {
 			style: "login"
@@ -56,9 +56,9 @@ module.exports = function (app) {
 				if (req.query.username === data[i].dataValues.username &&
 					req.query.password === data[i].dataValues.password) {
 					req.session.user = data[i];
-					if(!req.session.returnTo) {
+					if (!req.session.returnTo) {
 						res.redirect('/');
-					} 
+					}
 					res.redirect(req.session.returnTo);
 					delete req.session.returnTo;
 				}
@@ -276,13 +276,14 @@ module.exports = function (app) {
 			end_date: req.body.end_date,
 			start_time: req.body.start_time,
 			end_time: req.body.end_time,
-			on_street_parking: 1,
-			inside_outside: 1,
-			weather_cancel: 1,
+			on_street_parking: req.body.on_street_parking,
+			inside_outside: req.body.inside_outside,
+			weather_cancel: req.body.weather_cancel,
 			items_desc: req.body.items_desc,
 			city: req.body.city,
 			state: req.body.state,
 			zip_cd: req.body.zip_cd,
+			address: req.body.address,
 			full_address: req.body.full_address,
 
 		}, {
