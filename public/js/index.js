@@ -27,7 +27,7 @@ $(document).ready(function() {
     });
     // Sell panel click event
     $("#right-panel").click(function() {
-        $(location).attr('href', "/login");
+        $(location).attr('href', "/manage");
     });
     // Buy panel click event
     $("#left-panel").click(function() {

@@ -68,7 +68,7 @@ app.use(session({
 
 // Import routes and give the server access to them.
 require("./controllers/mysales.js")(app);
-require("./controllers/userControllers.js")(app);
+//require("./controllers/userControllers.js")(app);
 //app.use(routes);
 
 // Start our server so that it can begin listening to client requests.

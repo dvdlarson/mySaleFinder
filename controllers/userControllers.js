@@ -8,56 +8,56 @@ var Login = require("../credentials/login");
 var Unique = require("../credentials/uniqueUser")
 
 module.exports = function (app) {
-    var sessionChecker = (req, res, next) => {
-        if (req.session.user && req.cookies.user_sid) {
-            res.redirect('/manage');
-        } else {
-            next();
-        }
-    };
+    // var sessionChecker = (req, res, next) => {
+    //     if (req.session.user && req.cookies.user_sid) {
+    //         res.redirect('/manage');
+    //     } else {
+    //         next();
+    //     }
+    // };
     //user log in
-    app.get('/login', sessionChecker, (req, res) => {
-            res.render("login", {
-                style: "login"
-            });
-        })
-        .post((req, res) => {
-            var username = req.body.username,
-                password = req.body.password;
+    // app.get('/login', sessionChecker, (req, res) => {
+    //         res.render("login", {
+    //             style: "login"
+    //         });
+    //     })
+    //     .post((req, res) => {
+    //         var username = req.body.username,
+    //             password = req.body.password;
 
-            User.findOne({
-                where: {
-                    username: username
-                }
-            }).then(function (user, password) {
-                //might need to remove the passsword from this function
-                if (!user) {
-                    res.render("login", {
-                        style: "login"
-                    });
-                } else if (!User.checkPW(password, user.hash)) {
-                    res.render("login", {
-                        style: "login"
-                    });
-                } else {
-                    req.session.user = user.dataValues;
-                    res.render("manage", {
-                        style: "manage"
-                    });
-                }
-            });
-        });
+    //         User.findOne({
+    //             where: {
+    //                 username: username
+    //             }
+    //         }).then(function (user, password) {
+    //             //might need to remove the passsword from this function
+    //             if (!user) {
+    //                 res.render("login", {
+    //                     style: "login"
+    //                 });
+    //             } else if (!User.checkPW(password, user.hash)) {
+    //                 res.render("login", {
+    //                     style: "login"
+    //                 });
+    //             } else {
+    //                 req.session.user = user.dataValues;
+    //                 res.render("manage", {
+    //                     style: "manage"
+    //                 });
+    //             }
+    //         });
+    //     });
     //in the .then function, added password, added hash to the else if line
     //checkPW compares 2 passwords, need to make sure I am properly calling them
     //console.logs will be our friends.
 
     //create account
-    app.get('/signup', sessionChecker, (req, res) => {
-        res.render("signup", {
-            style: "signup"
-        });
+    // app.get('/signup', sessionChecker, (req, res) => {
+    //     res.render("signup", {
+    //         style: "signup"
+    //     });
         //console.log("sessionChecker, res");
-    });
+    //});
     // var hash;
     // app.post('/api/users', (req, res) => {
     //     var password = req.body.password
@@ -114,12 +114,12 @@ module.exports = function (app) {
     // });
 
     //logout
-    app.get('/logout', (req, res) => {
-        if (req.session.user && req.cookies.user_sid) {
-            res.clearCookie('user_sid');
-            res.redirect('/');
-        } else {
-            res.redirect('/login');
-        }
-    });
+//     app.get('/logout', (req, res) => {
+//         if (req.session.user && req.cookies.user_sid) {
+//             res.clearCookie('user_sid');
+//             res.redirect('/');
+//         } else {
+//             res.redirect('/login');
+//         }
+//     });
 }

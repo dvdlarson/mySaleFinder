@@ -10,15 +10,27 @@
   </div>
   {{!--
   <div id="map" class="ui center aligned grid"></div> --}}
-    <div>
-        <div class="ui form ">
-            <div class="field">
-                <label id="yourAddress">Enter your starting address</label>
-                <input placeholder="123 Main St." type="text">
-            </div>
-            <div id="getroute" class="ui submit button">Get My Route!</div>
-        </div>
+  <div>
+    <table>
+      <tr>
+        <td>
+          <div id="map-canvas" style="height: 500px; border: 2px solid #3872ac;"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="directions_panel"></div>
+        </td>
+      </tr>
+    </table>
+    <div class="ui form ">
+      <div class="field">
+        <label id="yourAddress">Enter your starting address</label>
+        <input placeholder="123 Main St." type="text">
+      </div>
+      <div id="getroute" class="ui submit button">Get My Route!</div>
     </div>
+  </div>
   <div id="cards-wrapper">
     <ul id="salecards">
       {{#each fav}}
@@ -27,8 +39,10 @@
           <div class="content">
             <div class="header">{{dataValues.Sale.dataValues.title}}</div>
             <div class="description">
-                {{!-- <img src="http://garagesaleacademy.com/wp-content/uploads/2013/11/yardsalesign.jpg" alt=""> --}}
-                <p>{{formatDate dataValues.Sale.dataValues.start_date "MMM Do"}} - {{formatDate dataValues.Sale.dataValues.end_date "MMM Do"}}</p>
+              {{!--
+              <img src="http://garagesaleacademy.com/wp-content/uploads/2013/11/yardsalesign.jpg" alt=""> --}}
+              <p>{{formatDate dataValues.Sale.dataValues.start_date "MMM Do"}} - {{formatDate dataValues.Sale.dataValues.end_date
+                "MMM Do"}}</p>
             </div>
           </div>
           <div class="extra content">
@@ -37,9 +51,7 @@
               Favorite
             </span>
 
-            {{#if dataValues.Sale.dataValues.weather_cancel}} 
-            
-            {{else}}
+            {{#if dataValues.Sale.dataValues.weather_cancel}} {{else}}
             <span class="left floated tint" data-id={{dataValues.Sale.dataValues.id}}>
               <i class="tint icon"></i>
               Open during rain

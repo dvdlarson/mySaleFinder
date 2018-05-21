@@ -1,11 +1,11 @@
-geocoder.geocode(fullAddress)
-    .then(function (res) {
-        latitude = res.latitude;
-        longitude = res.longitude;
-    })
-    .catch(function (err) {
-        console.log(err);
-    });
+// geocoder.geocode(fullAddress)
+//     .then(function (res) {
+//         latitude = res.latitude;
+//         longitude = res.longitude;
+//     })
+//     .catch(function (err) {
+//         console.log(err);
+//     });
 
 
 
@@ -36,6 +36,10 @@ geocoder.geocode(fullAddress)
 //         res.render("buy", hbsObject);
 //     });
 //   });
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
+
 $(document).ready(function () {
     $("#getroute").click(function (event) {
         event.preventDefault();
@@ -43,24 +47,22 @@ $(document).ready(function () {
             method: "GET",
             URL: "/api/favorites"
         }).then(function (fav) {
-            var addressArr = [];
-            var startAddress = $("#yourAddress").val().trim();
+            var addressArr = ["Phoenix, AZ", "Tucson, AZ"];
+            var userStart = $("#yourAddress").val().trim();
 
-            for (var i = 0; i < fav.length; i++) {
-                addressArr.push(fav[i].dataValues.Sale.dataValues.full_address);
-            }
-            var directionsDisplay;
-            var directionsService = new google.maps.DirectionsService();
-            var map;
-            initialize(addressArr);
+            // for (var i = 0; i < fav.length; i++) {
+            //     addressArr.push(fav[i].dataValues.Sale.dataValues.full_address);
+            // }
 
+            initialize(addressArr, userStart);
 
+            google.maps.event.addDomListener(window, 'click', initialize);
 
         });
     });
 });
 
-function initialize(waypoints) {
+function initialize(waypoints, userStart) {
     directionsDisplay = new google.maps.DirectionsRenderer();
 
     //need to get lat/lng of user's starting address and center the map there
@@ -72,16 +74,16 @@ function initialize(waypoints) {
     }
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     directionsDisplay.setMap(map);
-    calcRoute(waypoints);
+    calcRoute(waypoints, userStart);
 }
 
 // need to use the user's starting/ending address from a form
 
-function calcRoute(waypoints) {
+function calcRoute(waypoints, userStart) {
     var start = userStart;
-    var end = userEnd;
+    var end = userStart;
     var waypts = [];
-    var wayptsIn = addressArr;
+    var wayptsIn = waypoints;
     for (var i = 0; i < wayptsIn.length; i++) {
         waypts.push({
             location: wayptsIn[i],
@@ -114,4 +116,4 @@ function calcRoute(waypoints) {
     });
 }
 
-// google.maps.event.addDomListener(window, 'load', initialize);
+// google.maps.event.addDomListener(window, 'click', initialize);
