@@ -6,23 +6,42 @@ $(function () {
             .find(".id") // Gets a descendent with class="id"
             .text(); // Retrieves the text within <td>
         console.log("You pressed a button!" + item);
-        var url = "/sale/" + item;
+        var url = "/edit/" + item;
         console.log(url);
         location.href = url;
         //$(location).attr('href', url)      // Routes to the edit page
     });
 
-
-    $(".delete").click(function () {
+    $(".delete").click(function (event) {
+        event.preventDefault();
+        var item = $(this).closest("tr") // Finds the closest row <tr> 
+            .find(".id") // Gets a descendent with class="id"
+            .text(); // Retrieves the text within <td>        console.log("devoured button " + id + " clicked");
+        var deleted = {
+            active: false
+        };
         var confirmDelete = confirm("This can not be un-done. Continue?");
         if (confirmDelete == false) {
             return;
-        }
-        var $item = $(this).closest("tr") // Finds the closest row <tr> 
-            .find(".id") // Gets a descendent with class="id"
-            .text(); // Retrieves the text within <td>
+        } else {
 
-        var url = "/api/edit/" + $item;
-        $(location).attr('href', url) // Routes to the edit page
-    });
+        $.ajax("/api/delete/" + item, {
+            type: "PUT",
+            data: deleted
+        }).then(function () {
+            location.reload();
+        });
+    }});
+    // $(".delete").click(function () {
+    //     var confirmDelete = confirm("This can not be un-done. Continue?");
+    //     if (confirmDelete == false) {
+    //         return;
+    //     }
+    //     var $item = $(this).closest("tr") // Finds the closest row <tr> 
+    //         .find(".id") // Gets a descendent with class="id"
+    //         .text(); // Retrieves the text within <td>
+
+    //     var url = "/api/edit/" + $item;
+    //     $(location).attr('href', url) // Routes to the edit page
+    // });
 });

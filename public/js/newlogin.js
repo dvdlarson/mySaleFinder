@@ -1,32 +1,35 @@
 $(document).ready(function () {
-
+    var originalPath;
 
     $(".login").on("click", function (event) {
         event.preventDefault();
+        getPath();
+        console.log("oP: " + originalPath)
         var user = {
             username: $(".username").val().trim(),
             password: $(".password").val().trim(),
         };
-        console.log(user);
-
         getUsers(user);
     });
+
+    function getPath() {
+        $.ajax("/origpath", {
+            type: "GET",
+            data: originalPath
+        }).then(function(data) {
+            originalPath = data;
+            console.log("getPath: " + originalPath);
+    });
+}
 
     function getUsers(user) {
         $.ajax("/api/users", {
             type: "GET",
             data: user
         }).then(function (data) {
-            console.log("data: " + data);
-            location.href = "/manage";
+            location.href = originalPath;
+            console.log(originalPath)
         });
         //getUsers();
     };
 });
-
-// function nextPage() {
-//     $.ajax("/manage", {
-//         type: "PUT"
-//   //      data: 
-//     });
-// }
