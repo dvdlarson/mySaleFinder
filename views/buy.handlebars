@@ -36,8 +36,8 @@
               <i class="like icon" id={{id}}></i>
               Favorite
             </span>
-            <span class="left floated color-white">{{formatDateDynamic start_date "MMM Do"}} - {{formatDateDynamic end_date "MMM Do"}} | {{formatTime start_time
-              "h:mm A"}} - {{formatTime end_time "h:mm A"}}</span>
+            <span class="left floated color-white">{{formatDate start_date "MMM Do"}} - {{formatDate end_date "MMM Do"}} | {{formatTime start_time "h:mm A"}} -
+              {{formatTime end_time "h:mm A"}}</span>
             {{!-- {{#if sale.weather_cancel}} {{else}}
             <span class="left floated tint" data-id={{id}}>
               <i class="tint icon"></i>
@@ -57,7 +57,7 @@
   <a class="item" href="/">
     <i class="home icon"></i>
     Home
-  </a> 
+  </a>
   <a class="item" href="#">
     <i class="mail icon"></i>
     Messages
@@ -79,5 +79,7 @@
 </div>
 <h1 id="logo">
   YardPicker
-  <span><i>Yard Sales Made Easy!</i></span>
+  <span>
+    <i>Yard Sales Made Easy!</i>
+  </span>
 </h1>
