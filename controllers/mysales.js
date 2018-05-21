@@ -56,7 +56,10 @@ module.exports = function (app) {
 				if (req.query.username === data[i].dataValues.username &&
 					req.query.password === data[i].dataValues.password) {
 					req.session.user = data[i];
-					res.redirect(req.session.returnTo || '/');
+					if(!req.session.returnTo) {
+						res.redirect('/');
+					} 
+					res.redirect(req.session.returnTo);
 					delete req.session.returnTo;
 				}
 			}
@@ -68,6 +71,23 @@ module.exports = function (app) {
 		var originalPath = req.session.returnTo;
 		console.log("originalPath: " + originalPath);
 		res.send(originalPath);
+	});
+
+	//post user information to database
+	app.post("/api/users", function (req, res) {
+		console.log(JSON.stringify(req.body) + "server side")
+		sale.User.create({
+			username: req.body.username,
+			email: req.body.email,
+			first_name: req.body.first_name,
+			last_name: req.body.last_name,
+			city: req.body.city,
+			state: req.body.state,
+			zip_cd: req.body.zip_cd,
+			password: req.body.password
+		}).then(function (userInfo) {
+			res.json(userInfo);
+		});
 	});
 
 	//account needed for all routes below/////////////////////////////////////////////////////////////////
@@ -187,22 +207,22 @@ module.exports = function (app) {
 
 	});
 
-	//post user information to database
-	app.post("/api/users", function (req, res) {
-		console.log(JSON.stringify(req.body) + "server side")
-		sale.User.create({
-			username: req.body.username,
-			email: req.body.email,
-			first_name: req.body.first_name,
-			last_name: req.body.last_name,
-			city: req.body.city,
-			state: req.body.state,
-			zip_cd: req.body.zip_cd,
-			password: req.body.password
-		}).then(function (userInfo) {
-			res.json(userInfo);
-		});
-	});
+	// //post user information to database
+	// app.post("/api/users", function (req, res) {
+	// 	console.log(JSON.stringify(req.body) + "server side")
+	// 	sale.User.create({
+	// 		username: req.body.username,
+	// 		email: req.body.email,
+	// 		first_name: req.body.first_name,
+	// 		last_name: req.body.last_name,
+	// 		city: req.body.city,
+	// 		state: req.body.state,
+	// 		zip_cd: req.body.zip_cd,
+	// 		password: req.body.password
+	// 	}).then(function (userInfo) {
+	// 		res.json(userInfo);
+	// 	});
+	// });
 
 	//posts sale information to database
 	app.post("/api/addsale", function (req, res) {
