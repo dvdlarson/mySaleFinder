@@ -41,6 +41,7 @@ $(document).ready(function () {
             data: newSale
         }).then(function () {
             console.log("Added new sale: " + newSale);
+            location.href = "/manage";
         });
     });
 
