@@ -1,8 +1,28 @@
 $(document).ready(function () {
+    var url;
+    url = window.location.href;
+    console.log("url" + url + typeof (url));
+    url = url.split("/");
+    for (i = 0; i < url.length; i++) {
+        if (url[i] === "edit") {
+            url[i] = "api/edit"
+        };
+    }
+    url = url.join("/");
+    console.log("url after changes" + url);
     $(".cancel").on("click", function (event) {
         event.preventDefault();
         location.href = "/manage";
     });
+    $.ajax({
+            url: url,
+            method: "GET"
+        })
+        .then(function (editData) {
+            console.log(editData);
+        });
+
+
 
     $(".editsale").on("click", function (event) {
         event.preventDefault();
