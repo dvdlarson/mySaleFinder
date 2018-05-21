@@ -2,6 +2,7 @@
 
 // var router = express.Router();
 // require sale.js
+var path = require("path");
 var sale = require("../models/");
 // var moment = require("moment");
 
@@ -75,9 +76,10 @@ module.exports = function (app) { //home page route
 
 	//generic page routing  
 	app.get("/sale", function (req, res) {
-		res.render("newsale", {
-			style: "newsale"
-		});
+		// res.render("newsale", {
+		// 	style: "newsale"
+		// });
+		res.sendFile(path.join(__dirname, "../public/html/sale_form.html"));
 	});
 
 	app.get("/edit/:id", function (req, res) {
@@ -283,7 +285,7 @@ module.exports = function (app) { //home page route
 			zip_cd: req.body.zip_cd,
 			full_address: req.body.full_address,
 			active: req.body.active,
-			UserId: req.body.UserId
+			UserId: req.session.user.id
 
 		}).then(function (userInfo) {
 			res.json(userInfo);

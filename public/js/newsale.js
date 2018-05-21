@@ -1,40 +1,16 @@
 $(document).ready(function () {
     // $('#example1').calendar();
 
-    $('.caldar').calendar({
-        type: 'date',
-        endCalendar: $('#rangeend')
-    });
 
-
-    $('#rangeend').calendar({
-        type: 'date',
-        startCalendar: $('#rangestart')
-    });
-
-    $('#startTime').calendar({
-        type: 'time'
-    });
-    $('#endTime').calendar({
-        type: 'time'
-    });
     $('.ui.radio.checkbox')
         .checkbox();
     $('select.dropdown')
         .dropdown();
-    console.log("loaded the functions");
-    if (typeof jQuery != 'undefined') {  
-        // jQuery is loaded => print the version
-        alert(jQuery.fn.jquery);
-    }
 
-    $("#rangestart").on("click",function(event){
-        event.preventDefault();
-        alert("you clicked that ish");
-    })
     //add a burger
     $(".addsale").on("click", function (event) {
         event.preventDefault();
+        console.log($("#rangeend").val() + "testing something");
         var fullAddress = $("#address").val().trim() + " " + $("#city").val().trim() + " " + $("#state").val().trim() + " " + $("#zip").val().trim()
         console.log("full addr: " + fullAddress);
 
@@ -42,10 +18,10 @@ $(document).ready(function () {
         var newSale = {
             title: $("#title").val().trim(),
             sale_type: $("#sale_type").val().trim(),
-            start_date: $("#rangestart").val().trim(),
-            end_date: $("#rangeend").val().trim(),
-            start_time: $("#startTime").val().trim(),
-            end_time: $("#endTime").val().trim(),
+            start_date: $("#rangestart").val(),
+            end_date: $("#rangeend").val(),
+            start_time: $("#starttime").val(),
+            end_time: $("#endtime").val(),
             on_street_parking: $("#parking").val().trim(),
             inside_outside: $("#inside_outside").val().trim(),
             weather_cancel: $("#weather_cancel").val().trim(),
@@ -55,7 +31,7 @@ $(document).ready(function () {
             zip_cd: $("#zip").val().trim(),
             full_address: fullAddress,
             active: 1,
-            UserId: req.session.user.id
+            // UserId: req.session.user.id
 
         };
         console.log(newSale);
