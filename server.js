@@ -18,8 +18,14 @@ app.engine("handlebars", exphbs({
         formatDate: function (date, format) {
             return moment(date).format(format);
         },
+        formatDateDynamic: function (date, format) {
+            return moment(date).format(format);
+        },
         formatTime: function (time, format) {
             return moment(time, "HH:mm:ss").format(format);
+        },
+        randomPic: function() {
+            return "../public/img/sale" + Math.floor(Math.random() * 6) + ".PNG";
         }
     }
 }));

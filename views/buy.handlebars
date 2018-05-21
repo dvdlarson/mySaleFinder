@@ -1,67 +1,72 @@
-
 {{!-- Google maps API --}}
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW5Lqqx7a84oy9vgiTC4ueDHU7ecjLCLw&callback=getPos"
   type="text/javascript"></script>
 <script src="../public/js/buy.js"></script>
 
-<div id="content-wrapper">
-  {{!-- Map --}}
-  <div class="" id="map-wrapper">
-    <div id="map"></div>
-  </div>
-  {{!--
-  <div id="map" class="ui center aligned grid"></div> --}}
+<div class="img-background">
 
-  <div id="cards-wrapper">
-    <ul id="salecards">
-      {{#each sale}}
-      <li id="{{id}}">
-        <div class="ui card">
-          <div class="content">
-            <div class="header color-white">{{title}}</div>
-            <div class="description">
-                <img src="https://www.hope2all.org/wp-content/uploads/2017/09/YardSale-1.gif"  width="100px" alt="yard sale">
-                {{!-- <span>{{formatTime start_time "hh:mm"}} - {{formatTime end_time "hh:mm"}}</span> --}}
-                <p class="color-white">{{items_desc}}</p>
+</div>
+<div class="page-wrapper">
+
+</div>
+  <div id="content-wrapper">
+    {{!-- Map --}}
+    <div class="" id="map-wrapper">
+      <div id="map"></div>
+    </div>
+    {{!--
+    <div id="map" class="ui center aligned grid"></div> --}}
+
+    <div id="cards-wrapper">
+      <ul id="salecards">
+        {{#each sale}}
+        <li id="{{id}}">
+          <div class="ui card">
+            <div class="content">
+              <div class="header">{{title}}</div>
+                <div class="image">
+
+                </div>
+              <div class="description"> 
+                  <p class="color-white">{{items_desc}}</p>
+              </div>
+            </div>
+            <div class="extra content">
+              <span class="right floated star color-white">
+                <i class="like icon" id={{id}}></i>
+                Favorite
+              </span>
+              <span class="left floated color-white">{{formatDateDynamic start_date "MMM Do"}} - {{formatDateDynamic end_date "MMM Do"}} | {{formatTime start_time "h:mm A"}} - {{formatTime end_time "h:mm A"}}</span>
+              {{!-- {{#if sale.weather_cancel}} 
+              
+              {{else}}
+              <span class="left floated tint" data-id={{id}}>
+                <i class="tint icon"></i>
+                Open during rain
+              </span>
+              {{/if}} --}}
             </div>
           </div>
-          <div class="extra content">
-            <span class="right floated star color-white" data-id={{id}}>
-              <i class="like icon"></i>
-              Favorite
-            </span>
-            <span class="left floated color-white">{{formatDate start_date "MMM Do"}} - {{formatDate end_date "MMM Do"}}</span>
-            {{!-- {{#if sale.weather_cancel}} 
-            
-            {{else}}
-            <span class="left floated tint" data-id={{id}}>
-              <i class="tint icon"></i>
-              Open during rain
-            </span>
-            {{/if}} --}}
-          </div>
-        </div>
-      </li>
-      {{/each}}
-    </ul>
-  </div>
-</div>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>  
 
-    {{!-- Navbar --}}
-<div class="ui bottom demo inverted five item labeled icon sidebar menu overlay visible" style="">
-  {{!-- <h1 id="logo">YardPicker></h1> --}}
+
+{{!-- Navbar --}}
+<div class="ui bottom demo inverted nine item labeled icon sidebar menu overlay visible" style="">
   <a class="item" href="/">
     <i class="home icon"></i>
     Home
   </a>
   <a class="item">
-    <img id="soon-icon" src="https://www.deftech.academy/wp-content/uploads/2016/02/Coming-Soon.png" alt="coming soon">
     <i class="mail icon"></i>
     Messages
   </a>
   <a class="item">
-    <i class="road icon"></i>
-    My Route
+    <i class="heart icon"></i>
+    Favorites
   </a>
   <a class="item">
     <i class="shop icon"></i>

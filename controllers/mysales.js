@@ -62,6 +62,7 @@ module.exports = function (app) { //home page route
 				var hbsObject = {
 					sale: dbSale,
 					style: "buy",
+					background: "../public/img/sale" + Math.floor(Math.random() * 6) + ".PNG"
 				};
 				// send to the buy file to display the sales
 				res.render("buy", hbsObject);

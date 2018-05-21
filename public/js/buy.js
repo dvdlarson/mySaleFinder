@@ -64,5 +64,33 @@ function drawMarkers() {
 $(document).ready(function () {
   //Create new map and go to users position
   getPos();
+  for (var i = 0; i < $(".image").length; i++) {
+    $(".image").each(function() {
+      $(this).css({"background-image": "url('../public/img/sale" + Math.floor(Math.random() * 5 + 1) + ".PNG')"})
+    });
+  }
+
+  $(".like").one("click", function (event) {
+    event.preventDefault();
+    //if user isnt logged in, display an alert
+    var saleID = this.id;
+    $(this).css({"color": "red"});
+    var favData = {
+      saleId: saleID,
+      //UserId: req.session.user.id
+
+    };
+    console.log(favData);
+
+    $.ajax("/api/addfav", {
+      type: "POST",
+      data: favData
+    }).then(function () {
+
+      console.log("Added new sale: " + favData);
+    });
+  });  
 });
+
+
 

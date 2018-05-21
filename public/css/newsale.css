@@ -19,3 +19,11 @@ form h4, label, form h3 {
         padding-right: 10px!important
     }
 } */
+
+label {
+	color: white!important;
+}
+
+textarea {
+    max-height: 8em!important;
+}

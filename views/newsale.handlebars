@@ -1,121 +1,218 @@
-{{!-- Form --}} {{!-- Start Date/End Date Start Time/End Time Is there ample street parking? Inside or Outside? Will you
-cancel for rain? Items for sale description (Upload picture) --}}
-<form class="ui form">
-	<h4 class="ui dividing header teal">Create a Sale</h4>
-	{{!-- first row --}} {{!-- username --}}
-	<div class="field five wide">
-		<label>Title</label>
-		<div class="field">
-			<input type="text" placeholder="Title" id="title" required>
-		</div>
-	</div>
-	{{!-- second row --}} {{!-- password --}}
+<!DOCTYPE html>
+<html lang="en">
 
-	<div class="field">
-		<label>Sale Type</label>
-		<select class="ui fluid dropdown" id="sale_type" required>
-			<option value="yard_sale">Yard Sale</option>
-			<option value="estate_sale">Estate Sale</option>
-			<option value="auction">Auction</option>
-		</select>
-	</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/css/newsale.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.css">
+</head>
 
-	<h3>Dates</h3>
-	<div class="ui form">
-		<div class="two fields">
-			<div class="field">
-				<label>Start date</label>
-				<div class="ui calendar" id="rangestart">
-					<div class="ui input left icon">
-						<i class="calendar icon"></i>
-						<input type="text" placeholder="Start">
-					</div>
-				</div>
-			</div>
-			<div class="field">
-				<label>End date</label>
-				<div class="ui calendar" id="rangeend">
-					<div class="ui input left icon">
-						<i class="calendar icon"></i>
-						<input type="text" placeholder="End">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br/> {{!-- last name --}}
-	<h3>Time of Sale</h3>
-	<div class="ui calendar" id="startTime">
-		<div class="ui input left icon">
-			<i class="time icon"></i>
-			<input type="text" placeholder="Start Time">
-		</div>
-	</div>
-	<br/>
+<body>
+    <script src="../../public/js/inputmask/jquery.inputmask.bundle.min.js"></script>
+    <script src="../../public/js/inputmask/inputmask.phone.extensions.js"></script>
+    <script src="../../public/js/inputmask/phone.js"></script>
+    <script src="../../public/js/newsignup.js"></script>
+    <!-- {{!-- Form --}} -->
+    <form class="ui form">
+        <h3 class="ui dividing header teal">Sale Info</h4>
+            <!-- {{!-- first row --}} -->
+            <div class="two fields">
+                <div class="field">
+                    <label>Title</label>
+                    <input type="text" placeholder="Title" id="title" required>
+                </div>
+                <div class="field">
+                    <label>Sale Type</label>
+                    <select class="ui fluid dropdown" id="sale_type" required>
+                        <option value="yard_sale">Yard Sale</option>
+                        <option value="estate_sale">Estate Sale</option>
+                        <option value="auction">Auction</option>
+                    </select>
+                </div>
+            </div>
+            <div class="one field">
+                <div class="field">
+                    <label>Description - Items for sale, special notes, etc</label>
+                    <textarea id="desc" placeholder="What are you selling? Be descriptive!"></textarea>
+                </div>
+            </div>
+            <div class="three fields">
+                <div class="field">
+                    <label>Is there street parking available?</label>
+                    <select class "ui fluid dropdown" id="parking">
+                        <option selected="selected" value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Is it inside, outside, or both?</label>
+                    <select class "ui fluid dropdown" id="inside_outside">
+                        <option selected="selected" value="outside">Outside</option>
+                        <option value="inside">Inside</option>
+                        <option value="both">Both</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Will you cancel for rain?</label>
+                    <select class "ui fluid dropdown" id="weather_cancel">
+                        <option selected="selected" value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+            </div>
+            <!-- {{!-- second row --}} {{!-- password --}} -->
+            <h3 class="ui dividing header teal">Date & Time</h3>
+            <div class="two fields">
+                <div class="field">
+                    <label>Start Date</label>
+                    <div class="ui calendar" id="rangestart">
+                        <div class="ui input left icon">
+                            <i class="calendar icon"></i>
+                            <input type="text" placeholder="Start" id="startDate">
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>End Date</label>
+                    <div class="ui calendar" id="rangeend">
+                        <div class="ui input left icon">
+                            <i class="calendar icon"></i>
+                            <input type="text" placeholder="End" id="endDate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="two fields">
+                <div class="field">
+                    <label>Start Time</label>
+                    <div class="ui calendar" id="starttime">
+                        <div class="ui input left icon">
+                            <i class="time icon"></i>
+                            <input type="text" placeholder="Time" id="startTime">
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>End Time</label>
+                    <div class="ui calendar" id="endtime">
+                        <div class="ui input left icon">
+                            <i class="time icon"></i>
+                            <input type="text" placeholder="Time" id="endTime">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- {{!-- third row --}} {{!-- email --}} -->
+            <!-- {{!-- fourth row --}} -->
+            <h3 class="ui dividing header teal">Address</h3>
+            <div class="one field">
+                <label>Street</label>
+                <div class="field">
+                    <input type="text" placeholder="Street" id="address" required>
+                </div>
+            </div>
+            <!-- {{!-- fifth row --}} {{!-- city --}} -->
+            <div class="three fields">
+                <div class="field">
+                    <label>City</label>
+                    <div class="field">
+                        <input type="text" placeholder="City" id="city" required>
+                    </div>
+                </div>
+                <!-- {{!-- state --}} -->
+                <div class="field">
+                    <label>State</label>
+                    <select class="ui fluid dropdown" id="state" required>
+                        <option value="">State</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DE">Delaware</option>
+                        <option value="DC">District Of Columbia</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="IA">Iowa</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="ME">Maine</option>
+                        <option value="MD">Maryland</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MT">Montana</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NY">New York</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VT">Vermont</option>
+                        <option value="VA">Virginia</option>
+                        <option value="WA">Washington</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WY">Wyoming</option>
+                    </select>
+                </div>
+                <!-- {{!-- zip --}} -->
+                <div class="field">
+                    <label>Zip</label>
+                    <div class="field">
+                        <input type="text" placeholder="Zip" id="zip" required>
+                    </div>
+                </div>
+            </div>
+            <div class="ui fluid large teal submit login button">Create Sale</div>
+    </form>
+    <!-- {{!-- Navbar --}} -->
+    <div class="ui bottom demo inverted nine item labeled icon sidebar menu overlay visible" style="">
+        <a class="item" href="/">
+            <i class="home icon"></i>
+            Home
+        </a>
+        <a class="item">
+            <i class="mail icon"></i>
+            Messages
+        </a>
+        <a class="item">
+            <i class="heart icon"></i>
+            Favorites
+        </a>
+        <a class="item">
+            <i class="shop icon"></i>
+            My Shop
+        </a>
+        <a class="item">
+            <i class="settings icon"></i>
+            Settings
+        </a>
+    </div>
+</body>
 
-	<div class="ui calendar" >
-		<div class="ui input left icon" id="endTime">
-			<i class="time icon"></i>
-			<input type="text" placeholder="End Time">
-		</div>
-	</div>
-	<br/>
-
-	<div class="field">
-		<label>Will there be street parking available?</label>
-
-		<select class="ui fluid dropdown" id="parking" required>
-			<option value="">Parking</option>
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-
-		</select>
-	</div>
-	<div class="field">
-		<label>Will the sale be inside or outside?</label>
-
-		<select class="ui fluid dropdown" id="inside_outside" required>
-			<option value="Inside">Inside</option>
-			<option value="Outside">Inside</option>
-			<option value="Inside/Outside">Both</option>
-
-		</select>
-	</div>
-	<div class="field">
-		<label>Is this a rain or shine sale?</label>
-
-		<select class="ui fluid dropdown" id="weather_cancel" required>
-			<option value="">Yes</option>
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-
-		</select>
-	</div>
-
-
-
-	<div class="ui fluid large teal submit addsale button">Sign Up</div>
-</form>
-{{!-- Navbar --}}
-<div class="ui bottom demo inverted nine item labeled icon sidebar menu overlay visible" style="">
-	<a class="item" href="/">
-		<i class="home icon"></i>
-		Home
-	</a>
-	<a class="item">
-		<i class="mail icon"></i>
-		Messages
-	</a>
-	<a class="item">
-		<i class="heart icon"></i>
-		Favorites
-	</a>
-	<a class="item">
-		<i class="shop icon"></i>
-		My Shop
-	</a>
-	<a class="item">
-		<i class="settings icon"></i>
-		Settings
-	</a>
-</div>
+</html>
