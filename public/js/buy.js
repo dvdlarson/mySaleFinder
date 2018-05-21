@@ -78,13 +78,22 @@ $(document).ready(function () {
   //Create new map and go to users position
   // initMap();
   getPos();
+  for (var i = 0; i < $(".image").length; i++) {
+    $(".image").each(function () {
+      $(this).css({
+        "background-image": "url('../public/img/sale" + Math.floor(Math.random() * 7 + 1) + ".PNG')"
+      })
+    });
+  }
 
 
   $(".like").on("click", function (event) {
     event.preventDefault();
     //if user isnt logged in, display an alert
     var saleID = this.id;
-    $(this).css({"color": "red"});
+    $(this).css({
+      "color": "red"
+    });
     var favData = {
       saleId: saleID,
       //UserId: req.session.user.id
