@@ -1,0 +1,96 @@
+{{!-- Google maps API --}}
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW5Lqqx7a84oy9vgiTC4ueDHU7ecjLCLw&callback=getPos"
+  type="text/javascript"></script>
+<script src="../public/js/mylist.js"></script>
+
+<div id="content-wrapper">
+  {{!-- Map --}}
+  <div class="" id="map-wrapper">
+    <div id="map"></div>
+  </div>
+  {{!--
+  <div id="map" class="ui center aligned grid"></div> --}}
+  <div>
+    <table>
+      <tr>
+        <td>
+          <div id="map-canvas" style="height: 500px; border: 2px solid #3872ac;"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="directions_panel"></div>
+        </td>
+      </tr>
+    </table>
+    <div class="ui form ">
+      <div class="field">
+        <label id="yourAddress">Enter your starting address</label>
+        <input placeholder="123 Main St." type="text">
+      </div>
+      <div id="getroute" class="ui submit button">Get My Route!</div>
+    </div>
+  </div>
+  <div id="cards-wrapper">
+    <ul id="salecards">
+      {{#each fav}}
+      <li>
+        <div class="ui card">
+          <div class="content">
+            <div class="header">{{dataValues.Sale.dataValues.title}}</div>
+            <div class="description">
+              {{!--
+              <img src="http://garagesaleacademy.com/wp-content/uploads/2013/11/yardsalesign.jpg" alt=""> --}}
+              <p>{{formatDate dataValues.Sale.dataValues.start_date "MMM Do"}} - {{formatDate dataValues.Sale.dataValues.end_date
+                "MMM Do"}}</p>
+            </div>
+          </div>
+          <div class="extra content">
+            <span class="right floated star" data-id={{dataValues.Sale.dataValues.id}}>
+              <i class="like icon"></i>
+              Favorite
+            </span>
+
+            {{#if dataValues.Sale.dataValues.weather_cancel}} {{else}}
+            <span class="left floated tint" data-id={{dataValues.Sale.dataValues.id}}>
+              <i class="tint icon"></i>
+              Open during rain
+            </span>
+            {{/if}}
+          </div>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+
+{{!-- Navbar --}}
+<div class="ui bottom demo inverted nine item labeled icon sidebar menu overlay visible" style="">
+  <a class="item" href="/">
+    <i class="home icon"></i>
+    Home
+  </a> 
+  <a class="item" href="#">
+    <i class="mail icon"></i>
+    Messages
+    <img id="soon" src="../public/img/Coming-Soon.png">
+  </a>
+  <a class="item" href="#">
+    <i class="road icon"></i>
+    Routes
+    <img id="soon" src="../public/img/Coming-Soon.png">
+  </a>
+  <a class="item" href="/manage">
+    <i class="shop icon"></i>
+    My Sales
+  </a>
+  <a class="item" href="/login">
+    <i class="user icon"></i>
+    Log In
+  </a>
+</div>
+<h1 id="logo">
+  YardPicker
+  <span><i>Yard Sales Made Easy!</i></span>
+</h1>

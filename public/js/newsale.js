@@ -7,7 +7,7 @@ $(document).ready(function () {
     $('select.dropdown')
         .dropdown();
 
-    //add a burger
+    //add a sale
     $(".addsale").on("click", function (event) {
         event.preventDefault();
         console.log($("#rangeend").val() + "testing something");
@@ -41,6 +41,7 @@ $(document).ready(function () {
             data: newSale
         }).then(function () {
             console.log("Added new sale: " + newSale);
+            location.href="/manage";
         });
     });
 

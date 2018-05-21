@@ -70,7 +70,4 @@
         width: 100%;
         height: calc(50vh - 36px);
     } 
-    #divider, #logo {
-        display: none;
-    }
 }

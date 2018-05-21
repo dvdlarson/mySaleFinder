@@ -63,6 +63,23 @@ module.exports = function (app) {
 		});
 	});
 
+	//post user information to database
+	app.post("/api/users", function (req, res) {
+		console.log(JSON.stringify(req.body) + "server side")
+		sale.User.create({
+			username: req.body.username,
+			email: req.body.email,
+			first_name: req.body.first_name,
+			last_name: req.body.last_name,
+			city: req.body.city,
+			state: req.body.state,
+			zip_cd: req.body.zip_cd,
+			password: req.body.password
+		}).then(function (userInfo) {
+			res.json(userInfo);
+		});
+	});
+
 	app.get("/origpath", function (req, res) {
 		var originalPath = req.session.returnTo;
 		console.log("originalPath: " + originalPath);
@@ -170,7 +187,8 @@ module.exports = function (app) {
 			.then(function (dbSale) {
 
 				var hbsObject = {
-					sale: dbSale
+					sale: dbSale,
+					style: "manage"
 				};
 				res.render("manage", hbsObject);
 			});
@@ -212,23 +230,6 @@ module.exports = function (app) {
 	// 		}
 	// 	});
 	// });
-
-	//post user information to database
-	app.post("/api/users", function (req, res) {
-		console.log(JSON.stringify(req.body) + "server side")
-		sale.User.create({
-			username: req.body.username,
-			email: req.body.email,
-			first_name: req.body.first_name,
-			last_name: req.body.last_name,
-			city: req.body.city,
-			state: req.body.state,
-			zip_cd: req.body.zip_cd,
-			password: req.body.password
-		}).then(function (userInfo) {
-			res.json(userInfo);
-		});
-	});
 
 	//posts sale information to database
 	app.post("/api/addsale", function (req, res) {

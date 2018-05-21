@@ -34,11 +34,11 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true,
         },
         start_time: {
-            type: DataTypes.TIME,
+            type: DataTypes.STRING,
             allowNull: true,
         },
         end_time: {
-            type: DataTypes.TIME,
+            type: DataTypes.STRING,
             allowNull: true,
         },
         on_street_parking: {
