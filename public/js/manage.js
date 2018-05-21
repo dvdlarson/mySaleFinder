@@ -45,3 +45,13 @@ $(function () {
     //     $(location).attr('href', url) // Routes to the edit page
     // });
 });
+
+$(document).ready(function() {
+    if ($("td").length === 0) {
+        console.log("no sales");
+        $("table").after("<div id='nosales'><h1 >No sales! :(</h1><button class='ui button'>Add one?</button></div>")
+    }
+    $(document).on("click", "#nosales", function() {
+        window.location = "/sale"
+    })
+});
