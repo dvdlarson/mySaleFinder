@@ -24,10 +24,10 @@ $(document).ready(function () {
             console.log(editData);
             $('#title').val(d.title);
             $('#sale_type').val(d.sale_type);
-            $('#rangestart').attr('placeholder', d.start_date);
-            $('#rangeend').attr('placeholder', d.end_date);
-            $('#startTime').attr('placeholder', d.start_time);
-            $('#endTime').attr('placeholder', d.end_time);
+            $('#startDate').val(d.start_date);
+            $('#endDate').val(d.end_date);
+            $('#startTime').val(d.start_time);
+            $('#endTime').val(d.end_time);
             if (d.on_street_parking === "1") {
                 $('#parking option:selected').text('Yes');
             } else {
