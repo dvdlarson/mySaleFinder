@@ -16,8 +16,11 @@ $(document).ready(function () {
         $.ajax("/origpath", {
             type: "GET",
             data: originalPath
-        });
-    }
+        }).then(function(data) {
+            originalPath = data;
+            console.log("getPath: " + originalPath);
+    });
+}
 
     function getUsers(user) {
         $.ajax("/api/users", {

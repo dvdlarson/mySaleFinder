@@ -1,6 +1,5 @@
 var path = require("path");
 var sale = require("../models/");
-var originalPath;
 module.exports = function (app) {
 	//no account needed for the following routes//////////////////////////////////////////////////////
 	//home page route
@@ -20,7 +19,8 @@ module.exports = function (app) {
 
 	//login page
 	app.get("/login", function (req, res) {
-		console.log("saved route: " + originalPath);
+		
+		console.log("saved route: " + req.session.returnTo);
 		res.render("login", {
 			style: "login"
 		});
@@ -64,9 +64,10 @@ module.exports = function (app) {
 	});
 
 	app.get("/origpath", function (req, res) {
-		res.json(originalPath);
+		var originalPath = req.session.returnTo;
 		console.log("originalPath: " + originalPath);
-	})
+		res.send(originalPath);
+	});
 
 	//account needed for all routes below/////////////////////////////////////////////////////////////////
 	// causes all other pages to go to the login page if not logged in
@@ -84,8 +85,6 @@ module.exports = function (app) {
 	app.use(function (req, res, next) {
 		if (req.session.user == null) {
 			req.session.returnTo = req.path;
-			originalPath = req.session.returnTo;
-
 			// if user is not logged-in redirect back to login page //
 			res.redirect('/login');
 		} else {
