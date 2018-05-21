@@ -18,8 +18,11 @@ var db = require("./models");
 app.engine("handlebars", exphbs({
     defaultLayout: "main",
     helpers: {
+        formatShortDate: function (date, format) {
+            return moment(date).format("M/D");
+        },
         formatDate: function (date, format) {
-            return moment(date).format(format);
+            return moment(date).format("MM-DD-YYYY");
         },
         formatTime: function (time, format) {
             return moment(time, "HH:mm:ss").format(format);

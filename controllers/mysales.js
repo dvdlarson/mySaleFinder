@@ -14,6 +14,38 @@ module.exports = function (app) { //home page route
 		});
 	});
 
+	app.get("/favorites", function (req, res) {
+		console.log("user.id: " + req.session.user.id);
+		sale.Favorite.findAll({
+			where: {
+				UserId: req.session.user.id, 
+			},
+			//include: [sale.User],
+			include: [sale.Sale]
+		}).then(function (fav) {
+			console.log(fav);
+			var hbsObject = {
+				fav: fav
+				//style: "newsale"
+			};
+			res.render("mylist", hbsObject);
+		});
+	});
+
+	app.get("/api/favorites", function (req, res) {
+		console.log("user.id: " + req.session.user.id);
+		sale.Favorite.findAll({
+			where: {
+				UserId: req.session.user.id, 
+			},
+			//include: [sale.User],
+			include: [sale.Sale]
+		}).then(function (fav) {
+			console.log(fav);
+			res.send(fav);
+		});
+	});
+
 	// app.get("/buy", function (req, res) {
 	// 	res.render("buy", {
 	// 		style: "buy"
@@ -261,13 +293,19 @@ module.exports = function (app) { //home page route
 	});
 
 	app.post("/api/addfav", function (req, res) {
-		console.log(JSON.stringify(req.body) + "server side")
+		//console.log(JSON.stringify(req.body) + "server side");
+		console.log("saleId: " + req.body.saleId);
+		var saleId = req.body.saleId
 		sale.Favorite.create({
-			sale_id: req.body.sale_id,
-			UserId: req.body.UserId
+			//sale_id: req.body.sale_id,
+			SaleId: saleId,
+			UserId: req.session.user.id
 
 		}).then(function (result) {
 			console.log("added favorite for userid: " + req.session.user.id);
+			if (!req.session.user.id) {
+				return res.error;
+			}
 		});
 	});
 

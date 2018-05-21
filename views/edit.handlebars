@@ -28,7 +28,7 @@
       <div class="ui calendar">
         <div class="ui input left icon">
           <i class="calendar icon"></i>
-          <input id="rangestart" type="text" placeholder="{{sale.start_date}}">
+          <input id="rangestart" type="text" placeholder="{{formatDate sale.start_date}}">
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@
       <div class="ui calendar">
         <div class="ui input left icon">
           <i class="calendar icon"></i>
-          <input id="rangeend" type="text" placeholder="{{sale.end_date}}">
+          <input id="rangeend" type="text" placeholder="{{formatDate sale.end_date}}">
         </div>
       </div>
     </div>
@@ -69,19 +69,19 @@
   </div>
   <div class="field">
     <label>Address</label>
-    <textarea id="address">{{sale.address}}</textarea>
+    <textbox id="address" placeholder="{{sale.address}}">
   </div>
   <div class="field">
     <label>City</label>
-    <textarea id="city">{{sale.city}}</textarea>
+    <input id="city" placeholder="{{sale.city}}">
   </div>
   <div class="field">
     <label>State</label>
-    <textarea id="state">{{sale.state}}</textarea>
+    <input id="state" placeholder="{{sale.state}}">
   </div>
   <div class="field">
     <label>Zip Code</label>
-    <textarea id="zip">{{sale.zip_cd}}</textarea>
+    <input id="zip" placeholder="{{sale.zip_cd}}">
   </div>
   <h3>Additonal Details</h3>
   <div class="three fields">
