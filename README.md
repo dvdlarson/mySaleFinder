@@ -1,4 +1,4 @@
-# mySaleFinder
+
 <h1>Yard Picker</h1>
 
 <h2>Project #2 U of A Coding Bootcamp</h2>
