@@ -8,6 +8,7 @@ $(document).ready(function () {
             url[i] = "api/edit"
         };
     }
+    id = url[url.length-1];
     url = url.join("/");
     console.log("url after changes" + url);
     $(".cancel").on("click", function (event) {
@@ -64,7 +65,7 @@ $(document).ready(function () {
 
     $(".editsale").on("click", function (event) {
         event.preventDefault();
-        var id = this.id;
+        //var id = this.id;
         var fullAddress = $("#address").val().trim() + " " + $("#city").val().trim() + " " + $("#state").val().trim() + " " + $("#zip").val().trim()
         console.log("sale id: " + id);
 
@@ -88,11 +89,11 @@ $(document).ready(function () {
             active: 1,
         };
         console.log(newSale);
-        var puturl = "/api/editsale" + id
+        var puturl = "/api/editsale/" + id
         $.ajax(puturl, {
             type: "PUT",
             data: newSale
-        }).then(function () {
+        }).then(function (data) {
             console.log("Updated sale: " + data);
             location.href = "/manage";
         });
