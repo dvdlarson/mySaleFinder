@@ -6,9 +6,9 @@
 <form class="ui form">
   <h4 class="ui dividing header teal">Seller Information</h4>
   {{!-- first row --}} {{!-- username --}}
-  <div class="field five wide">
-    <label>Username</label>
+  <div class="two fields">
     <div class="field">
+      <label>Username</label>
       <input type="text" placeholder="Username" id="username" required>
     </div>
   </div>
@@ -151,21 +151,27 @@
   <a class="item" href="/">
     <i class="home icon"></i>
     Home
-  </a>
-  <a class="item">
+  </a> 
+  <a class="item" href="#">
     <i class="mail icon"></i>
     Messages
+    <img id="soon" src="../public/img/Coming-Soon.png">
   </a>
-  <a class="item">
-    <i class="heart icon"></i>
-    Favorites
+  <a class="item" href="#">
+    <i class="road icon"></i>
+    Routes
+    <img id="soon" src="../public/img/Coming-Soon.png">
   </a>
-  <a class="item">
+  <a class="item" href="/manage">
     <i class="shop icon"></i>
-    My Shop
+    My Sales
   </a>
-  <a class="item">
-    <i class="settings icon"></i>
-    Settings
+  <a class="item" href="/login">
+    <i class="user icon"></i>
+    Log In
   </a>
 </div>
+<h1 id="logo">
+  YardPicker
+  <span><i>Yard Sales Made Easy!</i></span>
+</h1>

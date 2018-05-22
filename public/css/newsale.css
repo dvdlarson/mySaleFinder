@@ -1,5 +1,42 @@
 body {
-	background-color: rgb(38, 50, 56) !important;
-	padding: 40px !important;
+    background-color: rgb(38, 50, 56)!important;
+    padding: 40px!important;
+}
+
+form {
+    margin: 0 auto;
+    margin-bottom: 100px;
+    width: 800px!important;
+}
+
+form h4, label, form h3 {
+    color: white!important;
+}
+
+label {
+	color: white!important;
+}
+
+textarea {
+    max-height: 8em!important;
+}
+
+form {
+	max-width: 800px!important;
+	margin: 0 auto;
+	margin-bottom: 91px;
 	color: white;
 }
+
+label {
+	color: white!important;
+}
+
+textarea {
+    max-height: 8em!important;
+}
+
+#logo {
+    bottom: 5px;
+}
+

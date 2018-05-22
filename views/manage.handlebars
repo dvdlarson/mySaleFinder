@@ -1,35 +1,62 @@
-    <script src="../../public/js/manage.js"></script>
+<script src="../../public/js/manage.js"></script>
 
-
-
-
-<div>
-  <button class="addsale_btn" onclick="window.location.href='/sale'">Add a New Sale!</button>
-</div>
-<table class="ui sortable striped table manage">
-  <thead>
-     
-    <tr>
-      <th class="">Title</th>
-      <th class="">Sale ID</th>
-      <th class="sorted descending">Start Date</th>
-      <th class="">End Date</th>
-      <th class=""># Going</th>
-      <th class=""></th>
-      <th class=""></th>
-    </tr>
-  </thead>
-  <tbody>
-{{#each sale}} {{#if active}}
+<div id="table-wrapper">
+  <table class="ui sortable striped table manage inverted">
+    <thead>
       
-  <tr>
-      <td>{{title}}</td>
-      <td class="id">{{id}}</td>
-      <td>{{start_date}}</td>
-      <td>{{end_date}}</td>
-      <td>{{going_count}}</td>
-      <td><button class="edit">Edit</button></td>
-      <td><button class="delete">Delete</button</td>
-    </tr>
- {{/if}}{{/each}}
-</table>
+      <tr>
+        <th class="">Title</th>
+        <th class="">Sale ID</th>
+        <th class="sorted descending">Start Date</th>
+        <th class="">End Date</th>
+        <th class=""># Going</th>
+        <th class=""></th>
+        <th class="addsale center aligned">Add a Sale <i class="plus circle icon"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+  {{#each sale}} {{#if active}}
+        
+    <tr>
+        <td>{{title}}</td>
+        <td class="id">{{id}}</td>
+        <td>{{start_date}}</td>
+        <td>{{end_date}}</td>
+        <td>{{going_count}}</td>
+        <td class="edit"><button class="ui teal basic button">Edit</button></td>
+        <td class="delete"><button class="ui red basic button">Delete</button></td>
+      </tr>
+  {{/if}}{{/each}}
+  </table>
+
+</div>
+
+{{!-- Navbar --}}
+<div class="ui bottom demo inverted nine item labeled icon sidebar menu overlay visible" style="">
+  <a class="item" href="/">
+    <i class="home icon"></i>
+    Home
+  </a> 
+  <a class="item" href="#">
+    <i class="mail icon"></i>
+    Messages
+    <img id="soon" src="../public/img/Coming-Soon.png">
+  </a>
+  <a class="item" href="#">
+    <i class="road icon"></i>
+    Routes
+    <img id="soon" src="../public/img/Coming-Soon.png">
+  </a>
+  <a class="item" href="/manage">
+    <i class="shop icon"></i>
+    My Sales
+  </a>
+  <a class="item" href="/login">
+    <i class="user icon"></i>
+    Log In
+  </a>
+</div>
+<h1 id="logo">
+  YardPicker
+  <span><i>Yard Sales Made Easy!</i></span>
+</h1>

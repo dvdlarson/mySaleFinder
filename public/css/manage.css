@@ -1,0 +1,41 @@
+body {
+    background-color: rgb(38, 50, 56)!important;
+    padding: 40px!important;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    margin: 0 auto;
+    border: 1px solid white!important;
+    min-width: 800px!important;
+}
+
+#table-wrapper {
+    display: flex;
+    justify-content: center;
+    max-width: 1200px
+}
+
+.addsale_btn {
+    position: relative;
+    top: 10px;
+}
+#nosales {
+    display: block;
+    position: relative;
+    color: white;
+    top: 150px;
+    right: 50%;
+    text-align: center;
+}
+
+button {
+    position: relative;
+    width: 150px;
+}
+
+.plus {
+    color: #00B5AD;
+    width: 50px;
+}

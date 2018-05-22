@@ -3,6 +3,12 @@
   type="text/javascript"></script>
 <script src="../public/js/buy.js"></script>
 
+<div class="img-background">
+
+</div>
+<div class="page-wrapper">
+
+</div>
 <div id="content-wrapper">
   {{!-- Map --}}
   <div class="" id="map-wrapper">
@@ -17,11 +23,15 @@
       <li id="{{id}}">
         <div class="ui card">
           <div class="content">
-            <div class="header color-white">{{title}}</div>
+            <div class="header">{{title}}</div>
+            <div class="image">
+
+            </div>
             <div class="description">
-                <img src="https://www.hope2all.org/wp-content/uploads/2017/09/YardSale-1.gif"  width="100px" alt="yard sale">
-                {{!-- <span>{{formatTime start_time "hh:mm"}} - {{formatTime end_time "hh:mm"}}</span> --}}
-                <p class="color-white">{{items_desc}}</p>
+              <p class="color-white">{{items_desc}}</p>
+            </div>
+             <div class="extra content address">
+              <p class="color-white"><span class="whereWhen"> Where:</span> {{full_address}}</p>
             </div>
           </div>
           <div class="extra content">
@@ -29,10 +39,9 @@
               <i class="like icon" id={{id}}></i>
               Favorite
             </span>
-            <span class="left floated color-white">{{formatDate start_date "MMM Do"}} - {{formatDate end_date "MMM Do"}}</span>
-            {{!-- {{#if sale.weather_cancel}} 
-            
-            {{else}}
+            <span class="left floated color-white"><span class="whereWhen">When:</span> {{formatDate start_date "MMM Do"}} - {{formatDate end_date "MMM Do"}} | {{formatTime start_time "h:mm A"}} -
+              {{formatTime end_time "h:mm A"}}</span>
+            {{!-- {{#if sale.weather_cancel}} {{else}}
             <span class="left floated tint" data-id={{id}}>
               <i class="tint icon"></i>
               Open during rain
@@ -52,20 +61,28 @@
     <i class="home icon"></i>
     Home
   </a>
-  <a class="item">
+  <a class="item" href="#">
     <i class="mail icon"></i>
     Messages
+    <img id="soon" src="../public/img/Coming-Soon.png">
   </a>
-  <a class="item">
-    <i class="heart icon"></i>
-    Favorites
+  <a class="item" href="#">
+    <i class="road icon"></i>
+    Routes
+    <img id="soon" src="../public/img/Coming-Soon.png">
   </a>
-  <a class="item">
+  <a class="item" href="/manage">
     <i class="shop icon"></i>
-    My Shop
+    My Sales
   </a>
-  <a class="item">
-    <i class="settings icon"></i>
-    Settings
+  <a class="item" href="/login">
+    <i class="user icon"></i>
+    Log In
   </a>
 </div>
+<h1 id="logo">
+  YardPicker
+  <span>
+    <i>Yard Sales Made Easy!</i>
+  </span>
+</h1>

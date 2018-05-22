@@ -1,4 +1,6 @@
 var map;
+var markers = [];
+
 //var key = process.env.API_KEY;
 
 function getPos() {
@@ -55,7 +57,11 @@ function getPos() {
           //close window if you click anywhere else on the map
           map.addListener("click", function (event) {
             infoWindow.close();
+            $("li").css({"border-left": "none"});
+            $(".card").attr("style", "margin-left: 6px!important");
           });
+          markers.push(marker);
+
         }
       });
     });
@@ -77,14 +83,24 @@ function getPos() {
 $(document).ready(function () {
   //Create new map and go to users position
   // initMap();
-  getPos();
+  for (var i = 0; i < $(".image").length; i++) {
+    $(".image").each(function () {
+      $(this).css({
+        "background-image": "url('../public/img/sale" + Math.floor(Math.random() * 7 + 1) + ".PNG')"
+      })
+    });
+  }
+
 
 
   $(".like").on("click", function (event) {
     event.preventDefault();
     //if user isnt logged in, display an alert
     var saleID = this.id;
-    $(this).css({"color": "red"});
+    $(this).css({
+      "color": "red"
+    });
+
     var favData = {
       saleId: saleID,
       //UserId: req.session.user.id
@@ -100,4 +116,8 @@ $(document).ready(function () {
       console.log("Added new sale: " + favData);
     });
   });
+  $(document).on("click", "li", function() {
+    google.maps.event.trigger(markers[$(this).attr("id") - 1], "click");
+  });
 });
+
