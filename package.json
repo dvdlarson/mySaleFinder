@@ -4,7 +4,8 @@
   "description": "Project 2 - U of A bootcamp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -39,5 +40,9 @@
     "semantic-ui-calendar": "^0.0.8",
     "sequelize": "^4.37.7",
     "timepicker": "^1.11.12"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {}
 }
