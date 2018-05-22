@@ -7,7 +7,6 @@ $(document).ready(function () {
     $('select.dropdown')
         .dropdown();
 
-    //add a burger
     $(".addsale").on("click", function (event) {
         event.preventDefault();
         console.log($("#rangeend").val() + "testing something");
@@ -30,6 +29,8 @@ $(document).ready(function () {
             state: $("#state").val().trim(),
             zip_cd: $("#zip").val().trim(),
             full_address: fullAddress,
+            address: $("#address").val().trim(),
+
             active: 1,
             // UserId: req.session.user.id
 
@@ -41,6 +42,7 @@ $(document).ready(function () {
             data: newSale
         }).then(function () {
             console.log("Added new sale: " + newSale);
+            location.href = "/manage";
         });
     });
 
