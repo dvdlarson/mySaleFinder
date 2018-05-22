@@ -23,7 +23,11 @@ $(document).ready(function () {
             var d = editData.sale;
             console.log(editData);
             $('#title').val(d.title);
-            $('#sale_type').val(d.sale_type);
+            $('#sale_type').append($('<option>', {
+                value: d.sale_type,
+                text: d.sale_type,
+                selected: true
+            }));
             $('#startDate').val(d.start_date);
             $('#endDate').val(d.end_date);
             $('#startTime').val(d.start_time);
@@ -46,7 +50,11 @@ $(document).ready(function () {
             $('#address').val(d.address);
             $('#desc').val(d.items_desc);
             $('#city').val(d.city);
-            $('#state').val(d.state);
+            $('#state').append($('<option>', {
+                value: d.state,
+                text: d.state,
+                selected: true
+            }));
             $('#zip').val(d.zip_cd);
 
         });
@@ -79,14 +87,13 @@ $(document).ready(function () {
             active: 1,
         };
         console.log(newSale);
-
-        $.ajax("/api/editsale/" + id, {
+        var puturl = "/api/editsale" + id
+        $.ajax(puturl, {
             type: "PUT",
             data: newSale
         }).then(function () {
-            console.log("Updated sale: " + newSale);
+            console.log("Updated sale: " + data);
+            location.href = "/manage";
         });
-        location.href = "/manage";
-
     });
 });

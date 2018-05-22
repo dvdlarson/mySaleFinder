@@ -1,4 +1,5 @@
 var map;
+var markers = [];
 //var key = process.env.API_KEY;
 
 function getPos() {
@@ -55,7 +56,10 @@ function getPos() {
           //close window if you click anywhere else on the map
           map.addListener("click", function (event) {
             infoWindow.close();
+            $("li").css({"border-left": "none"});
+            $(".card").attr("style", "margin-left: 6px!important");
           });
+          markers.push(marker);
         }
       });
     });
@@ -77,7 +81,6 @@ function getPos() {
 $(document).ready(function () {
   //Create new map and go to users position
   // initMap();
-  getPos();
   for (var i = 0; i < $(".image").length; i++) {
     $(".image").each(function () {
       $(this).css({
@@ -108,5 +111,8 @@ $(document).ready(function () {
 
       console.log("Added new sale: " + favData);
     });
+  });
+  $(document).on("click", "li", function() {
+    google.maps.event.trigger(markers[$(this).attr("id") - 1], "click");
   });
 });

@@ -7,7 +7,6 @@ $(document).ready(function () {
     $('select.dropdown')
         .dropdown();
 
-    //add a burger
     $(".addsale").on("click", function (event) {
         event.preventDefault();
         console.log($("#rangeend").val() + "testing something");

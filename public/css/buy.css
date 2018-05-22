@@ -10,6 +10,14 @@
     width: 200px;
 }
 
+.whereWhen  {
+    color: goldenrod;
+}
+
+.address {
+    padding-top: 15px;
+}
+
 #logo span {
     font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
     font-size: 13px;

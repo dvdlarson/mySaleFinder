@@ -30,13 +30,16 @@
             <div class="description">
               <p class="color-white">{{items_desc}}</p>
             </div>
+             <div class="extra content address">
+              <p class="color-white"><span class="whereWhen"> Where:</span> {{full_address}}</p>
+            </div>
           </div>
           <div class="extra content">
             <span class="right floated star color-white">
               <i class="like icon" id={{id}}></i>
               Favorite
             </span>
-            <span class="left floated color-white">{{formatDate start_date "MMM Do"}} - {{formatDate end_date "MMM Do"}} | {{formatTime start_time "h:mm A"}} -
+            <span class="left floated color-white"><span class="whereWhen">When:</span> {{formatDate start_date "MMM Do"}} - {{formatDate end_date "MMM Do"}} | {{formatTime start_time "h:mm A"}} -
               {{formatTime end_time "h:mm A"}}</span>
             {{!-- {{#if sale.weather_cancel}} {{else}}
             <span class="left floated tint" data-id={{id}}>

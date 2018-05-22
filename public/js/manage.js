@@ -32,16 +32,14 @@ $(function () {
             location.reload();
         });
     }});
-    // $(".delete").click(function () {
-    //     var confirmDelete = confirm("This can not be un-done. Continue?");
-    //     if (confirmDelete == false) {
-    //         return;
-    //     }
-    //     var $item = $(this).closest("tr") // Finds the closest row <tr> 
-    //         .find(".id") // Gets a descendent with class="id"
-    //         .text(); // Retrieves the text within <td>
-
-    //     var url = "/api/edit/" + $item;
-    //     $(location).attr('href', url) // Routes to the edit page
-    // });
 });
+
+$(document).ready(function() {
+    if ($("td").length === 0) {
+        console.log("no sales");
+        $("table").after("<div id='nosales'><h1 >No sales! :(</h1></div>")
+    }
+    $(document).on("click", ".addsale", function() {
+        window.location = "/sale"
+    })
+ });

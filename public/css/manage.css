@@ -8,6 +8,7 @@ body {
 table {
     margin: 0 auto;
     border: 1px solid white!important;
+    min-width: 800px!important
 }
 
 #table-wrapper {
@@ -19,4 +20,23 @@ table {
 .addsale_btn {
     position: relative;
     top: 10px;
+}
+\
+#nosales {
+    display: block;
+    position: relative;
+    color: white;
+    top: 150px;
+    right: 50%;
+    text-align: center;
+}
+
+button {
+    position: relative;
+    width: 150px;
+}
+
+.plus {
+    color: #00B5AD;
+    width: 50px;
 }
