@@ -2,6 +2,9 @@
   "name": "mysalefinder",
   "version": "1.0.0",
   "description": "Project 2 - U of A bootcamp",
+  "engines": {
+    "node": "8.9.3"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
