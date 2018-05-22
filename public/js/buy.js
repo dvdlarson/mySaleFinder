@@ -1,5 +1,6 @@
 var map;
 var markers = [];
+
 //var key = process.env.API_KEY;
 
 function getPos() {
@@ -60,6 +61,7 @@ function getPos() {
             $(".card").attr("style", "margin-left: 6px!important");
           });
           markers.push(marker);
+
         }
       });
     });
@@ -90,6 +92,7 @@ $(document).ready(function () {
   }
 
 
+
   $(".like").on("click", function (event) {
     event.preventDefault();
     //if user isnt logged in, display an alert
@@ -97,6 +100,7 @@ $(document).ready(function () {
     $(this).css({
       "color": "red"
     });
+
     var favData = {
       saleId: saleID,
       //UserId: req.session.user.id
@@ -116,3 +120,4 @@ $(document).ready(function () {
     google.maps.event.trigger(markers[$(this).attr("id") - 1], "click");
   });
 });
+

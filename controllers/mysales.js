@@ -59,6 +59,7 @@ module.exports = function (app) {
 					if (!req.session.returnTo) {
 						res.redirect('/');
 					}
+
 					res.redirect(req.session.returnTo);
 					delete req.session.returnTo;
 				}
@@ -321,3 +322,5 @@ module.exports = function (app) {
 	});
 
 }
+
+

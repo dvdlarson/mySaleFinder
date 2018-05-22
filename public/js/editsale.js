@@ -14,7 +14,7 @@ $(document).ready(function () {
         event.preventDefault();
         location.href = "/manage";
     });
-    //1 is true
+
     $.ajax({
             url: url,
             method: "GET"
@@ -57,6 +57,7 @@ $(document).ready(function () {
             }));
             $('#zip').val(d.zip_cd);
 
+
         });
 
 
@@ -95,5 +96,6 @@ $(document).ready(function () {
             console.log("Updated sale: " + data);
             location.href = "/manage";
         });
+
     });
 });

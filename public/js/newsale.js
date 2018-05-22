@@ -30,6 +30,7 @@ $(document).ready(function () {
             zip_cd: $("#zip").val().trim(),
             full_address: fullAddress,
             address: $("#address").val().trim(),
+
             active: 1,
             // UserId: req.session.user.id
 
