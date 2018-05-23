@@ -42,6 +42,7 @@
     "sass": "*",
     "semantic-ui-calendar": "^0.0.8",
     "sequelize": "^4.37.7",
+    "sequelize-cli": "^4.0.0",
     "timepicker": "^1.11.12"
   },
   "directories": {
