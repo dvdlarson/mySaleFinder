@@ -17,7 +17,7 @@ module.exports = {
 	},
 	// this information will be taken from jawsdb config info on heroku
 	production: {
-		use_env_variable: DATABASE_URL,
+		use_env_variable: "JAWSDB_URL",
 		dialect: "mysql"
 	}
 }
