@@ -15,12 +15,9 @@ module.exports = {
 		host: "127.0.0.1",
 		dialect: "mysql"
 	},
-	//this information will be taken from jawsdb config info on heroku
-	// production: {
-	// 	username: "root",
-	// 	password: null,
-	// 	database: "database_production",
-	// 	host: "127.0.0.1",
-	// 	dialect: "mysql"
-	// }
+	// this information will be taken from jawsdb config info on heroku
+	production: {
+		use_env_variable: "DATABASE_URL",
+		dialect: "mysql"
+	}
 }
