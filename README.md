@@ -46,4 +46,4 @@
 
 </ul>
 
-The deployed heroku project can be viewed here: https://mighty-thicket-33889.herokuapp.com/
+The deployed heroku project can be viewed here: https://yard-picker.herokuapp.com/
